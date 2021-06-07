@@ -13,7 +13,7 @@ public class LocationFactory {
     public static Location createLocation(String description, String area, boolean pickupPoint) {
         String id = Helper.generateId();
         if (description.isEmpty() || area.isEmpty())
-            return null;
+            return new Location.Builder().build();
         Location location = new Location.Builder()
                 .setId(id)
                 .setDescription(description)
