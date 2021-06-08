@@ -7,10 +7,10 @@ package za.ac.cput.groupx30.entity;
 
 public class Guide
 {
-    public String id;
-    public String name;
+    private String id;
+    private String name;
 
-    public Guide(Guide.Builder builder)
+    public Guide(Builder builder)
     {
         this.id = builder.id;
         this.name = builder.name;
@@ -21,19 +21,9 @@ public class Guide
         return id;
     }
 
-    public void setId(String id)
-    {
-        id = id;
-    }
-
     public String getName()
     {
         return name;
-    }
-
-    public void setName(String name)
-    {
-        this.name = name;
     }
 
     public static class Builder
@@ -53,7 +43,7 @@ public class Guide
             return this;
         }
 
-        public Guide.Builder copy(Guide guide)
+        public Builder copy(Guide guide)
         {
             this.id = guide.id;
             this.name = guide.name;
@@ -64,5 +54,13 @@ public class Guide
         {
             return new Guide(this);
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Guide{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                '}';
     }
 }
