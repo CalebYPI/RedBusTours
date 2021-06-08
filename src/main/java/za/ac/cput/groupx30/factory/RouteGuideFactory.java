@@ -6,13 +6,11 @@ package za.ac.cput.groupx30.factory;
  */
 
 import za.ac.cput.groupx30.entity.RouteGuide;
-import za.ac.cput.groupx30.util.Helper;
 
 public class RouteGuideFactory {
 
-    public static RouteGuide createRouteGuide(String routeId)
+    public static RouteGuide createRouteGuide(String routeId, String guideId)
     {
-        String guideId = Helper.generateId();
 
         RouteGuide routeGuide = new RouteGuide.Builder()
                 .setRouteId(routeId)

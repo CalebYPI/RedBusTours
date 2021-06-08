@@ -7,10 +7,10 @@ package za.ac.cput.groupx30.entity;
 
 public class RouteGuide
 {
-    public String routeId;
-    public String guideId;
+    private String routeId;
+    private String guideId;
 
-    public RouteGuide(RouteGuide.Builder builder)
+    public RouteGuide(Builder builder)
     {
         this.routeId = builder.routeId;
         this.guideId = builder.guideId;
@@ -21,19 +21,9 @@ public class RouteGuide
         return routeId;
     }
 
-    public void setRouteId(String routeId)
-    {
-        this.routeId = routeId;
-    }
-
     public String getGuideId()
     {
         return guideId;
-    }
-
-    public void setGuideId(String guideId)
-    {
-        this.guideId = guideId;
     }
 
     public static class Builder
@@ -47,13 +37,14 @@ public class RouteGuide
             return this;
         }
 
+
         public RouteGuide.Builder setGuideId(String guideId)
         {
             this.guideId = guideId;
             return this;
         }
 
-        public RouteGuide.Builder copy(RouteGuide routeGuide)
+        public Builder copy(RouteGuide routeGuide)
         {
             this.routeId = routeGuide.routeId;
             this.guideId = routeGuide.guideId;
@@ -64,5 +55,13 @@ public class RouteGuide
         {
             return new RouteGuide(this);
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Builder{" +
+                "routeId='" + routeId + '\'' +
+                ", guideId='" + guideId + '\'' +
+                '}';
     }
 }
