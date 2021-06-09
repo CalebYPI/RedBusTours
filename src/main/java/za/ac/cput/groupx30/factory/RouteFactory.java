@@ -14,7 +14,7 @@ public class RouteFactory {
         String id = Helper.generateId();
         double hours = time/60;
         if (description.isEmpty() || distance < 0 || time < 0)
-            return null;
+            return new Route.Builder().build();
         Route route = new Route.Builder()
                 .setId(id)
                 .setDescription(description)
