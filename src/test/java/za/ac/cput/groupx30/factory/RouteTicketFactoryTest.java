@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import za.ac.cput.groupx30.entity.RouteTicket;
 
+import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.junit.jupiter.api.Assertions.*;
 
 class RouteTicketFactoryTest {
@@ -22,11 +23,12 @@ class RouteTicketFactoryTest {
         Assertions.assertSame("Robben Island", "Robben Island");
     }
 
-//    @Test
-//    @org.junit.jupiter.api.Timeout(value = 1, unit = SECONDS);
-//    public void setTicket(){
-//
-//    }
+    @Test
+    @org.junit.jupiter.api.Timeout(value = 1, unit = SECONDS)
+    public void setTicket(){
+
+    }
+
 
     @Test
     @Disabled
