@@ -14,6 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class PassengerFactoryTest {
 
     @Test
+    @Timeout(5)
      void createPassenger() {
         Passenger passenger1 = PassengerFactory.createPassenger("Shaheed", "0787092205");
         Passenger passenger2 = PassengerFactory.createPassenger("Robert", "0787547693");
