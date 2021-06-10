@@ -24,12 +24,16 @@ class DriverRouteFactoryTest {
         Assertions.assertSame("N1", "N1");
     }
 
-//    @Test
-//    @org.junit.jupiter.api.Timeout(value = 1, unit = SECONDS);
+
+    @Test
+    @org.junit.jupiter.api.Timeout(value = 1, unit = SECONDS)
+    public void setRoute(){
+
+    }
 
     @Test
     @Disabled
-    public void setDriverRoute(){
+    public void setDriverRouteID(){
 
     }
 
