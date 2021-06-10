@@ -10,8 +10,8 @@ import za.ac.cput.groupx30.util.Helper;
  */
 public class TicketFactory {
 
-    public static Ticket createTicket(String id, String date, String time, String price){
-        id = Helper.generateId();
+    public static Ticket createTicket(String date, String time, String price){
+        String id = Helper.generateId();
         Ticket ticket = new Ticket.Builder()
                 .setId(id)
                 .setDate(date)

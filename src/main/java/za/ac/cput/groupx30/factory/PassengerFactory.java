@@ -10,8 +10,9 @@ import za.ac.cput.groupx30.util.Helper;
 public class PassengerFactory {
 
 
-    public static Passenger createPassenger(String id, String name, String contact){
-        id = Helper.generateId();
+
+    public static Passenger createPassenger(String name, String contact){
+        String id = Helper.generateId();
         Passenger passenger = new Passenger.Builder()
                 .setId(id)
                 .setName(name)
@@ -19,4 +20,6 @@ public class PassengerFactory {
                 .build();
         return passenger;
     }
+
+
 }
