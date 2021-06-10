@@ -1,6 +1,5 @@
 # Default ignored files
-.idea/
-target/
+/.idea/
 *.iml
 .settings/
 .classpath
