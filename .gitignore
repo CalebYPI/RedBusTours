@@ -1,6 +1,8 @@
 # Default ignored files
-target/
+/.idea/
 *.iml
 *.xml
+/target/
+
 
 
