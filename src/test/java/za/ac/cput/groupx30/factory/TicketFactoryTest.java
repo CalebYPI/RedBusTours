@@ -13,7 +13,7 @@ class TicketFactoryTest {
 
     @Test
     void createTicket() {
-        Ticket ticket = TicketFactory.createTicket("", "06/06/2021","15:00", "R250");
+        Ticket ticket = TicketFactory.createTicket("06/06/2021","15:00", "R250");
         System.out.println(ticket);
     }
 }
