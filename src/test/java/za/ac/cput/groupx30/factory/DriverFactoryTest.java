@@ -29,8 +29,7 @@ class DriverFactoryTest {
 
     @Test
     @org.junit.jupiter.api.Timeout(value = 1, unit = SECONDS)
-    public void setId(){
-        //while(true);
+    public void setId() {
     }
 
     @Test
