@@ -1,33 +1,69 @@
 package za.ac.cput.groupx30.repository.route.impl;
 
+/*
+ RouteRepositoryImpl.java
+ Repository Implementation for the Route
+ Author: Caleb Ruiters (215169751)
+ Date: 20 June 2021
+*/
+
 import za.ac.cput.groupx30.entity.Route;
 import za.ac.cput.groupx30.repository.route.RouteRepository;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class RouteRepositoryImpl implements RouteRepository {
-    @Override
-    public Route create(Route route) {
-        return null;
+    private static RouteRepositoryImpl repository = null;
+    private Set<Route> routeDB;
+
+    private RouteRepositoryImpl() {
+        this.routeDB = new HashSet<>();
+    }
+
+    public static RouteRepositoryImpl getRepository() {
+        if (repository == null) repository = new RouteRepositoryImpl();
+        return repository;
     }
 
     @Override
-    public Route read(String s) {
+    public Route create(Route route) {
+        this.routeDB.add(route);
+        return route;
+    }
+
+    @Override
+    public Route read(String id) {
+        for (Route route: routeDB) {
+            if (route.getId().equalsIgnoreCase(id))
+                return route;
+        }
         return null;
     }
 
     @Override
     public Route update(Route route) {
+        Route read = read(route.getId());
+        if (read != null) {
+            this.routeDB.remove(read);
+            this.routeDB.add(route);
+            return route;
+        }
         return null;
     }
 
     @Override
-    public boolean delete(String s) {
+    public boolean delete(String id) {
+        Route route = read(id);
+        if (route != null) {
+            this.routeDB.remove(id);
+            return true;
+        }
         return false;
     }
 
     @Override
     public Set<Route> getAll() {
-        return null;
+        return routeDB;
     }
 }
