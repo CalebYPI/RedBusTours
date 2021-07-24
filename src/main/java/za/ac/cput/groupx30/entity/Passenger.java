@@ -40,7 +40,7 @@ public class Passenger {
         return "Passenger{" +
                 "Id='" + Id + '\'' +
                 ", Name='" + Name + '\'' +
-                ", Surname='" + Contact + '\'' +
+                ", Contact='" + Contact + '\'' +
                 '}';
     }
 
