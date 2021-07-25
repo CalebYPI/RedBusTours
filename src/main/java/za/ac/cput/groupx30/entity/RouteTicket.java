@@ -1,5 +1,10 @@
 package za.ac.cput.groupx30.entity;
 
+/**
+ * Baron Mukenyi (217163742)
+ * Class repository for Ticket Route
+ * 07 May 2021
+ */
 
 public class RouteTicket {
     public String route, routeDesc;
@@ -36,6 +41,12 @@ public class RouteTicket {
         }
         public Builder setRouteDesc(String routeDesc){
             this.routeDesc = routeDesc;
+            return this;
+        }
+
+        public RouteTicket.Builder copy(RouteTicket routeTicket){
+            this.route = routeTicket.route;
+            this.routeDesc = routeTicket.routeDesc;
             return this;
         }
 
