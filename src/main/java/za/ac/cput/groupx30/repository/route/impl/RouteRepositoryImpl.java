@@ -22,7 +22,8 @@ public class RouteRepositoryImpl implements RouteRepository {
     }
 
     public static RouteRepositoryImpl getRepository() {
-        if (repository == null) repository = new RouteRepositoryImpl();
+        if (repository == null)
+            repository = new RouteRepositoryImpl();
         return repository;
     }
 

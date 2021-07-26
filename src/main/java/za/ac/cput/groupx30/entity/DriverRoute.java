@@ -54,8 +54,8 @@ public class DriverRoute {
             return new DriverRoute(this);
         }
 
-        public Vehicle copy(DriverRoute driverRoute) {
+        /**public Vehicle copy(DriverRoute driverRoute) {
             return null;
-        }
+        }*/
     }
 }
