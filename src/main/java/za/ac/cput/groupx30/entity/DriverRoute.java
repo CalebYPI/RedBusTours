@@ -1,5 +1,10 @@
 package za.ac.cput.groupx30.entity;
 
+/**
+* Baron Mukenyi (217163742)
+* Driver Route Entity
+* 7 May 2021
+ */
 
 
 public class DriverRoute {
@@ -37,6 +42,11 @@ public class DriverRoute {
         }
         public Builder setRouteID(String routeID){
             this.routeID = routeID;
+            return this;
+        }
+        public DriverRoute.Builder copy(DriverRoute driverRoute){
+            this.driverID = driverRoute.driverID;
+            this.routeID = driverRoute.routeID;
             return this;
         }
 
