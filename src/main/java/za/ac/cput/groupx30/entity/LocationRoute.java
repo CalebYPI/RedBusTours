@@ -1,6 +1,6 @@
 package za.ac.cput.groupx30.entity;
 /*
- LocationRoute.java
+ LocationRouteService.java
  Entity for the LocationRoute
  Author: Caleb Ruiters (215169751)
  Date: 31 May 2021
