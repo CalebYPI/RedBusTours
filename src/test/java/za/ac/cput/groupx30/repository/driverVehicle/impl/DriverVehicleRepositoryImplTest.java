@@ -14,12 +14,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class DriverVehicleRepositoryImplTest {
     private static DriverVehicleRepository repository = DriverVehicleRepositoryImpl.getRepository();
-    private static DriverVehicle driverVehicle = DriverVehicleFactory.createDriverVehicle("Mercedes Benz - Bus15 2020 Model");
+    private static DriverVehicle driverVehicle = DriverVehicleFactory.createDriverVehicle("Mercedes Benz - Bus15");
 
     @Test
     public void a_create(){
         DriverVehicle created = repository.create(driverVehicle);
         assertEquals(driverVehicle.getVehicleId(), created.getVehicleId());
+        assertEquals(driverVehicle.getDriverId(), created.getDriverId());
         System.out.println("CreatedRoom: " + created);
     }
 
