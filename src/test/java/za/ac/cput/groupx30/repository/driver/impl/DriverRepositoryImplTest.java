@@ -21,6 +21,7 @@ class DriverRepositoryImplTest {
     public void a_create(){
         Driver created = repository.create(driver);
         assertEquals(driver.getId(), created.getId());
+        assertEquals(driver.getName(), created.getName());
         System.out.println("CreatedRoom: " + created);
     }
 

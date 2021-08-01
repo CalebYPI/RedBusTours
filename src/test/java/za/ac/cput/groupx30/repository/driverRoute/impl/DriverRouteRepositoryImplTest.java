@@ -21,6 +21,7 @@ class DriverRouteRepositoryImplTest {
     public void a_create(){
         DriverRoute created = repository.create(driverRoute);
         assertEquals(driverRoute.getRouteID(), created.getRouteID());
+        assertEquals(driverRoute.getDriverID(), created.getDriverID());
         System.out.println("Created DriverRoute: " + created);
     }
 
