@@ -5,6 +5,14 @@ package za.ac.cput.groupx30.entity;
 // Date: 7 June 2021
 
 public class Vehicle {
+    @Override
+    public String toString() {
+        return "Vehicle{" +
+                "Id='" + Id + '\'' +
+                ", desc='" + desc + '\'' +
+                '}';
+    }
+
     public String Id;
     public String desc;
 
