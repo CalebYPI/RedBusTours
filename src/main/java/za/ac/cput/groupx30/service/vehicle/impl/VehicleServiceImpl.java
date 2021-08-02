@@ -1,5 +1,10 @@
 package za.ac.cput.groupx30.service.vehicle.impl;
 
+// Author: Thokozile Snono
+// Student number: 216032121
+// Service: VehicleServiceImpl Class
+// Date: 02 August 2021
+
 import za.ac.cput.groupx30.entity.Vehicle;
 import za.ac.cput.groupx30.repository.vehicle.VehicleRepository;
 import za.ac.cput.groupx30.repository.vehicle.impl.VehicleRepositoryImpl;
