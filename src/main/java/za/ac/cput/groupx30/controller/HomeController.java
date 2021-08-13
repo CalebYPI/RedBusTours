@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class HomeController {
-    @RequestMapping({"/", "home", "index"})
+    @RequestMapping({"/", "/home", "/index"})
     String Home() {
         return "Red Bus City Site Seeing Tours";
     }

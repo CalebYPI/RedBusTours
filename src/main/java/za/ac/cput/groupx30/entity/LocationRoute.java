@@ -9,6 +9,8 @@ package za.ac.cput.groupx30.entity;
 public class LocationRoute {
     private String RouteId, LocationId;
 
+    protected LocationRoute() {}
+
     private LocationRoute(Builder builder){
         this.RouteId = builder.RouteId;
         this.LocationId = builder.LocationId;

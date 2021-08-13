@@ -12,6 +12,8 @@ public class Route {
     private double distance;
     private double time;
 
+    private Route() {}
+
     private Route(Builder builder) {
         this.id = builder.id;
         this.description = builder.description;
