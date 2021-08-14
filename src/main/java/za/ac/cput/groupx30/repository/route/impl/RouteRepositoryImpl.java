@@ -56,11 +56,11 @@ public class RouteRepositoryImpl implements RouteRepository {
     @Override
     public boolean delete(String id) {
         Route route = read(id);
-        if (route != null) {
-            this.routeDB.remove(id);
-            return true;
+        if (route == null) {
+            return false;
         }
-        return false;
+        this.routeDB.remove(route);
+        return true;
     }
 
     @Override

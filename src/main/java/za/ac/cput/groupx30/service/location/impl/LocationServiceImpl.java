@@ -1,5 +1,6 @@
 package za.ac.cput.groupx30.service.location.impl;
 
+import org.springframework.stereotype.Service;
 import za.ac.cput.groupx30.entity.Location;
 import za.ac.cput.groupx30.repository.location.LocationRepository;
 import za.ac.cput.groupx30.repository.location.impl.LocationRepositoryImpl;
@@ -10,6 +11,7 @@ import za.ac.cput.groupx30.service.route.impl.RouteServiceImpl;
 
 import java.util.Set;
 
+@Service
 public class LocationServiceImpl implements LocationService {
 
     private LocationRepository repository = null;

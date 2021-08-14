@@ -1,10 +1,12 @@
 package za.ac.cput.groupx30.service.route.impl;
 
+import org.springframework.stereotype.Service;
 import za.ac.cput.groupx30.entity.LocationRoute;
 import za.ac.cput.groupx30.repository.route.LocationRouteRepository;
 import za.ac.cput.groupx30.repository.route.impl.LocationRouteRepositoryImpl;
 import za.ac.cput.groupx30.service.route.LocationRouteService;
 
+@Service
 public class LocationRouteServiceImpl implements LocationRouteService {
     private LocationRouteRepository repository = null;
     private static LocationRouteServiceImpl service = null;

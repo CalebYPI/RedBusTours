@@ -21,9 +21,9 @@ public class RouteController {
         return service.create(newRoute);
     }
 
-    @RequestMapping(value = "/read/{id}", method = RequestMethod.GET)
-    public Route read(@PathVariable String id) {
-        return service.read(id);
+    @RequestMapping(value = "/read", method = RequestMethod.GET)
+    public Route read(@RequestBody Route id) {
+        return service.read(id.getId());
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.PUT)
@@ -31,9 +31,9 @@ public class RouteController {
         return service.update(route);
     }
 
-    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
-    public boolean delete(@PathVariable String id) {
-        return service.delete(id);
+    @RequestMapping(value = "/delete", method = RequestMethod.DELETE)
+    public boolean delete(@RequestBody Route id) {
+        return service.delete(id.getId());
     }
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)

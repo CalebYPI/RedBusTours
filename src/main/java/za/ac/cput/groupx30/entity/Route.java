@@ -12,7 +12,7 @@ public class Route {
     private double distance;
     private double time;
 
-    private Route() {}
+    public Route() {}
 
     private Route(Builder builder) {
         this.id = builder.id;

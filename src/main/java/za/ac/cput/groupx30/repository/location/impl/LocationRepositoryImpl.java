@@ -56,7 +56,7 @@ public class LocationRepositoryImpl implements LocationRepository {
     public boolean delete(String id) {
         Location location = read(id);
         if (location != null) {
-            this.locationDB.remove(id);
+            this.locationDB.remove(location);
             return true;
         }
         return false;
