@@ -12,18 +12,14 @@ import za.ac.cput.groupx30.entity.Route;
 import za.ac.cput.groupx30.entity.RouteTicket;
 import za.ac.cput.groupx30.factory.RouteTicketFactory;
 import za.ac.cput.groupx30.service.routeTicket.RouteTicketService;
+import za.ac.cput.groupx30.service.routeTicket.imp.RouteTicketServiceImp;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class RouteTicketServiceImpTest {
 
-    private static RouteTicketService service;
+    private RouteTicketService service = RouteTicketServiceImp.getService();
     private static RouteTicket routeTicket = RouteTicketFactory.createTicker("To Johannesburg");
-
-
-    @Test
-    void e_getService() {
-    }
 
     @Test
     void a_create() {
@@ -52,7 +48,7 @@ class RouteTicketServiceImpTest {
     }
 
     @Test
-    void getAll() {
+    void e_getAll() {
         assertEquals(1, service.getAll());
         System.out.println("Get all ticket routes: " + "\n" + service.getAll() + "\n");
     }

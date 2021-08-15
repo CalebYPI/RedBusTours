@@ -12,5 +12,5 @@ import java.util.Set;
  */
 
 public interface RouteTicketRepository extends IRepository<RouteTicket, String> {
-    public Set<RouteTicket> getAll();
+    Set<RouteTicket> getAll();
 }
