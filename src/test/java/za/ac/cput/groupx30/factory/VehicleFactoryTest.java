@@ -14,13 +14,13 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 class VehicleFactoryTest {
 
     String vehicle = "Mercedes Benz";
-    Vehicle vehicle1 = VehicleFactory.createVehicle(vehicle);
+    Vehicle vehicle1 = VehicleFactory.createVehicle(Vehicle.getDesc(), vehicle);
 
     @Test
     void testEquality() {
         Assertions.assertEquals(vehicle1, vehicle1);
         Assertions.assertNotNull(vehicle1);
-        Assertions.assertNotNull(vehicle1.desc);
+        //Assertions.assertNotNull(vehicle1.desc);
     }
 
     @Test

@@ -1,21 +1,26 @@
 package za.ac.cput.groupx30.service;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.util.Assert;
 import za.ac.cput.groupx30.entity.DriverRoute;
 import za.ac.cput.groupx30.factory.DriverRouteFactory;
 import za.ac.cput.groupx30.service.driverRoute.DriverRouteService;
+import za.ac.cput.groupx30.service.driverRoute.impl.DriverRouteServiceImp;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.Set;
+
+/**
+ * Baron Mukenyi (217163742)
+ * Class for driver route service
+ * 29 July 2021
+ */
+
 
 
 class DriverRouteServiceImpTest {
 
-    private static DriverRouteService service;
+    private DriverRouteService service = DriverRouteServiceImp.getService();
     private static DriverRoute driverRoute = DriverRouteFactory.createRoute("R21");
-    //Set<DriverRoute> driverRouteSet = service.getAll();
 
     @Test
     void a_create() {

@@ -6,6 +6,7 @@ package za.ac.cput.groupx30.service.ticket.impl;
  * Date: 31 July 2021
  */
 
+import org.springframework.stereotype.Service;
 import za.ac.cput.groupx30.entity.Ticket;
 import za.ac.cput.groupx30.repository.ticket.TicketRepository;
 import za.ac.cput.groupx30.repository.ticket.impl.TicketRepositoryImpl;
@@ -13,6 +14,7 @@ import za.ac.cput.groupx30.service.ticket.TicketService;
 
 import java.util.Set;
 
+@Service
 public class TicketServiceImpl implements TicketService {
     private static TicketServiceImpl service = null;
     private TicketRepository repository = null;
