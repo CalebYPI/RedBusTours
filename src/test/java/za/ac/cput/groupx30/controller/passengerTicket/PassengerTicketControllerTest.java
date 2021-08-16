@@ -1,5 +1,11 @@
 package za.ac.cput.groupx30.controller.passengerTicket;
 
+/**
+ * Author: Shaheed_Cloete(213239442)
+ * Desc: Test case for PassengerTicket controller
+ * Date: 15 August 2021
+ */
+
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;

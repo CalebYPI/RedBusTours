@@ -1,5 +1,10 @@
 package za.ac.cput.groupx30.controller.passenger;
 
+/**
+ * Author: Shaheed_Cloete(213239442)
+ * Desc: Controller for Passenger
+ * Date: 15 August 2021
+ */
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
