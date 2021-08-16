@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.MethodName.class)
 class VehicleRepositoryImplTest {
     private VehicleRepository repository = VehicleRepositoryImpl.getRepository();
-    private static Vehicle mercedes = VehicleFactory.createVehicle("AMG GT");
+    private static Vehicle mercedes = VehicleFactory.createVehicle(Vehicle.getDesc(), "AMG GT");
 
     @Test
     void a_create() {
