@@ -16,14 +16,13 @@ public class DriverRouteImpl implements DriverRouteRepository {
     private Set<DriverRoute> driverRouteDB;
 
     private DriverRouteImpl(){
-        driverRouteDB = new HashSet<DriverRoute>();
+        driverRouteDB = new HashSet<>();
     }
 
     public static DriverRouteImpl getRepository(){
-        if(repository == null){
+        if(repository == null)
             repository = new DriverRouteImpl();
-        }
-        return repository;
+            return repository;
     }
     @Override
     public DriverRoute create(DriverRoute driverRoute) {

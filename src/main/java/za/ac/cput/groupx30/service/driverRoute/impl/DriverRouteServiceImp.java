@@ -1,42 +1,41 @@
 package za.ac.cput.groupx30.service.driverRoute.impl;
 
+
+
+import org.springframework.stereotype.Service;
+import za.ac.cput.groupx30.entity.DriverRoute;
+import za.ac.cput.groupx30.repository.driverRoute.DriverRouteRepository;
+import za.ac.cput.groupx30.repository.driverRoute.impl.DriverRouteRepositoryImpl;
+import za.ac.cput.groupx30.service.driverRoute.DriverRouteService;
+
+import java.util.Set;
+
 /**
  * Baron Mukenyi (217163742)
  * Class for driver route service
  * 29 July 2021
  */
 
-import za.ac.cput.groupx30.entity.DriverRoute;
-import za.ac.cput.groupx30.repository.driverRoute.DriverRouteRepository;
-import za.ac.cput.groupx30.repository.driverRoute.impl.DriverRouteImpl;
-import za.ac.cput.groupx30.service.driverRoute.DriverRouteService;
-
-import java.util.Set;
-
+@Service
 public class DriverRouteServiceImp implements DriverRouteService {
 
+    public static DriverRouteService service = null;
     private DriverRouteRepository repository;
-    private static DriverRouteServiceImp service;
 
-    private DriverRouteServiceImp() {
-        this.repository = DriverRouteImpl.getRepository();
-    }
+    private DriverRouteServiceImp(){this.repository = DriverRouteRepositoryImpl.getRepository();}
 
-    private static DriverRouteServiceImp getService(){
-        if (service == null)
-            service = new DriverRouteServiceImp();
+    public static DriverRouteService getService(){
+        if(service == null) service = new DriverRouteServiceImp();
         return service;
     }
-
-
     @Override
     public DriverRoute create(DriverRoute driverRoute) {
-        return repository.create(driverRoute);
+        return this.repository.create(driverRoute);
     }
 
     @Override
-    public DriverRoute read(String driverRouteID) {
-        return this.repository.read(driverRouteID);
+    public DriverRoute read(String s) {
+        return this.repository.read(s);
     }
 
     @Override
@@ -45,12 +44,12 @@ public class DriverRouteServiceImp implements DriverRouteService {
     }
 
     @Override
-    public boolean delete(String driverRouteID) {
-        return this.repository.delete(driverRouteID);
+    public boolean delete(String s) {
+        return this.repository.delete(s);
     }
 
     @Override
     public Set<DriverRoute> getAll() {
-        return this.repository.getAll();
+        return getAll();
     }
 }

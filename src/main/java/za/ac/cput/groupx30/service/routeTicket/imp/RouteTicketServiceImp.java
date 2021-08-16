@@ -1,5 +1,6 @@
 package za.ac.cput.groupx30.service.routeTicket.imp;
 
+import org.springframework.stereotype.Service;
 import za.ac.cput.groupx30.entity.RouteTicket;
 import za.ac.cput.groupx30.repository.routeTicket.RouteTicketRepository;
 import za.ac.cput.groupx30.repository.routeTicket.imp.RouteTicketImpl;
@@ -13,20 +14,17 @@ import java.util.Set;
  * 29 July 2021
  */
 
-
+@Service
 public class RouteTicketServiceImp implements RouteTicketService {
+    public static RouteTicketService service = null;
     private RouteTicketRepository repository;
-    private static RouteTicketServiceImp service;
 
-    private RouteTicketServiceImp(){
-        this.repository = RouteTicketImpl.getRepository();
-    }
 
-    public static RouteTicketServiceImp getService(){
-        if(service == null){
-            service = new RouteTicketServiceImp();
-        }
-        return null;
+    private RouteTicketServiceImp(){this.repository = RouteTicketImpl.getRepository();}
+
+    public static RouteTicketService getService(){
+        if(service == null) service = new RouteTicketServiceImp();
+        return service;
     }
     @Override
     public RouteTicket create(RouteTicket routeTicket) {

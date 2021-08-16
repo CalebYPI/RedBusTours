@@ -8,17 +8,16 @@ import java.util.Set;
 
 public class RouteTicketImpl implements RouteTicketRepository {
     private static RouteTicketImpl repository = null;
-    private static Set<RouteTicket> routeTicketDB = null;
+    private Set<RouteTicket> routeTicketDB;
 
     private RouteTicketImpl(){
-        routeTicketDB = new HashSet<RouteTicket>();
+        routeTicketDB = new HashSet<>();
     }
 
     public static RouteTicketImpl getRepository(){
-        if(repository == null){
+        if(repository == null)
             repository = new RouteTicketImpl();
-        }
-        return repository;
+            return repository;
     }
     @Override
     public RouteTicket create(RouteTicket routeTicket) {
