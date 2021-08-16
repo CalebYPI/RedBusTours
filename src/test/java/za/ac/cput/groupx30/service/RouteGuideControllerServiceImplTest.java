@@ -15,7 +15,7 @@ import za.ac.cput.groupx30.service.route.impl.RouteGuideServiceImpl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class RouteGuideServiceImplTest
+public class RouteGuideControllerServiceImplTest
 {
 
     private static RouteGuideService service = RouteGuideServiceImpl.getService();

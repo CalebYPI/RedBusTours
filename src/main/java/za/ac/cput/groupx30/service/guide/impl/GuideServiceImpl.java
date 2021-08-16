@@ -5,6 +5,7 @@ package za.ac.cput.groupx30.service.guide.impl;
  *  Date: 02 August 2021
  */
 
+import org.springframework.stereotype.Service;
 import za.ac.cput.groupx30.entity.Guide;
 import za.ac.cput.groupx30.repository.guide.GuideRepository;
 import za.ac.cput.groupx30.repository.guide.impl.GuideRepositoryImpl;
@@ -12,6 +13,7 @@ import za.ac.cput.groupx30.service.guide.GuideService;
 
 import java.util.Set;
 
+@Service
 public class GuideServiceImpl implements GuideService
 {
     private GuideRepository repository = null;

@@ -5,7 +5,7 @@ import za.ac.cput.groupx30.entity.RouteGuide;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class RouteGuideFactoryTest {
+class RouteGuideControllerFactoryTest {
 
     @Test
     void createRouteGuide()

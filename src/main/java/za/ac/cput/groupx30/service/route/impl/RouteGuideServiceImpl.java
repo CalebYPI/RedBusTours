@@ -5,11 +5,13 @@ package za.ac.cput.groupx30.service.route.impl;
  *  2 August 2021
  */
 
+import org.springframework.stereotype.Service;
 import za.ac.cput.groupx30.entity.RouteGuide;
 import za.ac.cput.groupx30.repository.route.RouteGuideRepository;
 import za.ac.cput.groupx30.repository.route.impl.RouteGuideRepositoryImpl;
 import za.ac.cput.groupx30.service.route.RouteGuideService;
 
+@Service
 public class RouteGuideServiceImpl implements RouteGuideService
 {
     private RouteGuideRepository repository = null;
