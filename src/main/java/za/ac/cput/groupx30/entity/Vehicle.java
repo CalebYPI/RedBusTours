@@ -5,6 +5,8 @@ package za.ac.cput.groupx30.entity;
 // Date: 7 June 2021
 
 public class Vehicle {
+    private static String desc;
+
     @Override
     public String toString() {
         return "Vehicle{" +
@@ -14,7 +16,7 @@ public class Vehicle {
     }
 
     public String Id;
-    public String desc;
+    //public String desc;
 
     public Vehicle(Builder builder) {
         this.Id = builder.Id;
@@ -29,7 +31,7 @@ public class Vehicle {
         Id = id;
     }
 
-    public String getDesc() {
+    public static String getDesc() {
         return desc;
     }
 
