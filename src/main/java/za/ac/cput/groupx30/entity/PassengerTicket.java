@@ -8,7 +8,6 @@ import java.util.Objects;
  * Date: 06 June 2021
  */
 public class PassengerTicket {
-
     private String PassengerId;
     private String TicketId;
 
