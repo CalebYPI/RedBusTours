@@ -17,7 +17,7 @@ import za.ac.cput.groupx30.repository.route.impl.RouteGuideRepositoryImpl;
 import static org.junit.jupiter.api.Assertions.*;
 
 @TestMethodOrder(MethodOrderer.MethodName.class)
-public class RouteGuideRepositoryImplTest
+public class RouteGuideControllerRepositoryImplTest
 {
     private RouteGuideRepository repository = RouteGuideRepositoryImpl.getRepository();
     private static RouteGuide routeGuide = RouteGuideFactory.createRouteGuide("805245" , "Wilderness Tour");
