@@ -30,15 +30,27 @@ class LocationRouteRepositoryImplTest {
 
     @Test
     void b_read() {
-        LocationRoute read = repository.read(locationRoute.getLocationId(), locationRoute.getRouteId());
+        LocationRoute read = repository.read(locationRoute.getRouteId());
         assertNotNull(read);
         System.out.println("Read: " + read);
     }
 
     @Test
-    void c_delete() {
-        boolean deleted = repository.delete(locationRoute.getLocationId(), locationRoute.getRouteId());
+    void c_update() {
+        LocationRoute updated = repository.update(locationRoute);
+        assertEquals(updated.getRouteId(), locationRoute.getRouteId());
+        assertEquals(updated.getLocationId(), locationRoute.getLocationId());
+    }
+
+    @Test
+    void e_delete() {
+        boolean deleted = repository.delete(locationRoute.getRouteId());
         assertTrue(deleted);
         System.out.println("Deleted: " + deleted);
+    }
+
+    @Test
+    void d_getAll() {
+        assertEquals(repository.getAll().size(), 1);
     }
 }

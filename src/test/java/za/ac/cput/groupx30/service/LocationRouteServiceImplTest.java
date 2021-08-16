@@ -31,15 +31,27 @@ class LocationRouteServiceImplTest {
 
     @Test
     void b_read() {
-        LocationRoute read = service.read(stop.getId(), red.getId());
+        LocationRoute read = service.read(red.getId());
         assertNotNull(read);
         System.out.println("Read: " + read);
     }
 
     @Test
-    void c_delete() {
-        boolean delete = service.delete(stop.getId(), red.getId());
+    void c_update() {
+        LocationRoute updated = service.update(locationRoute);
+        assertEquals(updated.getRouteId(), locationRoute.getRouteId());
+        assertEquals(updated.getLocationId(), locationRoute.getLocationId());
+    }
+
+    @Test
+    void e_delete() {
+        boolean delete = service.delete(red.getId());
         assertTrue(delete);
         System.out.println("Deleted: " + delete);
+    }
+
+    @Test
+    void d_getAll() {
+        assertEquals(service.getAll().size(), 1);
     }
 }

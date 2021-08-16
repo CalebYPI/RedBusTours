@@ -12,7 +12,7 @@ public class Location {
     private String area;
     private boolean pickupPoint;
 
-    protected Location() {}
+    public Location() {}
 
     private Location(Builder builder) {
         this.id = builder.id;

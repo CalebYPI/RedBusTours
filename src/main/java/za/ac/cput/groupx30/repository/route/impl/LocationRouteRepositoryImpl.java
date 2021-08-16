@@ -8,6 +8,7 @@ package za.ac.cput.groupx30.repository.route.impl;
 */
 
 import za.ac.cput.groupx30.entity.LocationRoute;
+import za.ac.cput.groupx30.entity.Route;
 import za.ac.cput.groupx30.repository.route.LocationRouteRepository;
 
 import java.util.HashSet;
@@ -26,6 +27,7 @@ public class LocationRouteRepositoryImpl implements LocationRouteRepository {
         return repository;
     }
 
+
     @Override
     public LocationRoute create(LocationRoute locationRoute) {
         this.locationRouteDB.add(locationRoute);
@@ -33,22 +35,37 @@ public class LocationRouteRepositoryImpl implements LocationRouteRepository {
     }
 
     @Override
-    public LocationRoute read(String locationId, String routeId) {
-        for (LocationRoute locationRoute: locationRouteDB) {
-            if (locationRoute.getLocationId().equalsIgnoreCase(locationId) && locationRoute.getRouteId().equalsIgnoreCase(routeId))
-                return locationRoute;
+    public LocationRoute read(String routeId) {
+        LocationRoute locationRoute = locationRouteDB.stream()
+                .filter(e -> e.getRouteId().equals(routeId))
+                .findAny()
+                .orElse(null);
+        return locationRoute;
+    }
+
+    @Override
+    public LocationRoute update(LocationRoute locationRoute) {
+        LocationRoute oldLocationRoute = read(locationRoute.getRouteId());
+        if (oldLocationRoute != null) {
+            this.locationRouteDB.remove(oldLocationRoute);
+            this.locationRouteDB.add(locationRoute);
+            return locationRoute;
         }
         return null;
     }
 
     @Override
-    public boolean delete(String locationId, String routeId) {
-        LocationRoute locationRoute = read(locationId, routeId);
-        if (locationRoute != null) {
-            this.locationRouteDB.remove(locationId);
-            this.locationRouteDB.remove(routeId);
-            return true;
+    public boolean delete(String id) {
+        LocationRoute locationRoute = read(id);
+        if (locationRoute == null) {
+            return false;
         }
-        return false;
+        this.locationRouteDB.remove(locationRoute);
+        return true;
+    }
+
+    @Override
+    public Set<LocationRoute> getAll() {
+        return locationRouteDB;
     }
 }

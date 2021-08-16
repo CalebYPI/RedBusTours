@@ -6,6 +6,8 @@ import za.ac.cput.groupx30.repository.route.LocationRouteRepository;
 import za.ac.cput.groupx30.repository.route.impl.LocationRouteRepositoryImpl;
 import za.ac.cput.groupx30.service.route.LocationRouteService;
 
+import java.util.Set;
+
 @Service
 public class LocationRouteServiceImpl implements LocationRouteService {
     private LocationRouteRepository repository = null;
@@ -27,12 +29,22 @@ public class LocationRouteServiceImpl implements LocationRouteService {
     }
 
     @Override
-    public LocationRoute read(String locationId, String routeId) {
-        return this.repository.read(locationId, routeId);
+    public LocationRoute read(String s) {
+        return this.repository.read(s);
     }
 
     @Override
-    public boolean delete(String locationId, String routeId) {
-        return this.repository.delete(locationId, routeId);
+    public LocationRoute update(LocationRoute locationRoute) {
+        return this.repository.update(locationRoute);
+    }
+
+    @Override
+    public boolean delete(String s) {
+        return this.repository.delete(s);
+    }
+
+    @Override
+    public Set<LocationRoute> getAll() {
+        return this.repository.getAll();
     }
 }

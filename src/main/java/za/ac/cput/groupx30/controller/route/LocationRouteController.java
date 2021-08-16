@@ -5,11 +5,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.tags.form.SelectTag;
 import za.ac.cput.groupx30.entity.Location;
 import za.ac.cput.groupx30.entity.LocationRoute;
 import za.ac.cput.groupx30.entity.Route;
 import za.ac.cput.groupx30.factory.LocationRouteFactory;
 import za.ac.cput.groupx30.service.route.LocationRouteService;
+
+import java.util.Set;
 
 @RestController()
 @RequestMapping("/locationRoute")
@@ -25,12 +28,23 @@ public class LocationRouteController {
     }
 
     @RequestMapping(value = "/read", method = RequestMethod.GET)
-    public LocationRoute read(@RequestBody Location locationId, Route routeId){
-        return service.read(locationId.getId(), routeId.getId());
+    public LocationRoute read(@RequestBody LocationRoute routeId){
+        return service.read(routeId.getRouteId());
+    }
+
+    @RequestMapping(value = "/update", method = RequestMethod.PUT)
+    public LocationRoute update(@RequestBody LocationRoute locationRoute) {
+        LocationRoute updated = new LocationRoute.Builder().copy(locationRoute).setLocationId(locationRoute.getLocationId()).build();
+        return service.update(updated);
     }
 
     @RequestMapping(value = "/delete", method = RequestMethod.DELETE)
-    public boolean delete(@RequestBody Location locationId, Route routeId){
-        return service.delete(locationId.getId(), routeId.getId());
+    public boolean delete(@RequestBody LocationRoute routeId){
+        return service.delete(routeId.getRouteId());
+    }
+
+    @RequestMapping(value = "/all", method = RequestMethod.GET)
+    public Set<LocationRoute> getAll() {
+        return service.getAll();
     }
 }

@@ -1,9 +1,10 @@
 package za.ac.cput.groupx30.service.route;
 
 import za.ac.cput.groupx30.entity.LocationRoute;
+import za.ac.cput.groupx30.service.IService;
 
-public interface LocationRouteService {
-    LocationRoute create(LocationRoute locationRoute);
-    LocationRoute read(String locationId, String routeId);
-    boolean delete(String locationId, String routeId);
+import java.util.Set;
+
+public interface LocationRouteService extends IService<LocationRoute, String> {
+    Set<LocationRoute> getAll();
 }
