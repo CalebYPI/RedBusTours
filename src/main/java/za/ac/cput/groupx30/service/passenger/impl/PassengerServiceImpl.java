@@ -6,6 +6,7 @@ package za.ac.cput.groupx30.service.passenger.impl;
  * Date: 31 July 2021
  */
 
+import org.springframework.stereotype.Service;
 import za.ac.cput.groupx30.entity.Passenger;
 import za.ac.cput.groupx30.repository.passenger.PassengerRepository;
 import za.ac.cput.groupx30.repository.passenger.impl.PassengerRepositoryImpl;
@@ -13,6 +14,7 @@ import za.ac.cput.groupx30.service.passenger.PassengerService;
 
 import java.util.Set;
 
+@Service
 public class PassengerServiceImpl implements PassengerService {
     private static PassengerServiceImpl service = null;
     private PassengerRepository repository = null;

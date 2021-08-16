@@ -9,38 +9,38 @@ import java.util.Objects;
 
 public class Passenger {
 
-    private String Id;
-    private String Name;
-    private String Contact;
+    private String id;
+    private String name;
+    private String contact;
 
     protected Passenger(){
 
     }
 
     private Passenger(Builder builder){
-        this.Id = builder.Id;
-        this.Name = builder.Name;
-        this.Contact = builder.Contact;
+        this.id = builder.Id;
+        this.name = builder.Name;
+        this.contact = builder.Contact;
     }
 
     public String getId() {
-        return Id;
+        return id;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public String getContact() {
-        return Contact;
+        return contact;
     }
 
     @Override
     public String toString() {
         return "Passenger{" +
-                "Id='" + Id + '\'' +
-                ", Name='" + Name + '\'' +
-                ", Contact='" + Contact + '\'' +
+                "Id='" + id + '\'' +
+                ", Name='" + name + '\'' +
+                ", Contact='" + contact + '\'' +
                 '}';
     }
 
@@ -65,9 +65,9 @@ public class Passenger {
         }
 
         public Passenger.Builder copy(Passenger passenger){
-            this.Id = passenger.Id;
-            this.Name = passenger.Name;
-            this.Contact = passenger.Contact;
+            this.Id = passenger.id;
+            this.Name = passenger.name;
+            this.Contact = passenger.contact;
 
             return this;
         }
@@ -82,11 +82,11 @@ public class Passenger {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Passenger passenger = (Passenger) o;
-        return Objects.equals(Id, passenger.Id);
+        return Objects.equals(id, passenger.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(Id);
+        return Objects.hash(id);
     }
 }
