@@ -5,6 +5,7 @@ package za.ac.cput.groupx30.service.vehicle.impl;
 // Service: VehicleServiceImpl Class
 // Date: 02 August 2021
 
+import org.springframework.stereotype.Service;
 import za.ac.cput.groupx30.entity.Vehicle;
 import za.ac.cput.groupx30.repository.vehicle.VehicleRepository;
 import za.ac.cput.groupx30.repository.vehicle.impl.VehicleRepositoryImpl;
@@ -12,6 +13,7 @@ import za.ac.cput.groupx30.service.vehicle.VehicleService;
 
 import java.util.Set;
 
+@Service
 public class VehicleServiceImpl implements VehicleService {
     private VehicleRepository repository;
     private static VehicleServiceImpl service;

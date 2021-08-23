@@ -6,8 +6,16 @@ package za.ac.cput.groupx30.entity;
  Date: 31 May 2021
 */
 
-public class LocationRoute {
-    private String RouteId, LocationId;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import java.io.Serializable;
+
+@Entity
+public class LocationRoute implements Serializable {
+    @Id
+    private String RouteId;
+    //@Id
+    private String LocationId;
 
     protected LocationRoute() {}
 

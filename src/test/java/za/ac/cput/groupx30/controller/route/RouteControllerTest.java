@@ -28,29 +28,33 @@ class RouteControllerTest {
         assertNotNull(postResponse);
         assertNotNull(postResponse.getBody());
         assertEquals(postResponse.getStatusCode(), HttpStatus.OK);
-        System.out.println("Saved data" + route);
+        route = postResponse.getBody();
+        System.out.println("Saved data" + postResponse.getBody());
         assertEquals(route.getId(), postResponse.getBody().getId());
     }
 
     @Test
     void b_read() {
-        String url = BASE_URL + "/read/";
+        String url = BASE_URL + "/read/" + route.getId();
         System.out.println("URL: " + url);
-        ResponseEntity<Route> postResponse = restTemplate.getForEntity(url, Route.class);
+        ResponseEntity<Route> getResponse = restTemplate.getForEntity(url, Route.class);
+        assertEquals(route.getId(), getResponse.getBody().getId());
     }
 
     @Test
     void c_update() {
-        Route updated = new Route.Builder().copy(route).setDescription("").setDistance(0).setTime(0).build();
+        Route updated = new Route.Builder().copy(route).setDescription("Blue Trail").setDistance(32).setTime(67).build();
         String url = BASE_URL + "/update";
         System.out.println("URL: " + url);
-        System.out.println("Post Data: " + updated);
+        System.out.println("Updated Data: " + updated);
         restTemplate.put(url, updated, Route.class);
+        ResponseEntity<Route> putResponse = restTemplate.getForEntity(url, Route.class);
+        assertNotNull(putResponse.getBody());
     }
 
     @Test
     void e_delete() {
-        String url = BASE_URL + "/delete/";
+        String url = BASE_URL + "/delete/" + route.getId();
         System.out.println("URL: " + url);
         restTemplate.delete(url);
     }
@@ -60,7 +64,8 @@ class RouteControllerTest {
         String url = BASE_URL + "/all";
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> entity = new HttpEntity<>(null, headers);
-        ResponseEntity<String> postResponse = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
-        System.out.println("Show All: " + postResponse.getBody());
+        ResponseEntity<String> getResponse = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
+        System.out.println("All Data: " + getResponse.getBody());
+        assertNotNull(getResponse);
     }
 }

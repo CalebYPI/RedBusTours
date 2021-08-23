@@ -1,26 +1,21 @@
 package za.ac.cput.groupx30.service.location.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.groupx30.entity.Location;
 import za.ac.cput.groupx30.repository.location.LocationRepository;
-import za.ac.cput.groupx30.repository.location.impl.LocationRepositoryImpl;
-import za.ac.cput.groupx30.repository.route.RouteRepository;
-import za.ac.cput.groupx30.repository.route.impl.RouteRepositoryImpl;
 import za.ac.cput.groupx30.service.location.LocationService;
-import za.ac.cput.groupx30.service.route.impl.RouteServiceImpl;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Service
 public class LocationServiceImpl implements LocationService {
-
-    private LocationRepository repository = null;
     private static LocationServiceImpl service = null;
 
-    private LocationServiceImpl() {
-        this.repository = LocationRepositoryImpl.getRepository();
-    }
-
+    //@Autowired
+    private LocationRepository repository;
+    @Autowired
     public static LocationServiceImpl getService() {
         if (service == null)
             service = new LocationServiceImpl();
@@ -29,26 +24,29 @@ public class LocationServiceImpl implements LocationService {
 
     @Override
     public Location create(Location location) {
-        return this.repository.create(location);
+        return this.repository.save(location);
     }
 
     @Override
     public Location read(String id) {
-        return repository.read(id);
+        return repository.getById(id);
     }
 
     @Override
     public Location update(Location location) {
-        return this.repository.update(location);
+        if (this.repository.existsById(location.getId()))
+            return this.repository.save(location);
+        return null;
     }
 
     @Override
     public boolean delete(String id) {
-        return this.repository.delete(id);
+        this.repository.deleteById(id);
+        return !this.repository.existsById(id);
     }
 
     @Override
     public Set<Location> getAll() {
-        return this.repository.getAll();
+        return new HashSet<>(this.repository.findAll());
     }
 }

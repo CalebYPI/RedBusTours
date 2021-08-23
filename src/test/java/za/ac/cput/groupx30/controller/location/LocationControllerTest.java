@@ -26,33 +26,37 @@ class LocationControllerTest {
     @Test
     void a_create() {
         String url = BASE_URL + "/create";
-        ResponseEntity<Route> postResponse = restTemplate.postForEntity(url, location, Route.class);
+        ResponseEntity<Location> postResponse = restTemplate.postForEntity(url, location, Location.class);
         assertNotNull(postResponse);
         assertNotNull(postResponse.getBody());
         assertEquals(postResponse.getStatusCode(), HttpStatus.OK);
-        System.out.println("Saved data" + location);
+        location = postResponse.getBody();
+        System.out.println("Saved data" + postResponse.getBody());
         assertEquals(location.getId(), postResponse.getBody().getId());
     }
 
     @Test
     void b_read() {
-        String url = BASE_URL + "/read/";
+        String url = BASE_URL + "/read/" + location.getId();
         System.out.println("URL: " + url);
-        ResponseEntity<Route> postResponse = restTemplate.getForEntity(url, Route.class);
+        ResponseEntity<Location> getResponse = restTemplate.getForEntity(url, Location.class);
+        assertEquals(location.getId(), getResponse.getBody().getId());
     }
 
     @Test
     void c_update() {
-        Location updated = new Location.Builder().copy(location).setDescription("").setArea("").setPickupPoint(true).build();
+        Location updated = new Location.Builder().copy(location).setDescription("CTICC").setArea("Foreshore").setPickupPoint(true).build();
         String url = BASE_URL + "/update";
         System.out.println("URL: " + url);
         System.out.println("Post Data: " + updated);
-        restTemplate.put(url, updated, Route.class);
+        restTemplate.put(url, updated, Location.class);
+        ResponseEntity<Location> putResponse = restTemplate.getForEntity(url, Location.class);
+        assertNotNull(putResponse.getBody());
     }
 
     @Test
     void e_delete() {
-        String url = BASE_URL + "/delete/";
+        String url = BASE_URL + "/delete/" + location.getId();
         System.out.println("URL: " + url);
         restTemplate.delete(url);
     }
@@ -62,7 +66,8 @@ class LocationControllerTest {
         String url = BASE_URL + "/all";
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> entity = new HttpEntity<>(null, headers);
-        ResponseEntity<String> postResponse = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
-        System.out.println("Show All: " + postResponse.getBody());
+        ResponseEntity<String> getResponse = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
+        System.out.println("Show All: " + getResponse.getBody());
+        assertNotNull(getResponse.getBody());
     }
 }

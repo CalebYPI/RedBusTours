@@ -15,28 +15,28 @@ public class RouteController {
     @Autowired
     private RouteService service;
 
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    @PostMapping(value = "/create")
     public Route create(@RequestBody Route route) {
         Route newRoute = RouteFactory.createRoute(route.getDescription(), route.getDistance(), route.getTime());
         return service.create(newRoute);
     }
 
-    @RequestMapping(value = "/read", method = RequestMethod.GET)
-    public Route read(@RequestBody Route id) {
-        return service.read(id.getId());
+    @GetMapping(value = "/read/{id}")
+    public Route read(@PathVariable String id) {
+        return service.read(id);
     }
 
-    @RequestMapping(value = "/update", method = RequestMethod.PUT)
+    @PutMapping(value = "/update")
     public Route update(@RequestBody Route route) {
         return service.update(route);
     }
 
-    @RequestMapping(value = "/delete", method = RequestMethod.DELETE)
-    public boolean delete(@RequestBody Route id) {
-        return service.delete(id.getId());
+    @DeleteMapping(value = "/delete/{id}")
+    public boolean delete(@PathVariable String id) {
+        return service.delete(id);
     }
 
-    @RequestMapping(value = "/all", method = RequestMethod.GET)
+    @GetMapping(value = "/all")
     public Set<Route> getAll() {
         return service.getAll();
     }

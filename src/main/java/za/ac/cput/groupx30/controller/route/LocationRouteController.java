@@ -1,16 +1,14 @@
 package za.ac.cput.groupx30.controller.route;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.tags.form.SelectTag;
+import org.springframework.web.bind.annotation.*;
 import za.ac.cput.groupx30.entity.Location;
 import za.ac.cput.groupx30.entity.LocationRoute;
 import za.ac.cput.groupx30.entity.Route;
 import za.ac.cput.groupx30.factory.LocationRouteFactory;
+import za.ac.cput.groupx30.service.location.LocationService;
 import za.ac.cput.groupx30.service.route.LocationRouteService;
+import za.ac.cput.groupx30.service.route.RouteService;
 
 import java.util.Set;
 
@@ -19,32 +17,46 @@ import java.util.Set;
 public class LocationRouteController {
 
     @Autowired
-    private LocationRouteService service;
+    private LocationRouteService locationRouteService;
+    @Autowired
+    private LocationService locationService;
+    @Autowired
+    private RouteService routeService;
 
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    @PostMapping(value = "/create")
     public LocationRoute create(@RequestBody LocationRoute locationRoute){
-        LocationRoute newLocationRoute = LocationRouteFactory.createLocationRoute(locationRoute.getLocationId(), locationRoute.getRouteId());
-        return service.create(newLocationRoute);
+        boolean routeExists = false;
+        boolean locationExists = false;
+        Route route = routeService.read(locationRoute.getRouteId());
+        if (route != null)
+            routeExists = true;
+        Location location = locationService.read(locationRoute.getLocationId());
+        if (location != null)
+            locationExists = true;
+        if (routeExists && locationExists)
+            return locationRouteService.create(locationRoute);
+        else
+            return LocationRouteFactory.createLocationRoute("","");
     }
 
-    @RequestMapping(value = "/read", method = RequestMethod.GET)
-    public LocationRoute read(@RequestBody LocationRoute routeId){
-        return service.read(routeId.getRouteId());
+    @GetMapping(value = "/read/{routeId}")
+    public LocationRoute read(@PathVariable String routeId){
+        return locationRouteService.read(routeId);
     }
 
-    @RequestMapping(value = "/update", method = RequestMethod.PUT)
+    @PutMapping(value = "/update")
     public LocationRoute update(@RequestBody LocationRoute locationRoute) {
         LocationRoute updated = new LocationRoute.Builder().copy(locationRoute).setLocationId(locationRoute.getLocationId()).build();
-        return service.update(updated);
+        return locationRouteService.update(updated);
     }
 
-    @RequestMapping(value = "/delete", method = RequestMethod.DELETE)
-    public boolean delete(@RequestBody LocationRoute routeId){
-        return service.delete(routeId.getRouteId());
+    @DeleteMapping(value = "/delete/{routeId}")
+    public boolean delete(@PathVariable String routeId){
+        return locationRouteService.delete(routeId);
     }
 
-    @RequestMapping(value = "/all", method = RequestMethod.GET)
+    @GetMapping(value = "/all")
     public Set<LocationRoute> getAll() {
-        return service.getAll();
+        return locationRouteService.getAll();
     }
 }

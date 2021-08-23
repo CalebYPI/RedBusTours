@@ -17,28 +17,28 @@ public class LocationController {
     @Autowired
     private LocationService service;
 
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    @PostMapping(value = "/create")
     public Location create(@RequestBody Location location) {
         Location newLocation = LocationFactory.createLocation(location.getDescription(), location.getArea(), location.isPickupPoint());
         return service.create(newLocation);
     }
 
-    @RequestMapping(value = "/read", method = RequestMethod.GET)
-    public Location read(@RequestBody Location id) {
-        return service.read(id.getId());
+    @GetMapping(value = "/read/{id}")
+    public Location read(@PathVariable String id) {
+        return service.read(id);
     }
 
-    @RequestMapping(value = "/update", method = RequestMethod.PUT)
+    @PutMapping(value = "/update")
     public Location update(@RequestBody Location location) {
         return service.update(location);
     }
 
-    @RequestMapping(value = "/delete", method = RequestMethod.DELETE)
-    public boolean delete(@RequestBody Location id) {
-        return service.delete(id.getId());
+    @DeleteMapping(value = "/delete/{id}")
+    public boolean delete(@PathVariable String id) {
+        return service.delete(id);
     }
 
-    @RequestMapping(value = "/all", method = RequestMethod.GET)
+    @GetMapping(value = "/all")
     public Set<Location> getAll() {
         return service.getAll();
     }

@@ -6,7 +6,13 @@ package za.ac.cput.groupx30.entity;
  Date: 31 May 2021
 */
 
-public class Route {
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import java.io.Serializable;
+
+@Entity
+public class Route implements Serializable {
+    @Id
     private String id;
     private String description;
     private double distance;
