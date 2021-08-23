@@ -34,7 +34,7 @@ public class LocationRouteController {
         if (location != null)
             locationExists = true;
         if (routeExists && locationExists)
-            return locationRouteService.create(locationRoute);
+            return locationRouteService.save(locationRoute);
         else
             return LocationRouteFactory.createLocationRoute("","");
     }
@@ -44,15 +44,10 @@ public class LocationRouteController {
         return locationRouteService.read(routeId);
     }
 
-    @PutMapping(value = "/update")
-    public LocationRoute update(@RequestBody LocationRoute locationRoute) {
-        LocationRoute updated = new LocationRoute.Builder().copy(locationRoute).setLocationId(locationRoute.getLocationId()).build();
-        return locationRouteService.update(updated);
-    }
-
-    @DeleteMapping(value = "/delete/{routeId}")
-    public boolean delete(@PathVariable String routeId){
-        return locationRouteService.delete(routeId);
+    @DeleteMapping(value = "/delete/{routeId}/{locationId}")
+    public boolean delete(@PathVariable String routeId, @PathVariable("locationId") String locationId){
+        LocationRoute locationRoute = LocationRouteFactory.createLocationRoute(locationId, routeId);
+        return locationRouteService.delete(locationRoute);
     }
 
     @GetMapping(value = "/all")

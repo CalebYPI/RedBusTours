@@ -23,30 +23,23 @@ public class LocationRouteServiceImpl implements LocationRouteService {
     }
 
     @Override
-    public LocationRoute create(LocationRoute locationRoute) {
+    public LocationRoute save(LocationRoute locationRoute) {
         return this.repository.save(locationRoute);
     }
 
     @Override
-    public LocationRoute read(String id) {
+    public LocationRoute read(LocationRoute.LocationRouteId id) {
         return this.repository.getById(id);
-    }
-
-    @Override
-    public LocationRoute update(LocationRoute locationRoute) {
-        if (this.repository.existsById(locationRoute.getLocationId()))
-            return this.repository.save(locationRoute);
-        return null;
-    }
-
-    @Override
-    public boolean delete(String id) {
-        this.repository.deleteById(id);
-        return !this.repository.existsById(id);
     }
 
     @Override
     public Set<LocationRoute> getAll() {
         return new HashSet<>(this.repository.findAll());
+    }
+
+    @Override
+    public boolean delete(LocationRoute locationRoute) {
+        this.repository.delete(locationRoute);
+        return true;
     }
 }

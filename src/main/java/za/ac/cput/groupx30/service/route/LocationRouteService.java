@@ -5,6 +5,9 @@ import za.ac.cput.groupx30.service.IService;
 
 import java.util.Set;
 
-public interface LocationRouteService extends IService<LocationRoute, String> {
+public interface LocationRouteService  {
+    LocationRoute save(LocationRoute locationRoute);
+    LocationRoute read(LocationRoute.LocationRouteId id);
     Set<LocationRoute> getAll();
+    boolean delete(LocationRoute locationRoute);
 }

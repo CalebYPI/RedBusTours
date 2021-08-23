@@ -8,14 +8,15 @@ package za.ac.cput.groupx30.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import java.io.Serializable;
+import java.util.Objects;
 
 @Entity
+@IdClass(LocationRoute.LocationRouteId.class)
 public class LocationRoute implements Serializable {
     @Id
-    private String RouteId;
-    //@Id
-    private String LocationId;
+    private String RouteId, LocationId;
 
     protected LocationRoute() {}
 
@@ -62,5 +63,27 @@ public class LocationRoute implements Serializable {
                 "RouteId='" + RouteId + '\'' +
                 ", LocationId='" + LocationId + '\'' +
                 '}';
+    }
+
+    public static class LocationRouteId implements Serializable {
+        private String RouteId, LocationId;
+
+        public LocationRouteId(String routeId, String locationId) {
+            this.RouteId = routeId;
+            this.LocationId = locationId;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            LocationRouteId that = (LocationRouteId) o;
+            return RouteId.equals(that.RouteId) && LocationId.equals(that.LocationId);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(RouteId, LocationId);
+        }
     }
 }

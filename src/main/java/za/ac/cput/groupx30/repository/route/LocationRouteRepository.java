@@ -16,5 +16,7 @@ import za.ac.cput.groupx30.repository.IRepository;
 
 import java.util.Set;
 @Repository
-public interface LocationRouteRepository extends JpaRepository<LocationRoute, String> {
+public interface LocationRouteRepository extends JpaRepository<LocationRoute, LocationRoute.LocationRouteId> {
+    List<LocationRoute> findAllByLocationId(String locationId);
+    List<LocationRoute> findAllByRouteId(String routeId);
 }
