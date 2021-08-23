@@ -39,9 +39,10 @@ public class LocationRouteController {
             return LocationRouteFactory.createLocationRoute("","");
     }
 
-    @GetMapping(value = "/read/{routeId}")
-    public LocationRoute read(@PathVariable String routeId){
-        return locationRouteService.read(routeId);
+    @GetMapping(value = "/read/{routeId}/{locationId}")
+    public LocationRoute read(@PathVariable String routeId, @PathVariable("locationId") String locationId){
+        LocationRoute.LocationRouteId id = new LocationRoute.LocationRouteId(routeId, locationId);
+        return locationRouteService.read(id);
     }
 
     @DeleteMapping(value = "/delete/{routeId}/{locationId}")
