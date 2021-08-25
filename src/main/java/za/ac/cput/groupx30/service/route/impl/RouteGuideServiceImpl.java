@@ -5,23 +5,23 @@ package za.ac.cput.groupx30.service.route.impl;
  *  2 August 2021
  */
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import za.ac.cput.groupx30.entity.LocationRoute;
 import za.ac.cput.groupx30.entity.RouteGuide;
 import za.ac.cput.groupx30.repository.route.RouteGuideRepository;
-import za.ac.cput.groupx30.repository.route.impl.RouteGuideRepositoryImpl;
 import za.ac.cput.groupx30.service.route.RouteGuideService;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Service
 public class RouteGuideServiceImpl implements RouteGuideService
 {
-    private RouteGuideRepository repository = null;
     private static RouteGuideServiceImpl service = null;
 
-    private RouteGuideServiceImpl()
-    {
-        this.repository = RouteGuideRepositoryImpl.getRepository();
-    }
-
+    private RouteGuideRepository repository;
+    @Autowired
     public static RouteGuideServiceImpl getService()
     {
         if (service == null)
@@ -32,18 +32,27 @@ public class RouteGuideServiceImpl implements RouteGuideService
     @Override
     public RouteGuide create(RouteGuide routeGuide)
     {
-        return this.repository.create(routeGuide);
+        return this.repository.save(routeGuide);
     }
 
     @Override
-    public RouteGuide read(String routeId, String guideId)
+    public RouteGuide read(RouteGuide.RouteGuideId id)
     {
-        return this.repository.read(routeId, guideId);
+        return this.repository.getById(id);
     }
 
     @Override
-    public boolean delete(String routeId, String guideId) {
-        return false;
+    public boolean delete(RouteGuide routeGuide)
+    {
+        this.repository.delete(routeGuide);
+        return true;
     }
+
+    @Override
+    public Set<RouteGuide> getAll()
+    {
+        return new HashSet<>(this.repository.findAll());
+    }
+
 
 }

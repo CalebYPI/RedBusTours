@@ -6,11 +6,16 @@ package za.ac.cput.groupx30.repository.route;
  */
 
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 import za.ac.cput.groupx30.entity.RouteGuide;
 
-public interface RouteGuideRepository
+import java.util.List;
+
+@Repository
+public interface RouteGuideRepository extends JpaRepository<RouteGuide, RouteGuide.RouteGuideId>
 {
-    RouteGuide create(RouteGuide routeGuide);
-    RouteGuide read(String routeId, String guideId);
-    boolean delete(String routeId, String guideId);
+
+//    List<RouteGuide> findAllByGuideId(String guideId);
+//    List<RouteGuide> findAllByRouteId(String routeId);
 }

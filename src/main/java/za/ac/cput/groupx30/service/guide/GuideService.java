@@ -7,11 +7,13 @@ package za.ac.cput.groupx30.service.guide;
 
 
 import za.ac.cput.groupx30.entity.Guide;
-import za.ac.cput.groupx30.service.IService;
 
 import java.util.Set;
 
-public interface GuideService extends IService<Guide, String>
+public interface GuideService
 {
+    Guide create(Guide guide);
+    Guide read(Guide.GuideId id);
+    boolean delete(Guide guide);
     Set<Guide> getAll();
 }

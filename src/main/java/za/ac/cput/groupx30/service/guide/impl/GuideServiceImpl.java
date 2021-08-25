@@ -5,25 +5,23 @@ package za.ac.cput.groupx30.service.guide.impl;
  *  Date: 02 August 2021
  */
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.groupx30.entity.Guide;
 import za.ac.cput.groupx30.repository.guide.GuideRepository;
-import za.ac.cput.groupx30.repository.guide.impl.GuideRepositoryImpl;
 import za.ac.cput.groupx30.service.guide.GuideService;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Service
 public class GuideServiceImpl implements GuideService
 {
-    private GuideRepository repository = null;
     private static GuideServiceImpl service = null;
+    private GuideRepository repository;
 
-    private GuideServiceImpl()
-    {
-        this.repository = GuideRepositoryImpl.getRepository();
-    }
 
+    @Autowired
     public static GuideServiceImpl getService()
     {
         if (service == null)
@@ -34,30 +32,25 @@ public class GuideServiceImpl implements GuideService
     @Override
     public Guide create(Guide guide)
     {
-        return this.repository.create(guide);
+        return this.repository.save(guide);
     }
 
     @Override
-    public Guide read(String id)
+    public Guide read(Guide.GuideId id)
     {
-        return repository.read(id);
+        return this.repository.getById(id);
     }
 
     @Override
-    public Guide update(Guide guide)
+    public boolean delete(Guide guide)
     {
-        return this.repository.update(guide);
-    }
-
-    @Override
-    public boolean delete(String id)
-    {
-        return this.repository.delete(id);
+        this.repository.delete(guide);
+        return true;
     }
 
     @Override
     public Set<Guide> getAll()
     {
-        return this.repository.getAll();
+        return new HashSet<>(this.repository.findAll());
     }
 }
