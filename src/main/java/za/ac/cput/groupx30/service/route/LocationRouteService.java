@@ -10,4 +10,6 @@ public interface LocationRouteService  {
     LocationRoute read(LocationRoute.LocationRouteId id);
     Set<LocationRoute> getAll();
     boolean delete(LocationRoute locationRoute);
+//    List<LocationRoute> findAllByLocationId(String locationId);
+//    List<LocationRoute> findAllByRouteId(String routeId);
 }

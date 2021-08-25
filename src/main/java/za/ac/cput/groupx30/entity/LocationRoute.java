@@ -16,21 +16,21 @@ import java.util.Objects;
 @IdClass(LocationRoute.LocationRouteId.class)
 public class LocationRoute implements Serializable {
     @Id
-    private String RouteId, LocationId;
+    private String routeId, locationId;
 
     protected LocationRoute() {}
 
     private LocationRoute(Builder builder){
-        this.RouteId = builder.RouteId;
-        this.LocationId = builder.LocationId;
+        this.routeId = builder.RouteId;
+        this.locationId = builder.LocationId;
     }
 
     public String getRouteId() {
-        return RouteId;
+        return routeId;
     }
 
     public String getLocationId() {
-        return LocationId;
+        return locationId;
     }
 
     public static class Builder {
@@ -47,8 +47,8 @@ public class LocationRoute implements Serializable {
         }
 
         public Builder copy(LocationRoute locationRoute) {
-            this.LocationId = locationRoute.LocationId;
-            this.RouteId = locationRoute.RouteId;
+            this.LocationId = locationRoute.locationId;
+            this.RouteId = locationRoute.routeId;
             return this;
         }
 
@@ -60,17 +60,17 @@ public class LocationRoute implements Serializable {
     @Override
     public String toString() {
         return "LocationRoute{" +
-                "RouteId='" + RouteId + '\'' +
-                ", LocationId='" + LocationId + '\'' +
+                "RouteId='" + routeId + '\'' +
+                ", LocationId='" + locationId + '\'' +
                 '}';
     }
 
     public static class LocationRouteId implements Serializable {
-        private String RouteId, LocationId;
+        private String routeId, locationId;
 
         public LocationRouteId(String routeId, String locationId) {
-            this.RouteId = routeId;
-            this.LocationId = locationId;
+            this.routeId = routeId;
+            this.locationId = locationId;
         }
 
         @Override
@@ -78,12 +78,12 @@ public class LocationRoute implements Serializable {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
             LocationRouteId that = (LocationRouteId) o;
-            return RouteId.equals(that.RouteId) && LocationId.equals(that.LocationId);
+            return routeId.equals(that.routeId) && locationId.equals(that.locationId);
         }
 
         @Override
         public int hashCode() {
-            return Objects.hash(RouteId, LocationId);
+            return Objects.hash(routeId, locationId);
         }
     }
 }

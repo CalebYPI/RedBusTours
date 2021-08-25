@@ -11,12 +11,12 @@ import javax.persistence.IdClass;
 import java.io.Serializable;
 import java.util.Objects;
 
-//@Entity
-//@IdClass(RouteGuide.RouteGuideId.class)
+@Entity
+@IdClass(RouteGuide.RouteGuideId.class)
 public class RouteGuide implements Serializable
 {
-    //@Id
-    private String routeId,guideId;
+    @Id
+    private String routeId, guideId;
 
     public RouteGuide() {
 
@@ -79,12 +79,12 @@ public class RouteGuide implements Serializable
 
     public static class RouteGuideId implements Serializable
     {
-        private String RouteId, GuideId;
+        private String routeId, guideId;
 
         public RouteGuideId(String routeId, String guideId)
         {
-            this.RouteId = routeId;
-            this.GuideId = guideId;
+            this.routeId = routeId;
+            this.guideId = guideId;
         }
 
         @Override
@@ -93,12 +93,12 @@ public class RouteGuide implements Serializable
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
             RouteGuide.RouteGuideId that = (RouteGuide.RouteGuideId) o;
-            return RouteId.equals(that.RouteId) && GuideId.equals(that.GuideId);
+            return routeId.equals(that.routeId) && guideId.equals(that.guideId);
         }
 
         @Override
         public int hashCode() {
-            return Objects.hash(RouteId, GuideId);
+            return Objects.hash(routeId, guideId);
         }
     }
 }
