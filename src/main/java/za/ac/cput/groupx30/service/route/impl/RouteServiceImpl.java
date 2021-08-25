@@ -13,9 +13,9 @@ import java.util.Set;
 public class RouteServiceImpl implements RouteService {
     private static RouteServiceImpl service = null;
 
-    //@Autowired
-    private RouteRepository repository;
     @Autowired
+    private RouteRepository repository;
+
     public static RouteServiceImpl getService() {
         if (service == null)
             service = new RouteServiceImpl();

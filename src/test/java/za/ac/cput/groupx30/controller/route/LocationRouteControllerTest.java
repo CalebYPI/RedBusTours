@@ -43,21 +43,10 @@ class LocationRouteControllerTest {
 
     @Test
     void b_read() {
-        String url = BASE_URL + "/read/" + locationRoute.getLocationId();
+        String url = BASE_URL + "/read/"+ locationRoute.getRouteId() + "/" + locationRoute.getLocationId();
         System.out.println("URL: " + url);
         ResponseEntity<LocationRoute> getResponse = restTemplate.getForEntity(url, LocationRoute.class);
         assertEquals(locationRoute, getResponse.getBody());
-    }
-
-    @Test
-    void c_update() {
-        LocationRoute updated = new LocationRoute.Builder().copy(locationRoute).setLocationId(locationRoute.getLocationId()).setRouteId(locationRoute.getRouteId()).build();
-        String url = BASE_URL + "/update";
-        System.out.println("URL: " + url);
-        System.out.println("Post Data: " + updated);
-        restTemplate.put(url, locationRoute, LocationRoute.class);
-        ResponseEntity<LocationRoute> putResponse = restTemplate.getForEntity(url, LocationRoute.class);
-        assertNotNull(putResponse.getBody());
     }
 
     @Test

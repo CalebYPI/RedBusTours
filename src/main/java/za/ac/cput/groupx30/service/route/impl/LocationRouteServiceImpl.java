@@ -13,9 +13,9 @@ import java.util.Set;
 public class LocationRouteServiceImpl implements LocationRouteService {
     private static LocationRouteServiceImpl service = null;
 
-    //@Autowired
-    private LocationRouteRepository repository;
     @Autowired
+    private LocationRouteRepository repository;
+
     public static LocationRouteServiceImpl getService() {
         if (service == null)
             service = new LocationRouteServiceImpl();
@@ -39,7 +39,10 @@ public class LocationRouteServiceImpl implements LocationRouteService {
 
     @Override
     public boolean delete(LocationRoute locationRoute) {
-        this.repository.delete(locationRoute);
-        return true;
+        if (locationRoute!= null) {
+            this.repository.delete(locationRoute);
+            return true;
+        }
+        return false;
     }
 }

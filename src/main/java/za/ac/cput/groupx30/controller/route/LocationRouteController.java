@@ -36,7 +36,7 @@ public class LocationRouteController {
         if (routeExists && locationExists)
             return locationRouteService.save(locationRoute);
         else
-            return LocationRouteFactory.createLocationRoute("","");
+            return LocationRouteFactory.createLocationRoute(null, null);
     }
 
     @GetMapping(value = "/read/{routeId}/{locationId}")

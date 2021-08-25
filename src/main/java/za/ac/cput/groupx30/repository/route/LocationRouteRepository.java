@@ -18,6 +18,6 @@ import java.util.List;
 import java.util.Set;
 @Repository
 public interface LocationRouteRepository extends JpaRepository<LocationRoute, LocationRoute.LocationRouteId> {
-    List<LocationRoute> findAllByLocationId(String locationId);
-    List<LocationRoute> findAllByRouteId(String routeId);
+//    List<LocationRoute> findAllByLocationId(String locationId);
+//    List<LocationRoute> findAllByRouteId(String routeId);
 }

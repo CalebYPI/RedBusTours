@@ -13,9 +13,9 @@ import java.util.Set;
 public class LocationServiceImpl implements LocationService {
     private static LocationServiceImpl service = null;
 
-    //@Autowired
-    private LocationRepository repository;
     @Autowired
+    private LocationRepository repository;
+
     public static LocationServiceImpl getService() {
         if (service == null)
             service = new LocationServiceImpl();
