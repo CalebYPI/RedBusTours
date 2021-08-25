@@ -5,15 +5,27 @@ package za.ac.cput.groupx30.entity;
  *  7 June 2021
  */
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.IdClass;
+import java.io.Serializable;
+import java.util.Objects;
+
+@Entity
+@IdClass(Guide.GuideId.class)
 public class Guide
 {
-    private String id;
-    private String name;
+    @Id
+    private String id,name;
 
     public Guide(Builder builder)
     {
         this.id = builder.id;
         this.name = builder.name;
+    }
+
+    public Guide() {
+
     }
 
     public String getId()
@@ -62,5 +74,30 @@ public class Guide
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 '}';
+    }
+
+    public static class GuideId implements Serializable
+    {
+        private String id, name;
+
+        public GuideId(String id, String name)
+        {
+            this.id = id;
+            this.name = name;
+        }
+
+        @Override
+        public boolean equals(Object o)
+        {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            Guide.GuideId that = (Guide.GuideId) o;
+            return id.equals(that.id) && name.equals(that.name);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(id, name);
+        }
     }
 }

@@ -7,6 +7,7 @@ package za.ac.cput.groupx30.service;
 
 import org.junit.jupiter.api.Test;
 import za.ac.cput.groupx30.entity.Guide;
+import za.ac.cput.groupx30.entity.LocationRoute;
 import za.ac.cput.groupx30.entity.RouteGuide;
 import za.ac.cput.groupx30.factory.GuideFactory;
 import za.ac.cput.groupx30.factory.RouteGuideFactory;
@@ -15,7 +16,7 @@ import za.ac.cput.groupx30.service.route.impl.RouteGuideServiceImpl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class RouteGuideControllerServiceImplTest
+public class RouteGuideServiceImplTest
 {
 
     private static RouteGuideService service = RouteGuideServiceImpl.getService();
@@ -35,7 +36,8 @@ public class RouteGuideControllerServiceImplTest
     @Test
     void read()
     {
-        RouteGuide read = service.read(no1.getRouteId(), no2.getId());
+        RouteGuide.RouteGuideId id = new RouteGuide.RouteGuideId(routeGuide.getRouteId(), routeGuide.getGuideId());
+        RouteGuide read = service.read(id);
         assertNotNull(read);
         System.out.println("Read : " + read);
     }
@@ -43,8 +45,15 @@ public class RouteGuideControllerServiceImplTest
     @Test
     void delete()
     {
-        boolean delete = service.delete(no1.getRouteId(), no2.getId());
+        boolean delete = service.delete(routeGuide);
         assertTrue(delete);
         System.out.println("Deleted : " + delete);
     }
+
+    @Test
+    void d_getAll()
+    {
+        assertEquals(service.getAll().size(), 1);
+    }
 }
+

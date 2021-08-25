@@ -7,9 +7,12 @@ package za.ac.cput.groupx30.service.route;
 
 import za.ac.cput.groupx30.entity.RouteGuide;
 
+import java.util.Set;
+
 public interface RouteGuideService
 {
     RouteGuide create(RouteGuide routeGuide);
-    RouteGuide read(String routeId, String guideId);
-    boolean delete(String routeId, String guideId);
+    RouteGuide read(RouteGuide.RouteGuideId id);
+    boolean delete(RouteGuide routeGuide);
+    Set<RouteGuide> getAll();
 }

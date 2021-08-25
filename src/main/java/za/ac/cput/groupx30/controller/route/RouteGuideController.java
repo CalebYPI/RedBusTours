@@ -7,13 +7,14 @@ package za.ac.cput.groupx30.controller.route;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import za.ac.cput.groupx30.entity.LocationRoute;
 import za.ac.cput.groupx30.entity.RouteGuide;
+import za.ac.cput.groupx30.factory.LocationRouteFactory;
 import za.ac.cput.groupx30.factory.RouteGuideFactory;
 import za.ac.cput.groupx30.service.route.RouteGuideService;
+
+import java.util.Set;
 
 @RestController()
 @RequestMapping("/routeGuide")
@@ -22,22 +23,30 @@ public class RouteGuideController
     @Autowired
     private RouteGuideService service;
 
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    @PostMapping(value = "/create")
     public RouteGuide create(@RequestBody RouteGuide routeGuide)
     {
         RouteGuide newRouteGuide = RouteGuideFactory.createRouteGuide(routeGuide.getRouteId(), routeGuide.getGuideId());
         return service.create(newRouteGuide);
     }
 
-    @RequestMapping(value = "/read", method = RequestMethod.GET)
-    public RouteGuide read(@RequestBody RouteGuide routeGuide)
+    @GetMapping(value = "/read/{routeId}/{guideId}")
+    public RouteGuide read(@PathVariable String routeId, @PathVariable("guideId") String guideId)
     {
-        return service.read(routeGuide.getRouteId(), routeGuide.getGuideId());
+        RouteGuide.RouteGuideId id = new RouteGuide.RouteGuideId(routeId, guideId);
+        return service.read(id);
     }
 
-    @RequestMapping(value = "/delete", method = RequestMethod.DELETE)
-    public boolean delete(@RequestBody RouteGuide routeGuide)
+    @DeleteMapping(value = "/delete/{routeId}/{guideId}")
+    public boolean delete(@PathVariable String routeId, @PathVariable("guideId") String guideId)
     {
-        return service.delete(routeGuide.getRouteId(), routeGuide.getGuideId());
+        RouteGuide routeGuide = RouteGuideFactory.createRouteGuide(routeId, guideId);
+        return service.delete(routeGuide);
+    }
+
+    @GetMapping(value = "/all")
+    public Set<RouteGuide> getAll()
+    {
+        return service.getAll();
     }
 }

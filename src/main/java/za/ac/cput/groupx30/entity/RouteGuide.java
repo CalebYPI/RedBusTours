@@ -5,10 +5,22 @@ package za.ac.cput.groupx30.entity;
  *  7 June 2021
  */
 
-public class RouteGuide
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.IdClass;
+import java.io.Serializable;
+import java.util.Objects;
+
+//@Entity
+//@IdClass(RouteGuide.RouteGuideId.class)
+public class RouteGuide implements Serializable
 {
-    private String routeId;
-    private String guideId;
+    //@Id
+    private String routeId,guideId;
+
+    public RouteGuide() {
+
+    }
 
     public RouteGuide(Builder builder)
     {
@@ -63,5 +75,30 @@ public class RouteGuide
                 "routeId='" + routeId + '\'' +
                 ", guideId='" + guideId + '\'' +
                 '}';
+    }
+
+    public static class RouteGuideId implements Serializable
+    {
+        private String RouteId, GuideId;
+
+        public RouteGuideId(String routeId, String guideId)
+        {
+            this.RouteId = routeId;
+            this.GuideId = guideId;
+        }
+
+        @Override
+        public boolean equals(Object o)
+        {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            RouteGuide.RouteGuideId that = (RouteGuide.RouteGuideId) o;
+            return RouteId.equals(that.RouteId) && GuideId.equals(that.GuideId);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(RouteId, GuideId);
+        }
     }
 }
