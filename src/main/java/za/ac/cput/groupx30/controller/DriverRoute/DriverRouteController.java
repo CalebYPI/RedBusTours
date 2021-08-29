@@ -26,7 +26,7 @@ public class DriverRouteController {
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public DriverRoute create(@RequestBody DriverRoute driverRoute){
-        DriverRoute newDriverRoute = DriverRouteFactory.createRoute(driverRoute.getDriverID());
+        DriverRoute newDriverRoute = DriverRouteFactory.createRoute(driverRoute.getDriverID(), driverRoute.getRouteID());
         return service.create(newDriverRoute);
     }
 

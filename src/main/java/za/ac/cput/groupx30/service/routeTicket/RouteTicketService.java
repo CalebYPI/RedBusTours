@@ -1,5 +1,6 @@
 package za.ac.cput.groupx30.service.routeTicket;
 
+import za.ac.cput.groupx30.entity.LocationRoute;
 import za.ac.cput.groupx30.entity.RouteTicket;
 import za.ac.cput.groupx30.service.IService;
 
@@ -12,6 +13,9 @@ import java.util.Set;
  */
 
 
-public interface RouteTicketService extends IService<RouteTicket, String> {
+public interface RouteTicketService {
+    RouteTicket save(RouteTicket routeTicket);
+    RouteTicket read(RouteTicket.RouteTicketID id);
+    boolean delete(RouteTicket routeTicket);
     Set<RouteTicket> getAll();
 }

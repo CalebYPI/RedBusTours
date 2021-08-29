@@ -11,16 +11,15 @@ import org.junit.jupiter.api.Test;
 import za.ac.cput.groupx30.entity.RouteTicket;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
-import static org.junit.jupiter.api.Assertions.*;
 
 class RouteTicketFactoryTest {
-    RouteTicket routeTicket = RouteTicketFactory.createTicker("Robben Island");
+    RouteTicket routeTicket = RouteTicketFactory.createTicket("","Robben Island");
 
     @Test
     public void testRouteTicketEqaulity(){
         Assertions.assertEquals(routeTicket, routeTicket);
         Assertions.assertNotNull(routeTicket);
-        Assertions.assertNotNull(routeTicket.getRouteDesc());
+        Assertions.assertNotNull(routeTicket.getTicketID());
     }
 
     @Test

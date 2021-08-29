@@ -1,13 +1,14 @@
 package za.ac.cput.groupx30.controller.RouteTicket;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import za.ac.cput.groupx30.entity.Route;
 import za.ac.cput.groupx30.entity.RouteTicket;
+import za.ac.cput.groupx30.entity.Ticket;
 import za.ac.cput.groupx30.factory.RouteTicketFactory;
+import za.ac.cput.groupx30.service.route.RouteService;
 import za.ac.cput.groupx30.service.routeTicket.RouteTicketService;
+import za.ac.cput.groupx30.service.ticket.TicketService;
 
 import java.util.Set;
 
@@ -22,26 +23,39 @@ import java.util.Set;
 public class RouteTicketController {
     @Autowired
     private RouteTicketService service;
+    @Autowired
+    private TicketService ticketService;
+    @Autowired
+    private RouteService routeService;
 
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    @PostMapping(value = "/create")
     public RouteTicket create(@RequestBody RouteTicket routeTicket){
-        RouteTicket newRouteTicket = RouteTicketFactory.createTicker(routeTicket.getRouteDesc());
-        return service.create(newRouteTicket);
+        boolean ticketExist = false;
+        boolean routeExist = false;
+        Route route = routeService.read(routeTicket.getRoute());
+        if(route != null)
+            routeExist = true;
+
+        Ticket ticket = ticketService.read(routeTicket.getTicketID());
+        if(ticket != null)
+            ticketExist = true;
+
+        if(routeExist && ticketExist)
+            return service.save(routeTicket);
+        else
+            return RouteTicketFactory.createTicket("","");
     }
 
-    @RequestMapping(value = "/read", method = RequestMethod.GET)
-    public RouteTicket read(@RequestBody RouteTicket id){
-        return service.read(id.getRoute());
+    @GetMapping(value = "/read/{routeID}/{ticketID}")
+    public RouteTicket read(@PathVariable String routeID, @PathVariable ("ticketID") String ticketID) {
+        RouteTicket.RouteTicketID id = new RouteTicket.RouteTicketID(routeID, ticketID);
+        return service.read(id);
     }
 
-    @RequestMapping(value = "/update", method = RequestMethod.PUT)
-    public RouteTicket update(@RequestBody RouteTicket routeTicket){
-        return service.update(routeTicket);
-    }
-
-    @RequestMapping(value = "/read", method = RequestMethod.DELETE)
-    public boolean delete(@RequestBody RouteTicket id){
-        return service.delete(id.getRoute());
+    @DeleteMapping(value = "/delete/{routeID}/{ticketID}")
+    public boolean delete(@PathVariable String routeID, @PathVariable("ticketID") String ticketID){
+        RouteTicket routeTicket = RouteTicketFactory.createTicket(routeID, ticketID);
+        return service.delete(routeTicket);
     }
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)

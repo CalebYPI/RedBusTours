@@ -1,11 +1,12 @@
 package za.ac.cput.groupx30.service.routeTicket.imp;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.groupx30.entity.RouteTicket;
 import za.ac.cput.groupx30.repository.routeTicket.RouteTicketRepository;
-import za.ac.cput.groupx30.repository.routeTicket.imp.RouteTicketImpl;
 import za.ac.cput.groupx30.service.routeTicket.RouteTicketService;
 
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -17,37 +18,39 @@ import java.util.Set;
 @Service
 public class RouteTicketServiceImp implements RouteTicketService {
     public static RouteTicketService service = null;
+
+   @Autowired
     private RouteTicketRepository repository;
 
 
-    private RouteTicketServiceImp(){this.repository = RouteTicketImpl.getRepository();}
 
     public static RouteTicketService getService(){
         if(service == null) service = new RouteTicketServiceImp();
         return service;
     }
+
+
     @Override
-    public RouteTicket create(RouteTicket routeTicket) {
-        return this.repository.create(routeTicket);
+    public RouteTicket save(RouteTicket routeTicket) {
+        return this.repository.save(routeTicket);
     }
 
     @Override
-    public RouteTicket read(String routeID) {
-        return this.read(routeID);
+    public RouteTicket read(RouteTicket.RouteTicketID id) {
+        return this.repository.getById(id);
     }
 
     @Override
-    public RouteTicket update(RouteTicket routeTicket) {
-        return this.repository.update(routeTicket);
-    }
-
-    @Override
-    public boolean delete(String routeID) {
-        return this.repository.delete(routeID);
+    public boolean delete(RouteTicket routeTicket) {
+        if(routeTicket!= null){
+            this.repository.delete(routeTicket);
+            return true;
+        }
+        return false;
     }
 
     @Override
     public Set<RouteTicket> getAll() {
-        return this.repository.getAll();
+        return new HashSet<>(this.repository.findAll());
     }
 }

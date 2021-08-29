@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class DriverRouteRepositoryImplTest {
 
     private static DriverRouteRepository repository = DriverRouteRepositoryImpl.getRepository();
-    private static DriverRoute driverRoute = DriverRouteFactory.createRoute("NORTHERN SUBURBS-5468");
+    private static DriverRoute driverRoute = DriverRouteFactory.createRoute("NORTHERN SUBURBS-5468", "");
 
     @Test
     public void a_create(){
