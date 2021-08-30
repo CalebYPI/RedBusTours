@@ -10,8 +10,9 @@ import za.ac.cput.groupx30.entity.Route;
 import za.ac.cput.groupx30.factory.LocationFactory;
 import za.ac.cput.groupx30.factory.LocationRouteFactory;
 import za.ac.cput.groupx30.factory.RouteFactory;
-import za.ac.cput.groupx30.service.route.LocationRouteService;
-import za.ac.cput.groupx30.service.route.impl.LocationRouteServiceImpl;
+import za.ac.cput.groupx30.service.impl.LocationRouteServiceImpl;
+
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -38,15 +39,8 @@ class LocationRouteServiceImplTest {
         System.out.println("Read: " + read);
     }
 
-    @Test @Disabled
-    void c_update() {
-//        LocationRoute updated = service.update(locationRoute);
-//        assertEquals(updated.getRouteId(), locationRoute.getRouteId());
-//        assertEquals(updated.getLocationId(), locationRoute.getLocationId());
-    }
-
     @Test
-    void e_delete() {
+    void g_delete() {
         boolean delete = service.delete(locationRoute);
         assertTrue(delete);
         System.out.println("Deleted: " + delete);
@@ -55,5 +49,19 @@ class LocationRouteServiceImplTest {
     @Test
     void d_getAll() {
         assertEquals(service.getAll().size(), 1);
+    }
+
+    @Test
+    @Disabled
+    void e_findAllByLocationId() {
+        Set<LocationRoute> locations = service.findAllByLocationId(stop.getId());
+        assertNotNull(locations);
+    }
+
+    @Test
+    @Disabled
+    void f_findAllByRouteId() {
+        Set<LocationRoute> routes = service.findAllByRouteId(red.getId());
+        assertNotNull(routes);
     }
 }

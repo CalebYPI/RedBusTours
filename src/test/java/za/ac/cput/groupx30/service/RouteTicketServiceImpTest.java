@@ -10,8 +10,7 @@ package za.ac.cput.groupx30.service;
 import org.junit.jupiter.api.Test;
 import za.ac.cput.groupx30.entity.RouteTicket;
 import za.ac.cput.groupx30.factory.RouteTicketFactory;
-import za.ac.cput.groupx30.service.routeTicket.RouteTicketService;
-import za.ac.cput.groupx30.service.routeTicket.imp.RouteTicketServiceImp;
+import za.ac.cput.groupx30.service.impl.RouteTicketServiceImp;
 
 import static org.junit.jupiter.api.Assertions.*;
 

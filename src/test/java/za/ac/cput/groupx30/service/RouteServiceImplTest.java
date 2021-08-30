@@ -5,8 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import za.ac.cput.groupx30.entity.Route;
 import za.ac.cput.groupx30.factory.RouteFactory;
-import za.ac.cput.groupx30.service.route.RouteService;
-import za.ac.cput.groupx30.service.route.impl.RouteServiceImpl;
+import za.ac.cput.groupx30.service.impl.RouteServiceImpl;
 
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -11,8 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import za.ac.cput.groupx30.entity.PassengerTicket;
 import za.ac.cput.groupx30.factory.PassengerTicketFactory;
-import za.ac.cput.groupx30.service.passengerTicket.PassengerTicketService;
-import za.ac.cput.groupx30.service.passengerTicket.impl.PassengerTicketServiceImpl;
+import za.ac.cput.groupx30.service.impl.PassengerTicketServiceImpl;
 
 import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.MethodName.class)

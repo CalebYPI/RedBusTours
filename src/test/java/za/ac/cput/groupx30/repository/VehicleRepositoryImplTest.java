@@ -5,8 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import za.ac.cput.groupx30.entity.Vehicle;
 import za.ac.cput.groupx30.factory.VehicleFactory;
-import za.ac.cput.groupx30.repository.vehicle.VehicleRepository;
-import za.ac.cput.groupx30.repository.vehicle.impl.VehicleRepositoryImpl;
+import za.ac.cput.groupx30.repository.impl.VehicleRepositoryImpl;
 
 import java.util.Set;
 

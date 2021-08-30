@@ -11,8 +11,8 @@
 //import za.ac.cput.groupx30.entity.RouteGuide;
 //import za.ac.cput.groupx30.factory.GuideFactory;
 //import za.ac.cput.groupx30.factory.RouteGuideFactory;
-//import za.ac.cput.groupx30.service.route.RouteGuideService;
-//import za.ac.cput.groupx30.service.route.impl.RouteGuideServiceImpl;
+//import za.ac.cput.groupx30.service.RouteGuideService;
+//import za.ac.cput.groupx30.service.impl.RouteGuideServiceImpl;
 //
 //import static org.junit.jupiter.api.Assertions.*;
 //

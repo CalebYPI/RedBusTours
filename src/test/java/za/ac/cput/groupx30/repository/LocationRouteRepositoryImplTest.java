@@ -10,7 +10,7 @@
 //import org.junit.jupiter.api.TestMethodOrder;
 //import za.ac.cput.groupx30.entity.LocationRoute;
 //import za.ac.cput.groupx30.factory.LocationRouteFactory;
-//import za.ac.cput.groupx30.repository.route.LocationRouteRepository;
+//import za.ac.cput.groupx30.repository.LocationRouteRepository;
 //import za.ac.cput.groupx30.repository.route.impl.LocationRouteRepositoryImpl;
 //
 //import static org.junit.jupiter.api.Assertions.*;

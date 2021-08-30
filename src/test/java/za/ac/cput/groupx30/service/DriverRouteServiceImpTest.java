@@ -3,8 +3,7 @@ package za.ac.cput.groupx30.service;
 import org.junit.jupiter.api.Test;
 import za.ac.cput.groupx30.entity.DriverRoute;
 import za.ac.cput.groupx30.factory.DriverRouteFactory;
-import za.ac.cput.groupx30.service.driverRoute.DriverRouteService;
-import za.ac.cput.groupx30.service.driverRoute.impl.DriverRouteServiceImp;
+import za.ac.cput.groupx30.service.impl.DriverRouteServiceImp;
 
 import static org.junit.jupiter.api.Assertions.*;
 

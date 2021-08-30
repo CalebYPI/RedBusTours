@@ -8,7 +8,7 @@
 //import org.junit.jupiter.api.Test;
 //import za.ac.cput.groupx30.entity.Guide;
 //import za.ac.cput.groupx30.factory.GuideFactory;
-//import za.ac.cput.groupx30.repository.guide.GuideRepository;
+//import za.ac.cput.groupx30.repository.GuideRepository;
 //import za.ac.cput.groupx30.repository.guide.impl.GuideRepositoryImpl;
 //
 //

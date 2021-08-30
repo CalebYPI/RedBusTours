@@ -11,7 +11,7 @@
 //import za.ac.cput.groupx30.entity.Location;
 //import za.ac.cput.groupx30.entity.Route;
 //import za.ac.cput.groupx30.factory.LocationFactory;
-//import za.ac.cput.groupx30.repository.location.LocationRepository;
+//import za.ac.cput.groupx30.repository.LocationRepository;
 //import za.ac.cput.groupx30.repository.location.impl.LocationRepositoryImpl;
 //
 //import java.util.Set;

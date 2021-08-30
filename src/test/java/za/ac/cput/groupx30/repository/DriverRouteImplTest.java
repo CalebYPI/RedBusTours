@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import za.ac.cput.groupx30.entity.DriverRoute;
 import za.ac.cput.groupx30.factory.DriverRouteFactory;
-import za.ac.cput.groupx30.repository.driverRoute.impl.DriverRouteImpl;
+import za.ac.cput.groupx30.repository.impl.DriverRouteImpl;
 
 import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.MethodName.class)

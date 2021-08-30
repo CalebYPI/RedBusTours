@@ -9,8 +9,8 @@
 //import za.ac.cput.groupx30.entity.Guide;
 //import za.ac.cput.groupx30.entity.RouteGuide;
 //import za.ac.cput.groupx30.factory.GuideFactory;
-//import za.ac.cput.groupx30.service.guide.GuideService;
-//import za.ac.cput.groupx30.service.guide.impl.GuideServiceImpl;
+//import za.ac.cput.groupx30.service.GuideService;
+//import za.ac.cput.groupx30.service.impl.GuideServiceImpl;
 //
 //import static org.junit.jupiter.api.Assertions.*;
 //

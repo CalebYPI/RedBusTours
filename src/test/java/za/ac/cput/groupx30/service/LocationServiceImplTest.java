@@ -5,8 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import za.ac.cput.groupx30.entity.Location;
 import za.ac.cput.groupx30.factory.LocationFactory;
-import za.ac.cput.groupx30.service.location.LocationService;
-import za.ac.cput.groupx30.service.location.impl.LocationServiceImpl;
+import za.ac.cput.groupx30.service.impl.LocationServiceImpl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
