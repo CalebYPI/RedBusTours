@@ -2,10 +2,10 @@ package za.ac.cput.groupx30.service.impl;
 
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.groupx30.entity.DriverRoute;
 import za.ac.cput.groupx30.repository.DriverRouteRepository;
-import za.ac.cput.groupx30.repository.impl.DriverRouteRepositoryImpl;
 import za.ac.cput.groupx30.service.DriverRouteService;
 
 import java.util.Set;
@@ -20,36 +20,37 @@ import java.util.Set;
 public class DriverRouteServiceImp implements DriverRouteService {
 
     public static DriverRouteService service = null;
+    @Autowired
     private DriverRouteRepository repository;
 
-    private DriverRouteServiceImp(){this.repository = DriverRouteRepositoryImpl.getRepository();}
 
     public static DriverRouteService getService(){
         if(service == null) service = new DriverRouteServiceImp();
         return service;
     }
+
+
     @Override
     public DriverRoute create(DriverRoute driverRoute) {
-        return this.repository.create(driverRoute);
+        return this.repository.save(driverRoute);
     }
 
     @Override
-    public DriverRoute read(String s) {
-        return this.repository.read(s);
+    public DriverRoute read(DriverRoute.DriverRouteId id) {
+        return this.repository.getById(id);
     }
 
     @Override
-    public DriverRoute update(DriverRoute driverRoute) {
-        return this.repository.update(driverRoute);
-    }
-
-    @Override
-    public boolean delete(String s) {
-        return this.repository.delete(s);
+    public boolean delete(DriverRoute driverRouteId) {
+        if (driverRouteId != null){
+            this.repository.delete(driverRouteId);
+            return true;
+        }
+        return false;
     }
 
     @Override
     public Set<DriverRoute> getAll() {
-        return getAll();
+        return this.repository.getAll();
     }
 }

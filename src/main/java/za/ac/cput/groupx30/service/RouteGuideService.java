@@ -10,7 +10,10 @@ import za.ac.cput.groupx30.service.IService;
 
 import java.util.Set;
 
-public interface RouteGuideService extends IService<RouteGuide, String>
+public interface RouteGuideService
 {
-        public Set<RouteGuide> getAll();
+        RouteGuide create(RouteGuide routeGuide);
+        RouteGuide read(RouteGuide.RouteGuideId id);
+        boolean delete(RouteGuide routeGuide);
+        Set<RouteGuide> getAll();
 }

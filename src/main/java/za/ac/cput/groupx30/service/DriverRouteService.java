@@ -12,6 +12,9 @@ import java.util.Set;
  * Class for driver route service
  * 29 July 2021
  */
-public interface DriverRouteService extends IService<DriverRoute, String> {
+public interface DriverRouteService {
+    DriverRoute create(DriverRoute driverRoute);
+    DriverRoute read(DriverRoute.DriverRouteId id);
+    boolean delete(DriverRoute driverRoute);
     Set<DriverRoute> getAll();
 }
