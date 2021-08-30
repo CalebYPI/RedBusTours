@@ -47,13 +47,9 @@ public class PassengerTicketController {
     }
 
     @RequestMapping(value = "/read", method = RequestMethod.GET)
-    public PassengerTicket read(@PathVariable String passengerId, String ticketId){
-        return passengerTicketService.read(passengerId, ticketId);
-    }
-
-    @RequestMapping(value = "/update", method = RequestMethod.PUT)
-    public PassengerTicket update(@RequestBody PassengerTicket passengerTicket){
-        return passengerTicketService.update(passengerTicket);
+    public PassengerTicket read(@PathVariable String passengerId, @PathVariable("ticketId") String ticketId){
+        PassengerTicket.PassengerTicketId id = new PassengerTicket.PassengerTicketId(passengerId, ticketId);
+        return passengerTicketService.read(id);
     }
 
     @RequestMapping(value = "/delete", method = RequestMethod.DELETE)
