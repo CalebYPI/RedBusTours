@@ -31,18 +31,13 @@ public class DriverRouteController {
     }
 
     @RequestMapping(value = "/read", method = RequestMethod.GET)
-    public DriverRoute read(@RequestBody DriverRoute id){
-        return service.read(id.getRouteID());
-    }
-
-    @RequestMapping(value = "/update", method = RequestMethod.PUT)
-    public DriverRoute update(@RequestBody DriverRoute driverRoute){
-        return service.update(driverRoute);
+    public DriverRoute read(@RequestBody DriverRoute.DriverRouteId id){
+        return service.read(id);
     }
 
     @RequestMapping(value = "/delete", method = RequestMethod.DELETE)
     public boolean delete(@RequestBody DriverRoute routeID){
-        return service.delete(routeID.getRouteID());
+        return service.delete(routeID);
     }
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)

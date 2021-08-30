@@ -12,11 +12,11 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-public class RouteGuide
+@IdClass(RouteGuide.RouteGuideId.class)
+public class RouteGuide implements Serializable
 {
     @Id
-    private String routeId;
-    private String guideId;
+    private String routeId, guideId;
 
     public RouteGuide() {}
 
@@ -71,6 +71,28 @@ public class RouteGuide
         public RouteGuide build()
         {
             return new RouteGuide(this);
+        }
+    }
+
+    public static class RouteGuideId implements Serializable {
+        private String routeId, guideId;
+
+        public RouteGuideId(String routeId, String guideId) {
+            this.routeId = routeId;
+            this.guideId = guideId;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            RouteGuideId that = (RouteGuideId) o;
+            return routeId.equals(that.routeId) && guideId.equals(that.guideId);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(routeId, guideId);
         }
     }
 }

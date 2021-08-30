@@ -7,10 +7,13 @@ package za.ac.cput.groupx30.repository;
  * 25 July 2021
  */
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 import za.ac.cput.groupx30.entity.DriverRoute;
 import za.ac.cput.groupx30.repository.IRepository;
 
 import java.util.Set;
-public interface DriverRouteRepository extends IRepository< DriverRoute, String> {
+@Repository
+public interface DriverRouteRepository extends JpaRepository< DriverRoute, DriverRoute.DriverRouteId> {
     Set<DriverRoute> getAll();
 }

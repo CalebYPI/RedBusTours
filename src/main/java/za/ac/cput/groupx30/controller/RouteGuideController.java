@@ -29,13 +29,13 @@ public class RouteGuideController
     }
 
     @GetMapping(value = "/read/{routeId}")
-    public RouteGuide read(@PathVariable String routeId)
+    public RouteGuide read(@PathVariable RouteGuide.RouteGuideId routeId)
     {
         return service.read(routeId);
     }
 
     @DeleteMapping(value = "/delete/{routeId}")
-    public boolean delete(@PathVariable String routeId)
+    public boolean delete(@PathVariable RouteGuide routeId)
     {
         return service.delete(routeId);
     }

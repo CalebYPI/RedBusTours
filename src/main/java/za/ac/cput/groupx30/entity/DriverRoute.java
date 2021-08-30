@@ -1,14 +1,25 @@
 package za.ac.cput.groupx30.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.IdClass;
+import java.io.Serializable;
+import java.util.Objects;
+
 /**
 * Baron Mukenyi (217163742)
 * Driver Route Entity
 * 7 May 2021
  */
 
-
-public class DriverRoute {
+@Entity
+@IdClass(DriverRoute.DriverRouteId.class)
+public class DriverRoute implements Serializable {
+    @Id
     public String driverID, routeID;
+
+    public DriverRoute() {
+    }
 
     public DriverRoute(Builder builder){
         this.driverID = builder.driverID;
@@ -45,6 +56,28 @@ public class DriverRoute {
 
         public DriverRoute build(){
             return new DriverRoute(this);
+        }
+    }
+    public static class DriverRouteId implements Serializable {
+        public String driverID;
+        public String routeID;
+
+        public DriverRouteId(String driverID, String routeID) {
+            this.driverID = driverID;
+            this.routeID = routeID;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            DriverRouteId that = (DriverRouteId) o;
+            return driverID.equals(that.driverID) && routeID.equals(that.routeID);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(driverID, routeID);
         }
     }
 }
