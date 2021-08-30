@@ -2,6 +2,7 @@ package za.ac.cput.groupx30.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
@@ -63,6 +64,15 @@ public class PassengerTicket {
 
         public PassengerTicket build(){
             return new PassengerTicket(this);
+        }
+    }
+
+    public static class PassengerTicketId implements Serializable{
+        private String passengerId, ticketId;
+
+        public PassengerTicketId(String passengerId, String ticketId){
+            this.passengerId = passengerId;
+            this.ticketId = ticketId;
         }
     }
 

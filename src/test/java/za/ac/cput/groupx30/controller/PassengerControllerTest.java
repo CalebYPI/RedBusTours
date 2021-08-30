@@ -71,8 +71,8 @@ public class PassengerControllerTest {
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> entity = new HttpEntity<>(null, headers);
         ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
-        System.out.println("Show All: ");
-        System.out.println(response);
-        System.out.println(response.getBody());
+        System.out.println("Show All: " + response.getBody());
+        assertNotNull(response.getBody());
+
     }
 }

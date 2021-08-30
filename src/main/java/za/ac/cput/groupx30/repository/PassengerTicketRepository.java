@@ -13,7 +13,6 @@ import za.ac.cput.groupx30.repository.IRepository;
 
 import java.util.Set;
 @Repository
-public interface PassengerTicketRepository extends JpaRepository<PassengerTicket, String> {
-    public Set<PassengerTicket> getAll();
+public interface PassengerTicketRepository extends JpaRepository<PassengerTicket, PassengerTicket.PassengerTicketId> {
 
 }

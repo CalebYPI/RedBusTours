@@ -13,6 +13,7 @@ import za.ac.cput.groupx30.repository.PassengerTicketRepository;
 //import za.ac.cput.groupx30.repository.impl.PassengerTicketRepositoryImpl;
 import za.ac.cput.groupx30.service.PassengerTicketService;
 
+import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -30,23 +31,16 @@ public class PassengerTicketServiceImpl implements PassengerTicketService {
     }
 
     @Override
-    public PassengerTicket read(String passengerId) {
-        return this.repository.findById(passengerId).orElse(null);
+    public PassengerTicket read(PassengerTicket.PassengerTicketId id) {
+        return this.repository.getById(id);
     }
 
-    @Override
-    public PassengerTicket update(PassengerTicket passengerTicket) {
-        if(this.repository.existsById(passengerTicket.getPassengerId())){
-            return this.repository.save(passengerTicket);
-        }
-        return null;
-    }
 
     @Override
-    public boolean delete(String passengerId) {
-        this.repository.deleteById(passengerId);
-        if (this.repository.existsById(passengerId)) {
-            return false;
+    public boolean delete(PassengerTicket passengerTicket) {
+        if (passengerTicket != null) {
+            this.repository.delete(passengerTicket);
+            return true;
         }
         else
             return true;
@@ -54,7 +48,17 @@ public class PassengerTicketServiceImpl implements PassengerTicketService {
 
     @Override
     public Set<PassengerTicket> getAll() {
-        return this.repository.findAll().stream().collect(Collectors.toSet());
+        return new HashSet<>(this.repository.findAll());
+    }
+
+    @Override
+    public Set<PassengerTicket> findAllByTicketId(String ticketId){
+        Set<PassengerTicket> passengerTickets = getAll();
+        if(passengerTickets != null){
+            passengerTickets.removeIf(passengerTicket -> !passengerTicket.getTicketId().equalsIgnoreCase(ticketId));
+            return passengerTickets;
+        }
+        return null;
     }
 
 
