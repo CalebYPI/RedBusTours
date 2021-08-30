@@ -29,18 +29,16 @@ public class GuideController
         return service.create(newGuide);
     }
 
-    @GetMapping(value = "/read/{id}/{name}")
-    public Guide read(@PathVariable String id, @PathVariable("name") String name)
+    @GetMapping(value = "/read/{id}")
+    public Guide read(@PathVariable String id)
     {
-        Guide.GuideId Id = new Guide.GuideId(id, name);
-        return service.read(Id);
+        return service.read(id);
     }
 
-    @DeleteMapping(value = "/delete/{id}/{name}")
-    public boolean delete(@PathVariable String id, @PathVariable("name") String name)
+    @DeleteMapping(value = "/delete/{id}")
+    public boolean delete(@PathVariable String id)
     {
-        Guide guide = GuideFactory.createId(id, name);
-        return service.delete(guide);
+        return service.delete(id);
     }
 
     @GetMapping(value = "/all")

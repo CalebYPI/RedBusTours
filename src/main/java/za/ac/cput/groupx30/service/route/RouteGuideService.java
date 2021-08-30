@@ -6,13 +6,11 @@ package za.ac.cput.groupx30.service.route;
  */
 
 import za.ac.cput.groupx30.entity.RouteGuide;
+import za.ac.cput.groupx30.service.IService;
 
 import java.util.Set;
 
-public interface RouteGuideService
+public interface RouteGuideService extends IService<RouteGuide, String>
 {
-    RouteGuide create(RouteGuide routeGuide);
-    RouteGuide read(RouteGuide.RouteGuideId id);
-    boolean delete(RouteGuide routeGuide);
-    Set<RouteGuide> getAll();
+        public Set<RouteGuide> getAll();
 }

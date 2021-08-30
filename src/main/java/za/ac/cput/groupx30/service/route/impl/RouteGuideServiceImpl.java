@@ -14,20 +14,15 @@ import za.ac.cput.groupx30.service.route.RouteGuideService;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class RouteGuideServiceImpl implements RouteGuideService
 {
     private static RouteGuideServiceImpl service = null;
 
-    private RouteGuideRepository repository;
     @Autowired
-    public static RouteGuideServiceImpl getService()
-    {
-        if (service == null)
-            service = new RouteGuideServiceImpl();
-        return service;
-    }
+    private RouteGuideRepository repository;
 
     @Override
     public RouteGuide create(RouteGuide routeGuide)
@@ -36,23 +31,32 @@ public class RouteGuideServiceImpl implements RouteGuideService
     }
 
     @Override
-    public RouteGuide read(RouteGuide.RouteGuideId id)
+    public RouteGuide read(String id)
     {
-        return this.repository.getById(id);
+        return this.repository.findById(id).orElse(null);
     }
 
     @Override
-    public boolean delete(RouteGuide routeGuide)
+    public RouteGuide update(RouteGuide routeGuide)
     {
-        this.repository.delete(routeGuide);
-        return true;
+        if(this.repository.existsById(routeGuide.getRouteId()))
+            return this.repository.save(routeGuide);
+        return null;
+    }
+
+    @Override
+    public boolean delete(String routeGuideId)
+    {
+        this.repository.deleteById(routeGuideId);
+        if(this.repository.existsById(routeGuideId))
+            return false;
+        else
+            return true;
     }
 
     @Override
     public Set<RouteGuide> getAll()
     {
-        return new HashSet<>(this.repository.findAll());
+        return this.repository.findAll().stream().collect(Collectors.toSet());
     }
-
-
 }
