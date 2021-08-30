@@ -24,13 +24,6 @@ public class DriverRoute {
         return routeID;
     }
     //setters
-    public void setDriverID(String driverID) {
-        this.driverID = driverID;
-    }
-
-    public void setRouteID(String routeID) {
-        this.routeID = routeID;
-    }
 
     public static class Builder{
         public String driverID;

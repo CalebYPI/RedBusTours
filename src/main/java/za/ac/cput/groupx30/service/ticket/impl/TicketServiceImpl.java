@@ -6,10 +6,10 @@ package za.ac.cput.groupx30.service.ticket.impl;
  * Date: 31 July 2021
  */
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.groupx30.entity.Ticket;
 import za.ac.cput.groupx30.repository.ticket.TicketRepository;
-import za.ac.cput.groupx30.repository.ticket.impl.TicketRepositoryImpl;
 import za.ac.cput.groupx30.service.ticket.TicketService;
 
 import java.util.Set;
@@ -17,11 +17,9 @@ import java.util.Set;
 @Service
 public class TicketServiceImpl implements TicketService {
     private static TicketServiceImpl service = null;
+    @Autowired
     private TicketRepository repository = null;
 
-    private TicketServiceImpl(){
-        this.repository = TicketRepositoryImpl.getRepository();
-    }
 
     public static TicketServiceImpl getService(){
         if(service == null) {
@@ -32,22 +30,23 @@ public class TicketServiceImpl implements TicketService {
 
     @Override
     public Ticket create(Ticket ticket) {
-        return this.repository.create(ticket);
+        return this.repository.save(ticket);
     }
 
     @Override
     public Ticket read(String ticketId) {
-        return this.repository.read(ticketId);
+        return this.repository.getById(ticketId);
     }
 
     @Override
     public Ticket update(Ticket ticket) {
-        return this.repository.update(ticket);
+        return this.repository.save(ticket);
     }
 
     @Override
     public boolean delete(String ticketId) {
-        return this.repository.delete(ticketId);
+        this.repository.deleteById(ticketId);
+        return !this.repository.existsById(ticketId);
     }
 
     @Override

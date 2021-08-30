@@ -1,5 +1,6 @@
 package za.ac.cput.groupx30.repository.routeTicket;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import za.ac.cput.groupx30.entity.RouteTicket;
 import za.ac.cput.groupx30.repository.IRepository;
 
@@ -11,6 +12,6 @@ import java.util.Set;
  * 25 July 2021
  */
 
-public interface RouteTicketRepository extends IRepository<RouteTicket, String> {
-    Set<RouteTicket> getAll();
+public interface RouteTicketRepository extends JpaRepository<RouteTicket, RouteTicket.RouteTicketID> {
+    //Set<RouteTicket> getAll();
 }

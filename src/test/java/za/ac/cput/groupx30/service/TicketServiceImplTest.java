@@ -11,14 +11,15 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import za.ac.cput.groupx30.entity.Ticket;
 import za.ac.cput.groupx30.factory.TicketFactory;
-import za.ac.cput.groupx30.repository.ticket.impl.TicketRepositoryImpl;
+import za.ac.cput.groupx30.service.ticket.impl.TicketServiceImpl;
+
 
 import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.MethodName.class)
 class TicketServiceImplTest {
 
-    private static TicketRepositoryImpl service = TicketRepositoryImpl.getRepository();
-    private static Ticket ticket = TicketFactory.createTicket("24/07/2021", "15:00", "R250");
+    private TicketServiceImpl service = TicketServiceImpl.getService();
+    private static Ticket ticket = TicketFactory.createTicket("12/1/2021", "12:52", 200);
 
     @Test
     void a_create() {
@@ -36,7 +37,7 @@ class TicketServiceImplTest {
 
     @Test
     void c_update() {
-        Ticket updated = new Ticket.Builder().copy(ticket).setDate("21/07/2021").setTime("16:00").setPrice("R250").build();
+        Ticket updated = new Ticket.Builder().copy(ticket).setDate("21/07/2021").setTime("16:00").setPrice(250).build();
         assertNotNull(service.update(updated));
         System.out.println("Update: " + updated);
     }

@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
 class DriverRouteFactoryTest {
-    DriverRoute driverRoute = DriverRouteFactory.createRoute("N1");
+    DriverRoute driverRoute = DriverRouteFactory.createRoute("","N1");
 
     @Test
     public void testRouteEqualityID(){

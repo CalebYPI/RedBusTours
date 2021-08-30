@@ -6,11 +6,12 @@ package za.ac.cput.groupx30.repository.ticket;
  * Date: 24 July 2021
  */
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import za.ac.cput.groupx30.entity.Ticket;
 import za.ac.cput.groupx30.repository.IRepository;
 
 import java.util.Set;
 
-public interface TicketRepository extends IRepository<Ticket, String>{
-    public Set<Ticket> getAll();
+public interface TicketRepository extends JpaRepository<Ticket, String> {
+    //public Set<Ticket> getAll();
 }

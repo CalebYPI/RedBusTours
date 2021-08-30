@@ -1,7 +1,7 @@
 package za.ac.cput.groupx30.entity;
 
-import java.text.DateFormat;
-import java.util.Date;
+import javax.persistence.Entity;
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
@@ -9,11 +9,20 @@ import java.util.Objects;
  * Desc: Entity for Ticket
  * Date: 06 June 2021
  */
-public class Ticket {
+
+/**
+ * Author: Baron Mukenyi
+ * Implementing TicketJPARepository
+ * Date: 27 August 2021
+ */
+@Entity
+public class Ticket implements Serializable{
+
+    @Id
     private String Id;
     private String Date;
     private String Time;
-    private String Price;
+    private int Price;
 
 
     protected Ticket(){
@@ -39,7 +48,7 @@ public class Ticket {
         return Time;
     }
 
-    public String getPrice() {
+    public Integer getPrice() {
         return Price;
     }
 
@@ -57,7 +66,7 @@ public class Ticket {
         public String Id;
         public String Date;
         public String Time;
-        public String Price;
+        public Integer Price;
 
         public Builder setId(String id) {
             Id = id;
@@ -74,7 +83,7 @@ public class Ticket {
             return this;
         }
 
-        public Builder setPrice(String price) {
+        public Builder setPrice(Integer price) {
             Price = price;
             return this;
         }
@@ -92,6 +101,7 @@ public class Ticket {
             return new Ticket(this);
         }
     }
+
 
     @Override
     public boolean equals(Object o) {

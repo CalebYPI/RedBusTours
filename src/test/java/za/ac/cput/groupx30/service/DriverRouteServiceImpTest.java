@@ -20,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class DriverRouteServiceImpTest {
 
     private DriverRouteService service = DriverRouteServiceImp.getService();
-    private static DriverRoute driverRoute = DriverRouteFactory.createRoute("R21");
+    private static DriverRoute driverRoute = DriverRouteFactory.createRoute("R21", "");
 
     @Test
     void a_create() {
