@@ -13,8 +13,8 @@ import za.ac.cput.groupx30.repository.IRepository;
 import java.util.List;
 import java.util.Set;
 
-public interface GuideRepository extends JpaRepository<Guide, Guide.GuideId>
+public interface GuideRepository extends JpaRepository<Guide, String>
 {
-    List<Guide> findAllById(String id);
-    List<Guide> findAllByName(String name);
+    //List<Guide> findAllById(String id);
+    //List<Guide> findAllByName(String name);
 }

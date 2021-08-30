@@ -30,18 +30,16 @@ public class RouteGuideController
         return service.create(newRouteGuide);
     }
 
-    @GetMapping(value = "/read/{routeId}/{guideId}")
-    public RouteGuide read(@PathVariable String routeId, @PathVariable("guideId") String guideId)
+    @GetMapping(value = "/read/{routeId}")
+    public RouteGuide read(@PathVariable String routeId)
     {
-        RouteGuide.RouteGuideId id = new RouteGuide.RouteGuideId(routeId, guideId);
-        return service.read(id);
+        return service.read(routeId);
     }
 
-    @DeleteMapping(value = "/delete/{routeId}/{guideId}")
-    public boolean delete(@PathVariable String routeId, @PathVariable("guideId") String guideId)
+    @DeleteMapping(value = "/delete/{routeId}")
+    public boolean delete(@PathVariable String routeId)
     {
-        RouteGuide routeGuide = RouteGuideFactory.createRouteGuide(routeId, guideId);
-        return service.delete(routeGuide);
+        return service.delete(routeId);
     }
 
     @GetMapping(value = "/all")
