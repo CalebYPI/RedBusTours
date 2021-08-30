@@ -1,5 +1,7 @@
 package za.ac.cput.groupx30.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Objects;
 
 /**
@@ -7,7 +9,9 @@ import java.util.Objects;
  * Desc: Factory for PassengerTicket
  * Date: 06 June 2021
  */
+@Entity
 public class PassengerTicket {
+    @Id
     private String PassengerId;
     private String TicketId;
 

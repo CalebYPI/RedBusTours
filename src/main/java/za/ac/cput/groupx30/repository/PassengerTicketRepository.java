@@ -6,17 +6,14 @@ package za.ac.cput.groupx30.repository;
  * Date: 24 July 2021
  */
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 import za.ac.cput.groupx30.entity.PassengerTicket;
 import za.ac.cput.groupx30.repository.IRepository;
 
 import java.util.Set;
-
-public interface PassengerTicketRepository{
-    PassengerTicket create(PassengerTicket passengerTicket);
-    PassengerTicket read(String passengerId, String ticketId);
-    PassengerTicket update(PassengerTicket passengerTicket);
-
-    boolean delete(String passengerId, String ticketId);
+@Repository
+public interface PassengerTicketRepository extends JpaRepository<PassengerTicket, String> {
     public Set<PassengerTicket> getAll();
 
 }
