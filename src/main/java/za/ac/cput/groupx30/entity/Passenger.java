@@ -5,10 +5,13 @@ package za.ac.cput.groupx30.entity;
  * Date: 06 June 2021
  */
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Objects;
-
+@Entity
 public class Passenger {
 
+    @Id
     private String id;
     private String name;
     private String contact;

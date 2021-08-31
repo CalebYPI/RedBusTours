@@ -13,8 +13,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.*;
+import za.ac.cput.groupx30.entity.Passenger;
 import za.ac.cput.groupx30.entity.PassengerTicket;
+import za.ac.cput.groupx30.entity.Ticket;
+import za.ac.cput.groupx30.factory.PassengerFactory;
 import za.ac.cput.groupx30.factory.PassengerTicketFactory;
+import za.ac.cput.groupx30.factory.TicketFactory;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -22,7 +26,9 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class PassengerTicketControllerTest {
 
-    private static PassengerTicket passengerTicket = PassengerTicketFactory.createPassengerTicket("08971b55-1dc8-4ea2-8ed1-49ad34e9cb3f", "313f4165-fde0-4375-adc7-2aa760c5a1ea");
+    private static Passenger passenger = PassengerFactory.createPassenger("Shaheed", "0873587441");
+    private static Ticket ticket = TicketFactory.createTicket("06/06/2021","15:00", 250);
+    private static PassengerTicket passengerTicket = PassengerTicketFactory.createPassengerTicket(passenger.getId(), ticket.getId());
 
     @Autowired
     private TestRestTemplate restTemplate;
@@ -43,20 +49,16 @@ class PassengerTicketControllerTest {
 
     @Test
     void b_read() {
-        String url = BASE_URL + "/read";
+        String url = BASE_URL + "/read" + passengerTicket.getPassengerId() + "/" + passengerTicket.getTicketId();
         System.out.println("URL: " + url);
         ResponseEntity<PassengerTicket> postResponse = restTemplate.getForEntity(url, PassengerTicket.class);
-    }
-
-    @Test
-    void c_update() {
-        String url = BASE_URL + "update";
-        restTemplate.put(url, passengerTicket, PassengerTicket.class);
+        assertEquals(passengerTicket, postResponse.getBody());
     }
 
     @Test
     void e_delete() {
-        String url = BASE_URL + "/delete";
+        String url = BASE_URL + "/delete" + passengerTicket.getPassengerId();
+        System.out.println("URL: " + url);
         restTemplate.delete(url);
     }
 
