@@ -8,6 +8,7 @@ import za.ac.cput.groupx30.entity.DriverRoute;
 import za.ac.cput.groupx30.repository.DriverRouteRepository;
 import za.ac.cput.groupx30.service.DriverRouteService;
 
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -51,6 +52,6 @@ public class DriverRouteServiceImp implements DriverRouteService {
 
     @Override
     public Set<DriverRoute> getAll() {
-        return this.repository.getAll();
+        return new HashSet<>(this.repository.findAll());
     }
 }
