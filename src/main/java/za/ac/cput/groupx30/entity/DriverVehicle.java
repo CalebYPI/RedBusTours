@@ -4,7 +4,11 @@ package za.ac.cput.groupx30.entity;
 // Entity: DriverVehicle
 // Date: 7 June 2021
 
-public class DriverVehicle {
+import javax.persistence.Entity;
+import java.io.Serializable;
+
+@Entity
+public class DriverVehicle implements Serializable {
     public String driverId, vehicleId;
 
     public DriverVehicle(Builder builder) {

@@ -52,8 +52,8 @@ public class DriverVehicleServiceImpl implements DriverVehicleService {
     }
 
     @Override
-    public DriverVehicle read(String s) {
-        return this.repository.read(s);
+    public DriverVehicle read(String vehicleId) {
+        return this.repository.read(vehicleId);
     }
 
     @Override
@@ -62,7 +62,7 @@ public class DriverVehicleServiceImpl implements DriverVehicleService {
     }
 
     @Override
-    public boolean delete(String s) {
-        return this.repository.delete(s);
+    public boolean delete(String vehicleId) {
+        return this.repository.delete(vehicleId);
     }
 }

@@ -4,7 +4,11 @@ package za.ac.cput.groupx30.entity;
 // Entity: Vehicle
 // Date: 7 June 2021
 
-public class Vehicle {
+import javax.persistence.Entity;
+import java.io.Serializable;
+
+@Entity
+public class Vehicle implements Serializable {
     private static String desc;
 
     @Override
