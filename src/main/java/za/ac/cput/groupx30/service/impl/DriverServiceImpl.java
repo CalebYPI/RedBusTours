@@ -5,22 +5,22 @@ package za.ac.cput.groupx30.service.impl;
 // Service: DriverServiceImpl Class
 // Date: 02 August 2021
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import za.ac.cput.groupx30.entity.Driver;
 import za.ac.cput.groupx30.repository.DriverRepository;
-import za.ac.cput.groupx30.repository.impl.DriverRepositoryImpl;
 import za.ac.cput.groupx30.service.DriverService;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Service
 public class DriverServiceImpl implements DriverService {
 
     private static DriverService service = null;
+    @Autowired
     private DriverRepository repository;
 
-    private DriverServiceImpl() {
-        this.repository = DriverRepositoryImpl.getRepository();
-    }
 
     public static DriverService getService() {
         if (service == null) service = new DriverServiceImpl();
@@ -29,7 +29,7 @@ public class DriverServiceImpl implements DriverService {
 
     @Override
     public Set< Driver > getAll() {
-        return this.repository.getAll();
+        return new HashSet<>(this.repository.findAll());
     }
 
     @Override
@@ -46,21 +46,27 @@ public class DriverServiceImpl implements DriverService {
 
     @Override
     public Driver create(Driver driver) {
-        return this.repository.create(driver);
+        return this.repository.save(driver);
     }
 
     @Override
     public Driver read(String s) {
-        return this.repository.read(s);
+        return this.repository.findById(s).orElse(null);
     }
 
     @Override
     public Driver update(Driver driver) {
-        return this.repository.update(driver);
+        if (this.repository.existsById(driver.getId()))
+            return this.repository.save(driver);
+        return null;
     }
 
     @Override
     public boolean delete(String s) {
-        return this.repository.delete(s);
+        if (s != null) {
+            this.repository.deleteById(s);
+            return true;
+        }
+        return false;
     }
 }
