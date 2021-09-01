@@ -7,9 +7,10 @@ package za.ac.cput.groupx30.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.io.Serializable;
 import java.util.Objects;
 @Entity
-public class Passenger {
+public class Passenger implements Serializable {
 
     @Id
     private String id;

@@ -15,50 +15,50 @@ import java.util.Objects;
 @IdClass(PassengerTicket.PassengerTicketId.class)
 public class PassengerTicket implements Serializable {
     @Id
-    private String PassengerId, TicketId;
+    private String passengerId, ticketId;
 
     protected PassengerTicket(){
 
     }
 
     private PassengerTicket(Builder builder){
-        this.PassengerId = builder.PassengerId;
-        this.TicketId = builder.TicketId;
+        this.passengerId = builder.passengerId;
+        this.ticketId = builder.ticketId;
     }
 
     public String getPassengerId() {
-        return PassengerId;
+        return passengerId;
     }
 
     public String getTicketId() {
-        return TicketId;
+        return ticketId;
     }
 
     @Override
     public String toString() {
         return "PassengerTicket{" +
-                "PassengerId='" + PassengerId + '\'' +
-                ", TicketId='" + TicketId + '\'' +
+                "PassengerId='" + passengerId + '\'' +
+                ", TicketId='" + ticketId + '\'' +
                 '}';
     }
 
     public static class Builder{
-        public String PassengerId;
-        public String TicketId;
+        public String passengerId;
+        public String ticketId;
 
         public Builder setPassengerId(String passengerId) {
-            PassengerId = passengerId;
+            this.passengerId = passengerId;
             return this;
         }
 
         public Builder setTicketId(String ticketId) {
-            TicketId = ticketId;
+            this.ticketId = ticketId;
             return this;
         }
 
         public PassengerTicket.Builder copy(PassengerTicket passengerTicket){
-            this.PassengerId = passengerTicket.PassengerId;
-            this.TicketId = passengerTicket.TicketId;
+            this.passengerId = passengerTicket.passengerId;
+            this.ticketId = passengerTicket.ticketId;
 
             return this;
         }
@@ -75,18 +75,18 @@ public class PassengerTicket implements Serializable {
             this.passengerId = passengerId;
             this.ticketId = ticketId;
         }
-    }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        PassengerTicket that = (PassengerTicket) o;
-        return Objects.equals(PassengerId, that.PassengerId) && Objects.equals(TicketId, that.TicketId);
-    }
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            PassengerTicketId that = (PassengerTicketId) o;
+            return passengerId.equals(that.passengerId) && ticketId.equals(that.ticketId);
+        }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(PassengerId, TicketId);
+        @Override
+        public int hashCode() {
+            return Objects.hash(passengerId, ticketId);
+        }
     }
 }

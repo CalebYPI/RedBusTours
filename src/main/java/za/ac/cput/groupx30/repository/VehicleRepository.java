@@ -9,5 +9,5 @@ import java.util.Set;
 
 @Repository
 public interface VehicleRepository extends JpaRepository<Vehicle, String> {
-    Set<Vehicle> getAll();
+    //Set<Vehicle> getAll();
 }

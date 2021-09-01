@@ -11,6 +11,7 @@ import za.ac.cput.groupx30.entity.Vehicle;
 import za.ac.cput.groupx30.repository.VehicleRepository;
 import za.ac.cput.groupx30.service.VehicleService;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Service
@@ -52,6 +53,6 @@ public class VehicleServiceImpl implements VehicleService {
 
     @Override
     public Set<Vehicle> getAll() {
-        return this.repository.getAll();
+        return new HashSet<>(this.repository.findAll());
     }
 }

@@ -14,5 +14,5 @@ import java.util.Set;
 
 @Repository
 public interface DriverVehicleRepository extends JpaRepository< DriverVehicle, DriverVehicle.DriverVehicleId> {
-    Set<DriverVehicle> getAll();
+    //Set<DriverVehicle> getAll();
 }
