@@ -5,11 +5,14 @@ package za.ac.cput.groupx30.repository;
 // Entity: DriverVehicleRepository
 // Date: 26 July 2021
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 import za.ac.cput.groupx30.entity.DriverVehicle;
 import za.ac.cput.groupx30.repository.IRepository;
 
 import java.util.Set;
 
-public interface DriverVehicleRepository extends IRepository< DriverVehicle, String> {
+@Repository
+public interface DriverVehicleRepository extends JpaRepository< DriverVehicle, DriverVehicle.DriverVehicleId> {
     Set<DriverVehicle> getAll();
 }

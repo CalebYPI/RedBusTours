@@ -8,9 +8,8 @@ import za.ac.cput.groupx30.entity.DriverVehicle;
 import za.ac.cput.groupx30.util.Helper;
 
 public class DriverVehicleFactory {
-    public static DriverVehicle createDriverVehicle(String vehicleId)
+    public static DriverVehicle createDriverVehicle(String driverId, String vehicleId)
     {
-        String driverId = Helper.generateId();
 
         DriverVehicle driverVehicle = new DriverVehicle.Builder()
                 .setDriverId(driverId)

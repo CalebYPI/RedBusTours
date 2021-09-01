@@ -22,7 +22,7 @@ import za.ac.cput.groupx30.factory.DriverVehicleFactory;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class DriverVehicleControllerTest {
 
-    private static DriverVehicle driverVehicle = DriverVehicleFactory.createDriverVehicle("Bus15");
+    private static DriverVehicle driverVehicle = DriverVehicleFactory.createDriverVehicle("Bus15", "");
 
     @Autowired
     private TestRestTemplate restTemplate;

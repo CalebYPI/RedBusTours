@@ -5,11 +5,19 @@ package za.ac.cput.groupx30.entity;
 // Date: 7 June 2021
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.IdClass;
 import java.io.Serializable;
+import java.util.Objects;
 
 @Entity
+@IdClass(DriverVehicle.DriverVehicleId.class)
 public class DriverVehicle implements Serializable {
+    @Id
     public String driverId, vehicleId;
+
+    public DriverVehicle() {
+    }
 
     public DriverVehicle(Builder builder) {
         this.driverId = builder.driverId;
@@ -54,6 +62,27 @@ public class DriverVehicle implements Serializable {
         public DriverVehicle build(){
                 return new DriverVehicle(this);
             }
+    }
+    public static class DriverVehicleId implements Serializable {
+        public String driverId, vehicleId;
+
+        public DriverVehicleId(String driverId, String vehicleId) {
+            this.driverId = driverId;
+            this.vehicleId = vehicleId;
         }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            DriverVehicleId that = (DriverVehicleId) o;
+            return driverId.equals(that.driverId) && vehicleId.equals(that.vehicleId);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(driverId, vehicleId);
+        }
+    }
 }
 

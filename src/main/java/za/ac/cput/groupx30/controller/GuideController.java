@@ -39,6 +39,11 @@ public class GuideController
         return service.delete(id);
     }
 
+    @PutMapping("/update")
+    public Guide update(@RequestBody Guide guide) {
+        return service.update(guide);
+    }
+
     @GetMapping(value = "/all")
     public Set<Guide> getAll()
     {

@@ -5,10 +5,10 @@ package za.ac.cput.groupx30.service.impl;
 // Service: VehicleServiceImpl Class
 // Date: 02 August 2021
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.groupx30.entity.Vehicle;
 import za.ac.cput.groupx30.repository.VehicleRepository;
-import za.ac.cput.groupx30.repository.impl.VehicleRepositoryImpl;
 import za.ac.cput.groupx30.service.VehicleService;
 
 import java.util.Set;
@@ -16,11 +16,9 @@ import java.util.Set;
 @Service
 public class VehicleServiceImpl implements VehicleService {
     private VehicleRepository repository;
+    @Autowired
     private static VehicleServiceImpl service;
 
-    private VehicleServiceImpl() {
-        this.repository = VehicleRepositoryImpl.getRepository();
-    }
 
     public static VehicleServiceImpl getService() {
         if (service == null)
@@ -30,22 +28,26 @@ public class VehicleServiceImpl implements VehicleService {
 
     @Override
     public Vehicle create(Vehicle vehicle) {
-        return this.repository.create(vehicle);
+        return this.repository.save(vehicle);
     }
 
     @Override
     public Vehicle read(String id) {
-        return this.repository.read(id);
+        return this.repository.findById(id).orElse(null);
     }
 
     @Override
     public Vehicle update(Vehicle vehicle) {
-        return this.repository.update(vehicle);
+        if (this.repository.existsById(vehicle.getId())) {
+            return this.repository.save(vehicle);
+        }
+        return null;
     }
 
     @Override
     public boolean delete(String id) {
-        return this.repository.delete(id);
+        this.repository.deleteById(id);
+        return !this.repository.existsById(id);
     }
 
     @Override

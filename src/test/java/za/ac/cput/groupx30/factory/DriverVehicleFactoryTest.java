@@ -7,14 +7,17 @@ package za.ac.cput.groupx30.factory;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import za.ac.cput.groupx30.entity.Driver;
 import za.ac.cput.groupx30.entity.DriverVehicle;
+import za.ac.cput.groupx30.entity.Vehicle;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
 
 class DriverVehicleFactoryTest {
 
-    String driverVehicle = "Bus1";
-    DriverVehicle driverVehicle1 = DriverVehicleFactory.createDriverVehicle(driverVehicle);
+    Driver driver = DriverFactory.createId("Sam");
+    Vehicle vehicle = VehicleFactory.createVehicle("Mercedes","Bus 15");
+    DriverVehicle driverVehicle1 = DriverVehicleFactory.createDriverVehicle(driver.getId(), vehicle.getId());
 
     @Test
     void testEqualityId() {

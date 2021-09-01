@@ -5,10 +5,10 @@ package za.ac.cput.groupx30.service.impl;
 // Service: DriverVehicleServiceImpl Class
 // Date: 02 August 2021
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.groupx30.entity.DriverVehicle;
 import za.ac.cput.groupx30.repository.DriverVehicleRepository;
-import za.ac.cput.groupx30.repository.impl.DriverVehicleRepositoryImpl;
 import za.ac.cput.groupx30.service.DriverVehicleService;
 
 import java.util.HashSet;
@@ -18,16 +18,14 @@ import java.util.Set;
 public class DriverVehicleServiceImpl implements DriverVehicleService {
 
     private static DriverVehicleService service = null;
-        private DriverVehicleRepository repository;
+    @Autowired
+    private DriverVehicleRepository repository;
 
-        private DriverVehicleServiceImpl() {
-            this.repository = DriverVehicleRepositoryImpl.getRepository();
-        }
 
-        public static DriverVehicleService getService() {
-            if (service == null) service = new DriverVehicleServiceImpl();
-            return service;
-        }
+    public static DriverVehicleService getService() {
+        if (service == null) service = new DriverVehicleServiceImpl();
+        return service;
+    }
 
     @Override
     public Set< DriverVehicle > getAll() {
@@ -48,21 +46,21 @@ public class DriverVehicleServiceImpl implements DriverVehicleService {
 
     @Override
     public DriverVehicle create(DriverVehicle driverVehicle) {
-        return this.repository.create(driverVehicle);
+        return this.repository.save(driverVehicle);
     }
 
     @Override
-    public DriverVehicle read(String vehicleId) {
-        return this.repository.read(vehicleId);
+    public DriverVehicle read(DriverVehicle.DriverVehicleId vehicleId) {
+        return this.repository.findById(vehicleId).orElse(null);
     }
 
     @Override
-    public DriverVehicle update(DriverVehicle driverVehicle) {
-        return this.repository.update(driverVehicle);
+    public boolean delete(DriverVehicle driverVehicle) {
+        if (driverVehicle != null){
+            this.repository.delete(driverVehicle);
+            return true;
+        }
+        return false;
     }
 
-    @Override
-    public boolean delete(String vehicleId) {
-        return this.repository.delete(vehicleId);
-    }
 }

@@ -5,11 +5,17 @@ package za.ac.cput.groupx30.entity;
 // Date: 7 June 2021
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.io.Serializable;
 
 @Entity
 public class Vehicle implements Serializable {
+    @Id
+    public String Id;
     private static String desc;
+
+    public Vehicle() {
+    }
 
     @Override
     public String toString() {
@@ -18,9 +24,6 @@ public class Vehicle implements Serializable {
                 ", desc='" + desc + '\'' +
                 '}';
     }
-
-    public String Id;
-    //public String desc;
 
     public Vehicle(Builder builder) {
         this.Id = builder.Id;

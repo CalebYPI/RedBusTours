@@ -2,6 +2,7 @@ package za.ac.cput.groupx30.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -11,10 +12,10 @@ import java.util.Objects;
  * Date: 06 June 2021
  */
 @Entity
-public class PassengerTicket {
+@IdClass(PassengerTicket.PassengerTicketId.class)
+public class PassengerTicket implements Serializable {
     @Id
-    private String PassengerId;
-    private String TicketId;
+    private String PassengerId, TicketId;
 
     protected PassengerTicket(){
 
