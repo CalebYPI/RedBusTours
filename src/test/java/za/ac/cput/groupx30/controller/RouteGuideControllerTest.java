@@ -16,7 +16,9 @@ import za.ac.cput.groupx30.factory.RouteGuideFactory;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class RouteGuideControllerTest
 {
-    private static RouteGuide routeGuide = RouteGuideFactory.createRouteGuide("" , "");
+    private static RouteGuide routeGuide = RouteGuideFactory.createRouteGuide("146532" , "Knysna");
+    public static String SECURITY_USERNAME = "admin";
+    public static String SECURITY_PASSWORD = "root";
 
     private TestRestTemplate restTemplate;
     private final String BASE_URL = "http://localhost:8080/routeGuide";
@@ -56,6 +58,8 @@ public class RouteGuideControllerTest
         String url = BASE_URL + "/all";
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> entity = new HttpEntity<>(null, headers);
-        ResponseEntity<String> postResponse = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
+        ResponseEntity<String> postResponse = restTemplate
+                .withBasicAuth(SECURITY_USERNAME , SECURITY_PASSWORD)
+                .exchange(url, HttpMethod.GET, entity, String.class);
     }
 }
