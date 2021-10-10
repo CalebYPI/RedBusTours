@@ -9,3 +9,4 @@ public class RedBusToursApplication {
         SpringApplication.run(RedBusToursApplication.class, args);
     }
 }
+

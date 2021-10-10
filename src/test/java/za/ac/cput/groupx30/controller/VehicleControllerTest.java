@@ -23,6 +23,8 @@ import za.ac.cput.groupx30.factory.VehicleFactory;
 public class VehicleControllerTest {
 
     private static Vehicle vehicle = VehicleFactory.createVehicle("4453453", "Mercedes Benz");
+    public static String SECURITY_USERNAME = "abcd";
+    public static String SECURITY_PASSWORD = "password";
 
     @Autowired
     private TestRestTemplate restTemplate;
@@ -58,6 +60,8 @@ public class VehicleControllerTest {
         String url = BASE_URL + "/all";
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> entity = new HttpEntity<>(null, headers);
-        ResponseEntity<String> postResponse = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
+        ResponseEntity<String> postResponse = restTemplate
+                .withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD)
+                .exchange(url, HttpMethod.GET, entity, String.class);
     }
 }
