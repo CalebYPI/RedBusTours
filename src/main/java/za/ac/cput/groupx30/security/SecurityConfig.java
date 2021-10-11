@@ -25,8 +25,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .withUser("user")
                 .password("password")
-                .roles(USER_ROLE);
+                .roles(USER_ROLE)
                 //You may add extra roles if you wish
+                .and()
+                .withUser("Shaheed")
+                .password(encoder().encode("987654321"))
+                .roles(USER_ROLE);
+
     }
 
     @Override
@@ -53,7 +58,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, "/location/all").hasRole(USER_ROLE)
 
                 /*-- Please add the rest of the classes below --*/
-
+                //Passenger
+                .antMatchers(HttpMethod.POST, "/passenger/create").hasRole(ADMIN_ROLE)
+                .antMatchers(HttpMethod.GET, "/passenger/read").hasRole(USER_ROLE)
+                .antMatchers(HttpMethod.PUT, "/passenger/update").hasRole(ADMIN_ROLE)
+                .antMatchers(HttpMethod.DELETE, "/passenger/delete").hasRole(ADMIN_ROLE)
+                .antMatchers(HttpMethod.GET, "/passenger/getall").hasRole(USER_ROLE)
+                //PassengerTicket
+                .antMatchers(HttpMethod.POST, "/passengerTicket/create").hasRole(ADMIN_ROLE)
+                .antMatchers(HttpMethod.GET, "/passengerTicket/read").hasRole(USER_ROLE)
+                .antMatchers(HttpMethod.PUT, "/passengerTicket/update").hasRole(ADMIN_ROLE)
+                .antMatchers(HttpMethod.DELETE, "/passengerTicket/delete").hasRole(ADMIN_ROLE)
+                .antMatchers(HttpMethod.GET, "/passengerTicket/getall").hasRole(USER_ROLE)
 
 
 
