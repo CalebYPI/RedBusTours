@@ -20,6 +20,9 @@ import static org.junit.jupiter.api.Assertions.*;
 class RouteTicketControllerTest {
 
     private static RouteTicket routTicket = RouteTicketFactory.createTicket("90324m", "Nmasd");
+    public static String SECURITY_USERNAME = "abc";
+    public static String SECURITY_PASSWORD = "";
+
 
     @Autowired
     private TestRestTemplate restTemplate;
@@ -28,7 +31,9 @@ class RouteTicketControllerTest {
     @Test
     void a_create() {
         String url = BASE_URL + "/create";
-        ResponseEntity<RouteTicket> postResponse = restTemplate.postForEntity(url, routTicket, RouteTicket.class);
+        ResponseEntity<RouteTicket> postResponse = restTemplate
+                .withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD)
+                .postForEntity(url, routTicket, RouteTicket.class);
         assertNotNull(postResponse);
         assertNotNull(postResponse.getBody());
         assertEquals(postResponse.getStatusCode(), HttpStatus.OK);
@@ -41,7 +46,9 @@ class RouteTicketControllerTest {
     void b_read() {
         String url = BASE_URL + "/read/" + routTicket.getTicketID();
         System.out.println("URL: " + url);
-        ResponseEntity<RouteTicket> getResponse = restTemplate.getForEntity(url, RouteTicket.class);
+        ResponseEntity<RouteTicket> getResponse = restTemplate
+                .withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD)
+                .getForEntity(url, RouteTicket.class);
         assertEquals(routTicket.getTicketID(), getResponse.getBody().getTicketID());
     }
 
@@ -60,7 +67,9 @@ class RouteTicketControllerTest {
     void e_delete() {
         String url = BASE_URL + "/delete/" + routTicket.getTicketID();
         System.out.println("URL: " + url);
-        restTemplate.delete(url);
+        restTemplate
+                .withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD)
+                .delete(url);
     }
 
     @Test
@@ -68,7 +77,9 @@ class RouteTicketControllerTest {
         String url = BASE_URL + "/all";
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> entity = new HttpEntity<>(null, headers);
-        ResponseEntity<String> getResponse = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
+        ResponseEntity<String> getResponse = restTemplate
+                .withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD)
+                .exchange(url, HttpMethod.GET, entity, String.class);
         System.out.println("Show All: " + getResponse.getBody());
         assertNotNull(getResponse.getBody());
     }
