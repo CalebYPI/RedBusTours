@@ -13,6 +13,8 @@ import za.ac.cput.groupx30.factory.GuideFactory;
 public class GuideControllerTest
 {
     private static Guide guide = GuideFactory.createId("Seapoint" , "162365");
+    public static String SECURITY_USERNAME = "admin";
+    public static String SECURITY_PASSWORD = "root";
 
     @Autowired
     private TestRestTemplate restTemplate;
@@ -53,6 +55,9 @@ public class GuideControllerTest
         String url = BASE_URL + "/all";
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> entity = new HttpEntity<>(null, headers);
-        ResponseEntity<String> postResponse = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
+        ResponseEntity<String> postResponse = restTemplate
+                .withBasicAuth(SECURITY_USERNAME , SECURITY_PASSWORD)
+                .exchange(url, HttpMethod.GET, entity, String.class);
+
     }
 }
