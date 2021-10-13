@@ -23,6 +23,8 @@ import za.ac.cput.groupx30.factory.DriverVehicleFactory;
 public class DriverVehicleControllerTest {
 
     private static DriverVehicle driverVehicle = DriverVehicleFactory.createDriverVehicle("Bus15", "");
+    public static String SECURITY_USERNAME = "abcd";
+    public static String SECURITY_PASSWORD = "password";
 
     @Autowired
     private TestRestTemplate restTemplate;
@@ -31,13 +33,13 @@ public class DriverVehicleControllerTest {
     @Test
     void create() {
         String url = BASE_URL + "/create";
-        ResponseEntity<DriverVehicle> postResponse = restTemplate.postForEntity(url, driverVehicle, DriverVehicle.class);
+        ResponseEntity< DriverVehicle > postResponse = restTemplate.postForEntity(url, driverVehicle, DriverVehicle.class);
     }
 
     @Test
     void read() {
         String url = BASE_URL + "/read/";
-        ResponseEntity<DriverVehicle> postResponse = restTemplate.getForEntity(url, DriverVehicle.class);
+        ResponseEntity< DriverVehicle > postResponse = restTemplate.getForEntity(url, DriverVehicle.class);
     }
 
     @Test
@@ -57,7 +59,9 @@ public class DriverVehicleControllerTest {
     void getAll() {
         String url = BASE_URL + "/all";
         HttpHeaders headers = new HttpHeaders();
-        HttpEntity<String> entity = new HttpEntity<>(null, headers);
-        ResponseEntity<String> postResponse = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
+        HttpEntity< String > entity = new HttpEntity<>(null, headers);
+        ResponseEntity< String > postResponse = restTemplate
+                .withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD)
+                .exchange(url, HttpMethod.GET, entity, String.class);
     }
 }
