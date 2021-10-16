@@ -5,7 +5,7 @@ import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.Objects;
 
-/**
+/*
  * Author: Shaheed_Cloete(213239442)
  * Desc: Entity for Ticket
  * Date: 06 June 2021
@@ -26,7 +26,7 @@ public class Ticket implements Serializable{
     private int Price;
 
 
-    protected Ticket(){
+    public Ticket(){
 
     }
 

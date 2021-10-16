@@ -1,5 +1,5 @@
 package za.ac.cput.groupx30.entity;
-/**
+/*
  * Author: Shaheed_Cloete(213239442)
  * Desc: Entity for Passenger
  * Date: 06 June 2021
@@ -17,7 +17,7 @@ public class Passenger implements Serializable {
     private String name;
     private String contact;
 
-    protected Passenger(){
+    public Passenger(){
 
     }
 

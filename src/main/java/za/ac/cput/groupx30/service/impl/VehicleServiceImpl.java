@@ -16,11 +16,9 @@ import java.util.Set;
 
 @Service
 public class VehicleServiceImpl implements VehicleService {
-    private VehicleRepository repository;
     @Autowired
+    private VehicleRepository repository;
     private static VehicleServiceImpl service;
-
-
     public static VehicleServiceImpl getService() {
         if (service == null)
             service = new VehicleServiceImpl();

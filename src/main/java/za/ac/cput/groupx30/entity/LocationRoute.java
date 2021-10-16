@@ -18,7 +18,7 @@ public class LocationRoute implements Serializable {
     @Id
     private String routeId, locationId;
 
-    protected LocationRoute() {}
+    public LocationRoute() {}
 
     private LocationRoute(Builder builder){
         this.routeId = builder.RouteId;
@@ -66,6 +66,9 @@ public class LocationRoute implements Serializable {
     }
 
     public static class LocationRouteId implements Serializable {
+        public LocationRouteId() {
+        }
+
         private String routeId, locationId;
 
         public LocationRouteId(String routeId, String locationId) {

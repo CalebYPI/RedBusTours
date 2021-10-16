@@ -59,6 +59,9 @@ public class DriverRoute implements Serializable {
         }
     }
     public static class DriverRouteId implements Serializable {
+        public DriverRouteId() {
+        }
+
         public String driverID;
         public String routeID;
 

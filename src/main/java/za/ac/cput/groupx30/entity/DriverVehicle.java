@@ -64,6 +64,9 @@ public class DriverVehicle implements Serializable {
             }
     }
     public static class DriverVehicleId implements Serializable {
+        public DriverVehicleId() {
+        }
+
         public String driverId, vehicleId;
 
         public DriverVehicleId(String driverId, String vehicleId) {

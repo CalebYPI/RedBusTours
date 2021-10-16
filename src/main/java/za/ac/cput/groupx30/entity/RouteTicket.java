@@ -20,7 +20,7 @@ public class RouteTicket implements Serializable {
     @Id
     private String route, ticketID;
 
-    protected RouteTicket(){}
+    public RouteTicket(){}
 
     public RouteTicket(Builder builder){
         this.route = builder.route;
@@ -46,7 +46,7 @@ public class RouteTicket implements Serializable {
             this.route = route;
             return this;
         }
-        public Builder setTicketID(String routeDesc){
+        public Builder setTicketID(String ticketID){
             this.ticketID = ticketID;
             return this;
         }
@@ -71,24 +71,27 @@ public class RouteTicket implements Serializable {
     }
 
     public static class RouteTicketID implements Serializable{
+        public RouteTicketID() {
+        }
+
         private String route, ticketID;
 
         public RouteTicketID(String route, String ticketID){
             this.route = route;
             this.ticketID = ticketID;
         }
-    }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if(o == null || getClass() != o.getClass()) return false;
-        RouteTicket that = (RouteTicket) o;
-        return getRoute().equals(that.getRoute()) && getTicketID().equals(that.getTicketID());
-    }
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            RouteTicketID that = (RouteTicketID) o;
+            return route.equals(that.route) && ticketID.equals(that.ticketID);
+        }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(getRoute(), getTicketID());
+        @Override
+        public int hashCode() {
+            return Objects.hash(route, ticketID);
+        }
     }
 }

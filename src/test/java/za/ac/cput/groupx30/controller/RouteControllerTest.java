@@ -17,6 +17,9 @@ import static org.junit.jupiter.api.Assertions.*;
 class RouteControllerTest {
 
     private static Route route = RouteFactory.createRoute("Blue Route", 20, 60);
+    public static String SECURITY_USERNAME = "Caleb";
+    public static String SECURITY_PASSWORD = "215169751";
+
     @Autowired
     private TestRestTemplate restTemplate;
     private final String BASE_URL = "http://localhost:8080/route";
@@ -24,7 +27,7 @@ class RouteControllerTest {
     @Test
     void a_create() {
         String url = BASE_URL + "/create";
-        ResponseEntity<Route> postResponse = restTemplate.postForEntity(url, route, Route.class);
+        ResponseEntity<Route> postResponse = restTemplate.withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD).postForEntity(url, route, Route.class);
         assertNotNull(postResponse);
         assertNotNull(postResponse.getBody());
         assertEquals(postResponse.getStatusCode(), HttpStatus.OK);
@@ -37,7 +40,7 @@ class RouteControllerTest {
     void b_read() {
         String url = BASE_URL + "/read/" + route.getId();
         System.out.println("URL: " + url);
-        ResponseEntity<Route> getResponse = restTemplate.getForEntity(url, Route.class);
+        ResponseEntity<Route> getResponse = restTemplate.withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD).getForEntity(url, Route.class);
         assertEquals(route.getId(), getResponse.getBody().getId());
     }
 
@@ -48,7 +51,7 @@ class RouteControllerTest {
         System.out.println("URL: " + url);
         System.out.println("Updated Data: " + updated);
         restTemplate.put(url, updated, Route.class);
-        ResponseEntity<Route> putResponse = restTemplate.getForEntity(url, Route.class);
+        ResponseEntity<Route> putResponse = restTemplate.withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD).getForEntity(url, Route.class);
         assertNotNull(putResponse.getBody());
     }
 
@@ -56,7 +59,7 @@ class RouteControllerTest {
     void e_delete() {
         String url = BASE_URL + "/delete/" + route.getId();
         System.out.println("URL: " + url);
-        restTemplate.delete(url);
+        restTemplate.withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD).delete(url);
     }
 
     @Test
@@ -64,7 +67,7 @@ class RouteControllerTest {
         String url = BASE_URL + "/all";
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> entity = new HttpEntity<>(null, headers);
-        ResponseEntity<String> getResponse = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
+        ResponseEntity<String> getResponse = restTemplate.withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD).exchange(url, HttpMethod.GET, entity, String.class);
         System.out.println("All Data: " + getResponse.getBody());
         assertNotNull(getResponse);
     }

@@ -18,6 +18,8 @@ import static org.junit.jupiter.api.Assertions.*;
 class LocationControllerTest {
 
     private static Location location = LocationFactory.createLocation("CTICC", "Foreshore" , false);
+    public static String SECURITY_USERNAME = "Caleb";
+    public static String SECURITY_PASSWORD = "215169751";
 
     @Autowired
     private TestRestTemplate restTemplate;
@@ -26,7 +28,7 @@ class LocationControllerTest {
     @Test
     void a_create() {
         String url = BASE_URL + "/create";
-        ResponseEntity<Location> postResponse = restTemplate.postForEntity(url, location, Location.class);
+        ResponseEntity<Location> postResponse = restTemplate.withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD).postForEntity(url, location, Location.class);
         assertNotNull(postResponse);
         assertNotNull(postResponse.getBody());
         assertEquals(postResponse.getStatusCode(), HttpStatus.OK);
@@ -39,7 +41,7 @@ class LocationControllerTest {
     void b_read() {
         String url = BASE_URL + "/read/" + location.getId();
         System.out.println("URL: " + url);
-        ResponseEntity<Location> getResponse = restTemplate.getForEntity(url, Location.class);
+        ResponseEntity<Location> getResponse = restTemplate.withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD).getForEntity(url, Location.class);
         assertEquals(location.getId(), getResponse.getBody().getId());
     }
 
@@ -50,7 +52,7 @@ class LocationControllerTest {
         System.out.println("URL: " + url);
         System.out.println("Post Data: " + updated);
         restTemplate.put(url, updated, Location.class);
-        ResponseEntity<Location> putResponse = restTemplate.getForEntity(url, Location.class);
+        ResponseEntity<Location> putResponse = restTemplate.withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD).getForEntity(url, Location.class);
         assertNotNull(putResponse.getBody());
     }
 
@@ -58,7 +60,7 @@ class LocationControllerTest {
     void e_delete() {
         String url = BASE_URL + "/delete/" + location.getId();
         System.out.println("URL: " + url);
-        restTemplate.delete(url);
+        restTemplate.withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD).delete(url);
     }
 
     @Test
@@ -66,7 +68,7 @@ class LocationControllerTest {
         String url = BASE_URL + "/all";
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> entity = new HttpEntity<>(null, headers);
-        ResponseEntity<String> getResponse = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
+        ResponseEntity<String> getResponse = restTemplate.withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD).exchange(url, HttpMethod.GET, entity, String.class);
         System.out.println("Show All: " + getResponse.getBody());
         assertNotNull(getResponse.getBody());
     }

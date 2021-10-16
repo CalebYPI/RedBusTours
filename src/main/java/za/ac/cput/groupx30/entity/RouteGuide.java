@@ -75,6 +75,9 @@ public class RouteGuide implements Serializable
     }
 
     public static class RouteGuideId implements Serializable {
+        public RouteGuideId() {
+        }
+
         private String routeId, guideId;
 
         public RouteGuideId(String routeId, String guideId) {

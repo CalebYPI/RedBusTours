@@ -17,7 +17,7 @@ public class PassengerTicket implements Serializable {
     @Id
     private String passengerId, ticketId;
 
-    protected PassengerTicket(){
+    public PassengerTicket(){
 
     }
 
@@ -70,6 +70,9 @@ public class PassengerTicket implements Serializable {
 
     public static class PassengerTicketId implements Serializable{
         private String passengerId, ticketId;
+
+        public PassengerTicketId() {
+        }
 
         public PassengerTicketId(String passengerId, String ticketId){
             this.passengerId = passengerId;

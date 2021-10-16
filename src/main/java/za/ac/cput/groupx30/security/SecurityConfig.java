@@ -20,11 +20,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
                 .withUser("Admin")
-                .password("admin")
+                .password(encoder().encode("MasterKey"))
                 .roles(USER_ROLE, ADMIN_ROLE)
                 .and()
                 .withUser("user")
-                .password("password")
+                .password(encoder().encode("password"))
                 .roles(USER_ROLE)
                 //You may add extra roles if you wish
                 .and()
@@ -39,39 +39,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.httpBasic()
                 .and()
                 .authorizeRequests()
-                //Route
-                .antMatchers(HttpMethod.POST, "/route/create").hasRole(USER_ROLE)
-                .antMatchers(HttpMethod.GET, "/route/read/**").hasRole(USER_ROLE)
-                .antMatchers(HttpMethod.PUT, "/route/update").hasRole(ADMIN_ROLE)
-                .antMatchers(HttpMethod.DELETE, "/route/delete/**").hasRole(ADMIN_ROLE)
-                .antMatchers(HttpMethod.GET, "/route/all").hasRole(USER_ROLE)
-                //LocationRoute
-                .antMatchers(HttpMethod.POST, "/locationRoute/create").hasRole(USER_ROLE)
-                .antMatchers(HttpMethod.GET, "/locationRoute/read/**").hasRole(USER_ROLE)
-                .antMatchers(HttpMethod.DELETE, "/locationRoute/delete/**").hasRole(ADMIN_ROLE)
-                .antMatchers(HttpMethod.GET, "/locationRoute/all").hasRole(USER_ROLE)
-                //Location
-                .antMatchers(HttpMethod.POST, "/location/create").hasRole(USER_ROLE)
-                .antMatchers(HttpMethod.GET, "/location/read/**").hasRole(USER_ROLE)
-                .antMatchers(HttpMethod.PUT, "/location/update").hasRole(ADMIN_ROLE)
-                .antMatchers(HttpMethod.DELETE, "/location/delete/**").hasRole(ADMIN_ROLE)
-                .antMatchers(HttpMethod.GET, "/location/all").hasRole(USER_ROLE)
-
-                /*-- Please add the rest of the classes below --*/
-                //Passenger
-                .antMatchers(HttpMethod.POST, "/passenger/create").hasRole(ADMIN_ROLE)
-                .antMatchers(HttpMethod.GET, "/passenger/read").hasRole(USER_ROLE)
-                .antMatchers(HttpMethod.PUT, "/passenger/update").hasRole(ADMIN_ROLE)
-                .antMatchers(HttpMethod.DELETE, "/passenger/delete").hasRole(ADMIN_ROLE)
-                .antMatchers(HttpMethod.GET, "/passenger/getall").hasRole(USER_ROLE)
-                //PassengerTicket
-                .antMatchers(HttpMethod.POST, "/passengerTicket/create").hasRole(ADMIN_ROLE)
-                .antMatchers(HttpMethod.GET, "/passengerTicket/read").hasRole(USER_ROLE)
-                .antMatchers(HttpMethod.PUT, "/passengerTicket/update").hasRole(ADMIN_ROLE)
-                .antMatchers(HttpMethod.DELETE, "/passengerTicket/delete").hasRole(ADMIN_ROLE)
-                .antMatchers(HttpMethod.GET, "/passengerTicket/getall").hasRole(USER_ROLE)
-
-
+                //WildCard for all classes
+                .antMatchers(HttpMethod.POST, "**/create").hasRole(USER_ROLE)
+                .antMatchers(HttpMethod.GET, "**/read/**").hasRole(USER_ROLE)
+                .antMatchers(HttpMethod.PUT, "**/update").hasRole(ADMIN_ROLE)
+                .antMatchers(HttpMethod.DELETE, "**/delete/**").hasRole(ADMIN_ROLE)
+                .antMatchers(HttpMethod.GET, "**/all").hasRole(USER_ROLE)
 
                 .and()
                 .csrf().disable()
