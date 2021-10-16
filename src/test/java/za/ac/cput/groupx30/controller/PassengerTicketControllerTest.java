@@ -30,6 +30,9 @@ class PassengerTicketControllerTest {
     private static Ticket ticket = TicketFactory.createTicket("06/06/2021","15:00", 250);
     private static PassengerTicket passengerTicket = PassengerTicketFactory.createPassengerTicket(passenger.getId(), ticket.getId());
 
+    public static String SECURITY_USERNAME = "shaheed";
+    public static String SECURITY_PASSWORD = "963852741";
+
     @Autowired
     private TestRestTemplate restTemplate;
     private final String BASE_URL = "http://localhost:8080/passengerTicket";
@@ -38,7 +41,9 @@ class PassengerTicketControllerTest {
     @Test
     void a_create() {
         String url = BASE_URL + "/create";
-        ResponseEntity<PassengerTicket> postResponse = restTemplate.postForEntity(url, passengerTicket, PassengerTicket.class);
+        ResponseEntity<PassengerTicket> postResponse = restTemplate
+                .withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD)
+                .postForEntity(url, passengerTicket, PassengerTicket.class);
         assertNotNull(postResponse);
         assertNotNull(postResponse.getBody());
         assertEquals(postResponse.getStatusCode(), HttpStatus.OK);
@@ -51,7 +56,9 @@ class PassengerTicketControllerTest {
     void b_read() {
         String url = BASE_URL + "/read" + passengerTicket.getPassengerId() + "/" + passengerTicket.getTicketId();
         System.out.println("URL: " + url);
-        ResponseEntity<PassengerTicket> postResponse = restTemplate.getForEntity(url, PassengerTicket.class);
+        ResponseEntity<PassengerTicket> postResponse = restTemplate
+                .withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD)
+                .getForEntity(url, PassengerTicket.class);
         assertEquals(passengerTicket, postResponse.getBody());
     }
 
@@ -59,7 +66,9 @@ class PassengerTicketControllerTest {
     void e_delete() {
         String url = BASE_URL + "/delete" + passengerTicket.getPassengerId();
         System.out.println("URL: " + url);
-        restTemplate.delete(url);
+        restTemplate
+                .withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD)
+                .delete(url);
     }
 
     @Test
@@ -67,7 +76,9 @@ class PassengerTicketControllerTest {
         String url = BASE_URL + "/getall";
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> entity = new HttpEntity<>(null, headers);
-        ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
+        ResponseEntity<String> response = restTemplate
+                .withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD)
+                .exchange(url, HttpMethod.GET, entity, String.class);
         System.out.println("Show All: ");
         System.out.println(response);
         System.out.println(response.getBody());
