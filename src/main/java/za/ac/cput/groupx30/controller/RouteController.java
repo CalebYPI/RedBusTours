@@ -21,7 +21,7 @@ public class RouteController {
     @GetMapping("/home")
     public String home(Model model) {
         model.addAttribute("routes", service.getAll());
-        return "/routeHome";
+        return "routeHome";
     }
 
     @GetMapping("/create")
@@ -29,7 +29,7 @@ public class RouteController {
         return "routeAdd";
     }
 
-    @PostMapping(value = "/create")
+    @PostMapping("/create")
     public String create(@ModelAttribute Route route, BindingResult result, Model model) {
         if (result.hasErrors())
             return "routeAdd";

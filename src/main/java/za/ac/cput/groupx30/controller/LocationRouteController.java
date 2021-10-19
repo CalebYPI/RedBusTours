@@ -2,6 +2,8 @@ package za.ac.cput.groupx30.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import za.ac.cput.groupx30.entity.Location;
 import za.ac.cput.groupx30.entity.LocationRoute;
@@ -24,8 +26,21 @@ public class LocationRouteController {
     @Autowired
     private RouteService routeService;
 
+    @GetMapping("/home")
+    public String home(Model model) {
+        model.addAttribute("location routes", locationRouteService.getAll());
+        return "locationRouteHome";
+    }
+
+    @GetMapping("/create")
+    public String getCreateForm(LocationRoute locationRoute) {
+        return "locationRouteHome";
+    }
+
     @PostMapping(value = "/create")
-    public LocationRoute create(@RequestBody LocationRoute locationRoute) {
+    public String create(@ModelAttribute LocationRoute locationRoute, BindingResult result, Model model) {
+        if (result.hasErrors())
+            return "locationRouteAdd";
         boolean routeExists = false;
         boolean locationExists = false;
 
@@ -38,15 +53,24 @@ public class LocationRouteController {
             locationExists = true;
 
         if (routeExists && locationExists)
-            return locationRouteService.save(locationRoute);
+            locationRouteService.save(locationRoute);
         else
-            return LocationRouteFactory.createLocationRoute("", "");
+            LocationRouteFactory.createLocationRoute("", "");
+        return "redirect:/locationRoute/home";
     }
 
     @GetMapping(value = "/read/{routeId}/{locationId}")
     public LocationRoute read(@PathVariable String routeId, @PathVariable("locationId") String locationId) {
         LocationRoute.LocationRouteId id = new LocationRoute.LocationRouteId(routeId, locationId);
         return locationRouteService.read(id);
+    }
+
+    @GetMapping("/delete/{routeId}/{locationId}")
+    public String delete(@PathVariable String routeId, @PathVariable("locationId") String locationId, Model model) {
+        LocationRoute locationRoute = LocationRouteFactory.createLocationRoute(locationId, routeId);
+        locationRouteService.delete(locationRoute);
+        model.addAttribute("location routes", locationRouteService.getAll());
+        return "redirect:/locationRoute/home";
     }
 
     @DeleteMapping(value = "/delete/{routeId}/{locationId}")
