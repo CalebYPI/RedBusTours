@@ -6,11 +6,13 @@ package za.ac.cput.groupx30.service;
 // Date: 02 August 2021
 
 import za.ac.cput.groupx30.entity.DriverVehicle;
+import za.ac.cput.groupx30.entity.LocationRoute;
 import za.ac.cput.groupx30.service.IService;
 
 import java.util.Set;
 
 public interface DriverVehicleService {
+    DriverVehicle save(DriverVehicle driverVehicle);
     DriverVehicle create(DriverVehicle driverVehicle);
 
     DriverVehicle read(DriverVehicle.DriverVehicleId id);
