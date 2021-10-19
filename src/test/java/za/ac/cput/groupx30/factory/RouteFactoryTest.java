@@ -5,6 +5,7 @@ package za.ac.cput.groupx30.factory;
  Author: Caleb Ruiters (215169751)
  Date: 31 May 2021
 */
+
 import org.junit.jupiter.api.*;
 import za.ac.cput.groupx30.entity.Route;
 
@@ -29,7 +30,7 @@ class RouteFactoryTest {
         //Object Equality
         Route boat1 = RouteFactory.createRoute("WaterFront", 20, 45);
         Route boat2 = new Route.Builder().copy(boat1).setTime(55).build();
-        assertEquals(boat1.getDescription(),boat2.getDescription());
+        assertEquals(boat1.getDescription(), boat2.getDescription());
     }
 
     @Test

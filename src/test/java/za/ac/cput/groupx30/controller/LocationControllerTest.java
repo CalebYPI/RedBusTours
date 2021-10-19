@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class LocationControllerTest {
 
-    private static Location location = LocationFactory.createLocation("CTICC", "Foreshore" , false);
+    private static Location location = LocationFactory.createLocation("CTICC", "Foreshore", false);
     public static String SECURITY_USERNAME = "Caleb";
     public static String SECURITY_PASSWORD = "215169751";
 

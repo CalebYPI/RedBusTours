@@ -23,7 +23,7 @@ class DriverFactoryTest {
     }
 
     @Test
-    void testIdentityId(){
+    void testIdentityId() {
         Assertions.assertSame("Thokozile", "Thokozile");
     }
 

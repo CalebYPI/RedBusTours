@@ -13,7 +13,8 @@ import za.ac.cput.groupx30.entity.DriverRoute;
 import za.ac.cput.groupx30.repository.IRepository;
 
 import java.util.Set;
+
 @Repository
-public interface DriverRouteRepository extends JpaRepository< DriverRoute, DriverRoute.DriverRouteId> {
+public interface DriverRouteRepository extends JpaRepository<DriverRoute, DriverRoute.DriverRouteId> {
     //Set<DriverRoute> getAll();
 }

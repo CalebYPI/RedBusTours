@@ -26,8 +26,8 @@ class LocationRouteServiceImplTest {
     @Test
     void a_create() {
         LocationRoute create = service.save(locationRoute);
-        assertEquals(locationRoute.getRouteId(),create.getRouteId());
-        assertEquals(locationRoute.getLocationId(),create.getLocationId());
+        assertEquals(locationRoute.getRouteId(), create.getRouteId());
+        assertEquals(locationRoute.getLocationId(), create.getLocationId());
         System.out.println("Created: " + create);
     }
 

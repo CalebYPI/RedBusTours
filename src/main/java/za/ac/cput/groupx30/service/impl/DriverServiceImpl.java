@@ -28,16 +28,16 @@ public class DriverServiceImpl implements DriverService {
     }
 
     @Override
-    public Set< Driver > getAll() {
+    public Set<Driver> getAll() {
         return new HashSet<>(this.repository.findAll());
     }
 
     @Override
-    public Set< Driver > getAllStartWithB() {
+    public Set<Driver> getAllStartWithB() {
         Set<Driver> drivers = getAll();
         Set<Driver> driversWithB = new HashSet<>();
-        for (Driver driver : drivers){
-            if (driver.getName().trim().toLowerCase().startsWith("b")){
+        for (Driver driver : drivers) {
+            if (driver.getName().trim().toLowerCase().startsWith("b")) {
                 driversWithB.add(driver);
             }
         }

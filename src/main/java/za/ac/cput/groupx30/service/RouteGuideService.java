@@ -10,10 +10,12 @@ import za.ac.cput.groupx30.service.IService;
 
 import java.util.Set;
 
-public interface RouteGuideService
-{
-        RouteGuide create(RouteGuide routeGuide);
-        RouteGuide read(RouteGuide.RouteGuideId id);
-        boolean delete(RouteGuide routeGuide);
-        Set<RouteGuide> getAll();
+public interface RouteGuideService {
+    RouteGuide create(RouteGuide routeGuide);
+
+    RouteGuide read(RouteGuide.RouteGuideId id);
+
+    boolean delete(RouteGuide routeGuide);
+
+    Set<RouteGuide> getAll();
 }

@@ -16,7 +16,7 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 class DriverVehicleFactoryTest {
 
     Driver driver = DriverFactory.createId("Sam");
-    Vehicle vehicle = VehicleFactory.createVehicle("Mercedes","Bus 15");
+    Vehicle vehicle = VehicleFactory.createVehicle("Mercedes", "Bus 15");
     DriverVehicle driverVehicle1 = DriverVehicleFactory.createDriverVehicle(driver.getId(), vehicle.getId());
 
     @Test
@@ -27,13 +27,13 @@ class DriverVehicleFactoryTest {
     }
 
     @Test
-    void testIdentityId(){
+    void testIdentityId() {
         Assertions.assertSame("Bus1", "Bus1");
     }
 
     @Test
     @org.junit.jupiter.api.Timeout(value = 1, unit = SECONDS)
-    public void setId(){
+    public void setId() {
         //while(true);
     }
 

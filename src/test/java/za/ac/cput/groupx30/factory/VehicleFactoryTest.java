@@ -24,13 +24,13 @@ class VehicleFactoryTest {
     }
 
     @Test
-    void testIdentity(){
+    void testIdentity() {
         Assertions.assertSame("Mercedes Benz", "Mercedes Benz");
     }
 
     @Test
     @org.junit.jupiter.api.Timeout(value = 1, unit = SECONDS)
-    public void setId(){
+    public void setId() {
         //while(true);
     }
 

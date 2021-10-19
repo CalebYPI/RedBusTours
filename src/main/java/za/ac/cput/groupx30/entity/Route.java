@@ -18,7 +18,8 @@ public class Route implements Serializable {
     private double distance;
     private double time;
 
-    public Route() {}
+    public Route() {
+    }
 
     private Route(Builder builder) {
         this.id = builder.id;

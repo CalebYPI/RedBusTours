@@ -22,8 +22,8 @@ public class TicketServiceImpl implements TicketService {
     private TicketRepository repository = null;
 
 
-    public static TicketServiceImpl getService(){
-        if(service == null) {
+    public static TicketServiceImpl getService() {
+        if (service == null) {
             service = new TicketServiceImpl();
         }
         return service;

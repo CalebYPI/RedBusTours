@@ -17,7 +17,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
-public class PassengerServiceImpl implements PassengerService{
+public class PassengerServiceImpl implements PassengerService {
 
     private static PassengerServiceImpl service = null;
 
@@ -25,18 +25,18 @@ public class PassengerServiceImpl implements PassengerService{
     private PassengerRepository repository;
 
     @Override
-    public Passenger create(Passenger passenger){
+    public Passenger create(Passenger passenger) {
         return this.repository.save(passenger);
     }
 
     @Override
-    public Passenger read(String passengerId){
+    public Passenger read(String passengerId) {
         return this.repository.findById(passengerId).orElse(null);
     }
 
     @Override
-    public Passenger update(Passenger passenger){
-        if(this.repository.existsById(passenger.getId())){
+    public Passenger update(Passenger passenger) {
+        if (this.repository.existsById(passenger.getId())) {
             return this.repository.save(passenger);
         }
         return null;
@@ -45,10 +45,9 @@ public class PassengerServiceImpl implements PassengerService{
     @Override
     public boolean delete(String passengerId) {
         this.repository.deleteById(passengerId);
-        if(this.repository.existsById(passengerId)){
+        if (this.repository.existsById(passengerId)) {
             return false;
-        }
-        else
+        } else
             return true;
     }
 

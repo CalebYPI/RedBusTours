@@ -38,27 +38,27 @@ public class Driver implements Serializable {
         this.name = name;
     }
 
-    public static class Builder{
+    public static class Builder {
         public String Id;
         public String name;
 
-        public Builder setId(String id){
+        public Builder setId(String id) {
             this.Id = id;
             return this;
         }
 
-        public Builder setName(String name){
+        public Builder setName(String name) {
             this.name = name;
             return this;
         }
 
-        public Builder copy(Driver driver){
+        public Builder copy(Driver driver) {
             this.Id = driver.Id;
             this.name = driver.name;
             return this;
         }
 
-        public Driver build(){
+        public Driver build() {
             return new Driver(this);
         }
     }

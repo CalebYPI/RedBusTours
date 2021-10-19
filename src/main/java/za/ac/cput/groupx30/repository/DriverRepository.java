@@ -11,7 +11,8 @@ import za.ac.cput.groupx30.entity.Driver;
 import za.ac.cput.groupx30.repository.IRepository;
 
 import java.util.Set;
+
 @Repository
-public interface DriverRepository extends JpaRepository< Driver, String> {
+public interface DriverRepository extends JpaRepository<Driver, String> {
     //Set< Driver > getAll();
 }

@@ -17,7 +17,7 @@ import java.util.Objects;
  * Date: 27 August 2021
  */
 @Entity
-public class Ticket implements Serializable{
+public class Ticket implements Serializable {
 
     @Id
     private String Id;
@@ -26,11 +26,11 @@ public class Ticket implements Serializable{
     private int Price;
 
 
-    public Ticket(){
+    public Ticket() {
 
     }
 
-    private Ticket(Ticket.Builder builder){
+    private Ticket(Ticket.Builder builder) {
         this.Id = builder.Id;
         this.Date = builder.Date;
         this.Time = builder.Time;
@@ -63,7 +63,7 @@ public class Ticket implements Serializable{
                 '}';
     }
 
-    public static class Builder{
+    public static class Builder {
         public String Id;
         public String Date;
         public String Time;
@@ -89,7 +89,7 @@ public class Ticket implements Serializable{
             return this;
         }
 
-        public Ticket.Builder copy(Ticket ticket){
+        public Ticket.Builder copy(Ticket ticket) {
             this.Id = ticket.Id;
             this.Date = ticket.Date;
             this.Time = ticket.Time;
@@ -98,7 +98,7 @@ public class Ticket implements Serializable{
             return this;
         }
 
-        public Ticket build(){
+        public Ticket build() {
             return new Ticket(this);
         }
     }

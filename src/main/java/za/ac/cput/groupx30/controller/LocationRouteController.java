@@ -1,6 +1,7 @@
 package za.ac.cput.groupx30.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import za.ac.cput.groupx30.entity.Location;
 import za.ac.cput.groupx30.entity.LocationRoute;
@@ -12,7 +13,7 @@ import za.ac.cput.groupx30.service.RouteService;
 
 import java.util.Set;
 
-@RestController()
+@Controller
 @RequestMapping("/locationRoute")
 public class LocationRouteController {
 
@@ -24,7 +25,7 @@ public class LocationRouteController {
     private RouteService routeService;
 
     @PostMapping(value = "/create")
-    public LocationRoute create(@RequestBody LocationRoute locationRoute){
+    public LocationRoute create(@RequestBody LocationRoute locationRoute) {
         boolean routeExists = false;
         boolean locationExists = false;
 
@@ -43,13 +44,13 @@ public class LocationRouteController {
     }
 
     @GetMapping(value = "/read/{routeId}/{locationId}")
-    public LocationRoute read(@PathVariable String routeId, @PathVariable("locationId") String locationId){
+    public LocationRoute read(@PathVariable String routeId, @PathVariable("locationId") String locationId) {
         LocationRoute.LocationRouteId id = new LocationRoute.LocationRouteId(routeId, locationId);
         return locationRouteService.read(id);
     }
 
     @DeleteMapping(value = "/delete/{routeId}/{locationId}")
-    public boolean delete(@PathVariable String routeId, @PathVariable("locationId") String locationId){
+    public boolean delete(@PathVariable String routeId, @PathVariable("locationId") String locationId) {
         LocationRoute locationRoute = LocationRouteFactory.createLocationRoute(locationId, routeId);
         return locationRouteService.delete(locationRoute);
     }

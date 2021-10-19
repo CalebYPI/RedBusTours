@@ -28,20 +28,20 @@ public class DriverVehicleServiceImpl implements DriverVehicleService {
     }
 
     @Override
-    public Set< DriverVehicle > getAll() {
+    public Set<DriverVehicle> getAll() {
         return getAllStartWithM();
     }
 
     @Override
-    public Set< DriverVehicle > getAllStartWithM() {
+    public Set<DriverVehicle> getAllStartWithM() {
         Set<DriverVehicle> driverVehicles = getAll();
-                Set<DriverVehicle> driverVehiclesWithM = new HashSet<>();
-                for (DriverVehicle driverVehicle : driverVehicles){
-                    if (driverVehicle.getVehicleId().trim().toLowerCase().startsWith("m")){
-                        driverVehiclesWithM.add(driverVehicle);
-                    }
-                }
-                return driverVehiclesWithM;
+        Set<DriverVehicle> driverVehiclesWithM = new HashSet<>();
+        for (DriverVehicle driverVehicle : driverVehicles) {
+            if (driverVehicle.getVehicleId().trim().toLowerCase().startsWith("m")) {
+                driverVehiclesWithM.add(driverVehicle);
+            }
+        }
+        return driverVehiclesWithM;
     }
 
     @Override
@@ -56,7 +56,7 @@ public class DriverVehicleServiceImpl implements DriverVehicleService {
 
     @Override
     public boolean delete(DriverVehicle driverVehicle) {
-        if (driverVehicle != null){
+        if (driverVehicle != null) {
             this.repository.delete(driverVehicle);
             return true;
         }

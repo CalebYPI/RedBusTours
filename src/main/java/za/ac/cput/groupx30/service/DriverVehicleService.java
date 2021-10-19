@@ -12,8 +12,11 @@ import java.util.Set;
 
 public interface DriverVehicleService {
     DriverVehicle create(DriverVehicle driverVehicle);
+
     DriverVehicle read(DriverVehicle.DriverVehicleId id);
+
     boolean delete(DriverVehicle driverVehicle);
+
     Set<DriverVehicle> getAll();
 
     Set<DriverVehicle> getAllStartWithM();

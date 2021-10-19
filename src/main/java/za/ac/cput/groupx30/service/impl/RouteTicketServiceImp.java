@@ -19,13 +19,12 @@ import java.util.Set;
 public class RouteTicketServiceImp implements RouteTicketService {
     public static RouteTicketService service = null;
 
-   @Autowired
+    @Autowired
     private RouteTicketRepository repository;
 
 
-
-    public static RouteTicketService getService(){
-        if(service == null) service = new RouteTicketServiceImp();
+    public static RouteTicketService getService() {
+        if (service == null) service = new RouteTicketServiceImp();
         return service;
     }
 
@@ -42,7 +41,7 @@ public class RouteTicketServiceImp implements RouteTicketService {
 
     @Override
     public boolean delete(RouteTicket routeTicket) {
-        if(routeTicket!= null){
+        if (routeTicket != null) {
             this.repository.delete(routeTicket);
             return true;
         }

@@ -1,6 +1,7 @@
 package za.ac.cput.groupx30.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import za.ac.cput.groupx30.entity.Route;
 import za.ac.cput.groupx30.entity.RouteTicket;
@@ -18,7 +19,7 @@ import java.util.Set;
  * 13 August 2021
  */
 
-@RestController
+@Controller
 @RequestMapping("/routeTicket")
 public class RouteTicketController {
     @Autowired
@@ -29,37 +30,37 @@ public class RouteTicketController {
     private RouteService routeService;
 
     @PostMapping(value = "/create")
-    public RouteTicket create(@RequestBody RouteTicket routeTicket){
+    public RouteTicket create(@RequestBody RouteTicket routeTicket) {
         boolean ticketExist = false;
         boolean routeExist = false;
         Route route = routeService.read(routeTicket.getRoute());
-        if(route != null)
+        if (route != null)
             routeExist = true;
 
         Ticket ticket = ticketService.read(routeTicket.getTicketID());
-        if(ticket != null)
+        if (ticket != null)
             ticketExist = true;
 
-        if(routeExist && ticketExist)
+        if (routeExist && ticketExist)
             return service.save(routeTicket);
         else
-            return RouteTicketFactory.createTicket("","");
+            return RouteTicketFactory.createTicket("", "");
     }
 
     @GetMapping(value = "/read/{routeID}/{ticketID}")
-    public RouteTicket read(@PathVariable String routeID, @PathVariable ("ticketID") String ticketID) {
+    public RouteTicket read(@PathVariable String routeID, @PathVariable("ticketID") String ticketID) {
         RouteTicket.RouteTicketID id = new RouteTicket.RouteTicketID(routeID, ticketID);
         return service.read(id);
     }
 
     @DeleteMapping(value = "/delete/{routeID}/{ticketID}")
-    public boolean delete(@PathVariable String routeID, @PathVariable("ticketID") String ticketID){
+    public boolean delete(@PathVariable String routeID, @PathVariable("ticketID") String ticketID) {
         RouteTicket routeTicket = RouteTicketFactory.createTicket(routeID, ticketID);
         return service.delete(routeTicket);
     }
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
-    public Set<RouteTicket> getAll(){
+    public Set<RouteTicket> getAll() {
         return service.getAll();
     }
 }

@@ -1,7 +1,6 @@
 package za.ac.cput.groupx30.service.impl;
 
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.groupx30.entity.DriverRoute;
@@ -25,8 +24,8 @@ public class DriverRouteServiceImp implements DriverRouteService {
     private DriverRouteRepository repository;
 
 
-    public static DriverRouteService getService(){
-        if(service == null) service = new DriverRouteServiceImp();
+    public static DriverRouteService getService() {
+        if (service == null) service = new DriverRouteServiceImp();
         return service;
     }
 
@@ -43,7 +42,7 @@ public class DriverRouteServiceImp implements DriverRouteService {
 
     @Override
     public boolean delete(DriverRoute driverRouteId) {
-        if (driverRouteId != null){
+        if (driverRouteId != null) {
             this.repository.delete(driverRouteId);
             return true;
         }

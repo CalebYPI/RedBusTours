@@ -14,7 +14,10 @@ import java.util.Set;
  */
 public interface DriverRouteService {
     DriverRoute create(DriverRoute driverRoute);
+
     DriverRoute read(DriverRoute.DriverRouteId id);
+
     boolean delete(DriverRoute driverRoute);
+
     Set<DriverRoute> getAll();
 }

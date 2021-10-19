@@ -17,12 +17,12 @@ import za.ac.cput.groupx30.factory.TicketFactory;
  */
 
 import static org.junit.jupiter.api.Assertions.*;
+
 @TestMethodOrder(MethodOrderer.MethodName.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-
 class TicketControllerTest {
 
-    private static Ticket ticket = TicketFactory.createTicket("27/8/2021", "15:54" , 150);
+    private static Ticket ticket = TicketFactory.createTicket("27/8/2021", "15:54", 150);
     public static String SECURITY_USERNAME = "abc";
     public static String SECURITY_PASSWORD = "";
 

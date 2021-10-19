@@ -13,6 +13,5 @@ import za.ac.cput.groupx30.entity.RouteGuide;
 import java.util.List;
 
 @Repository
-public interface RouteGuideRepository extends JpaRepository<RouteGuide, RouteGuide.RouteGuideId>
-{
+public interface RouteGuideRepository extends JpaRepository<RouteGuide, RouteGuide.RouteGuideId> {
 }

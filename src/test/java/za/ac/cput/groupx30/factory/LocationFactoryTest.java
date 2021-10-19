@@ -5,6 +5,7 @@ package za.ac.cput.groupx30.factory;
  Author: Caleb Ruiters (215169751)
  Date: 31 May 2021
 */
+
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Timeout;
@@ -17,7 +18,7 @@ class LocationFactoryTest {
     @Test
     void createLocation() {
         //Object Identity
-        Location location1 = LocationFactory.createLocation("Table Mountain","Bo-Kaap",true);
+        Location location1 = LocationFactory.createLocation("Table Mountain", "Bo-Kaap", true);
         Location location1Adjusted = new Location.Builder().copy(location1).setArea("Cape Town").build();
         System.out.println(location1);
         System.out.println(location1Adjusted);
@@ -44,7 +45,7 @@ class LocationFactoryTest {
     @Disabled
     void disablingLocation() {
         //Disabling Test
-        Location location1 = LocationFactory.createLocation("Table Mountain","Bo-Kaap",true);
+        Location location1 = LocationFactory.createLocation("Table Mountain", "Bo-Kaap", true);
         System.out.println(location1);
     }
 }

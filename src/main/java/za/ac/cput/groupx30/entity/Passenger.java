@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.Objects;
+
 @Entity
 public class Passenger implements Serializable {
 
@@ -17,11 +18,11 @@ public class Passenger implements Serializable {
     private String name;
     private String contact;
 
-    public Passenger(){
+    public Passenger() {
 
     }
 
-    private Passenger(Builder builder){
+    private Passenger(Builder builder) {
         this.id = builder.Id;
         this.name = builder.Name;
         this.contact = builder.Contact;
@@ -48,7 +49,7 @@ public class Passenger implements Serializable {
                 '}';
     }
 
-    public static class Builder{
+    public static class Builder {
         public String Id;
         public String Name;
         public String Contact;
@@ -68,7 +69,7 @@ public class Passenger implements Serializable {
             return this;
         }
 
-        public Passenger.Builder copy(Passenger passenger){
+        public Passenger.Builder copy(Passenger passenger) {
             this.Id = passenger.id;
             this.Name = passenger.name;
             this.Contact = passenger.contact;
@@ -76,7 +77,7 @@ public class Passenger implements Serializable {
             return this;
         }
 
-        public Passenger build(){
+        public Passenger build() {
             return new Passenger(this);
         }
     }

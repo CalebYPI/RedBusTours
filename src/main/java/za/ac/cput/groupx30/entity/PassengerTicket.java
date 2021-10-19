@@ -17,11 +17,11 @@ public class PassengerTicket implements Serializable {
     @Id
     private String passengerId, ticketId;
 
-    public PassengerTicket(){
+    public PassengerTicket() {
 
     }
 
-    private PassengerTicket(Builder builder){
+    private PassengerTicket(Builder builder) {
         this.passengerId = builder.passengerId;
         this.ticketId = builder.ticketId;
     }
@@ -42,7 +42,7 @@ public class PassengerTicket implements Serializable {
                 '}';
     }
 
-    public static class Builder{
+    public static class Builder {
         public String passengerId;
         public String ticketId;
 
@@ -56,25 +56,25 @@ public class PassengerTicket implements Serializable {
             return this;
         }
 
-        public PassengerTicket.Builder copy(PassengerTicket passengerTicket){
+        public PassengerTicket.Builder copy(PassengerTicket passengerTicket) {
             this.passengerId = passengerTicket.passengerId;
             this.ticketId = passengerTicket.ticketId;
 
             return this;
         }
 
-        public PassengerTicket build(){
+        public PassengerTicket build() {
             return new PassengerTicket(this);
         }
     }
 
-    public static class PassengerTicketId implements Serializable{
+    public static class PassengerTicketId implements Serializable {
         private String passengerId, ticketId;
 
         public PassengerTicketId() {
         }
 
-        public PassengerTicketId(String passengerId, String ticketId){
+        public PassengerTicketId(String passengerId, String ticketId) {
             this.passengerId = passengerId;
             this.ticketId = ticketId;
         }

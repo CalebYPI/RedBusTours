@@ -10,13 +10,11 @@ import za.ac.cput.groupx30.entity.Guide;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class GuideFactoryTest
-{
+class GuideFactoryTest {
     @Test
-    void createId()
-    {
-        Guide WeekdayGuide1 = GuideFactory.createId("Weekday Guide" , "126637");
-        Guide WeekendGuide1 = GuideFactory.createId("Weekend Guide" , "126666");
+    void createId() {
+        Guide WeekdayGuide1 = GuideFactory.createId("Weekday Guide", "126637");
+        Guide WeekendGuide1 = GuideFactory.createId("Weekend Guide", "126666");
         Guide WeekendGuide1Updated = new Guide.Builder().copy(WeekendGuide1).setName("Updated weekend guide").build();
 
         System.out.println(WeekdayGuide1);

@@ -6,6 +6,7 @@ package za.ac.cput.groupx30.controller;
 // Date: 16 August 2021
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import za.ac.cput.groupx30.entity.Vehicle;
 import za.ac.cput.groupx30.factory.VehicleFactory;
@@ -13,7 +14,7 @@ import za.ac.cput.groupx30.service.VehicleService;
 
 import java.util.Set;
 
-@RestController
+@Controller
 @RequestMapping("/vehicle")
 public class VehicleController {
 
@@ -42,7 +43,7 @@ public class VehicleController {
     }
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
-    public Set< Vehicle > getAll() {
+    public Set<Vehicle> getAll() {
         return vehicleService.getAll();
     }
 }

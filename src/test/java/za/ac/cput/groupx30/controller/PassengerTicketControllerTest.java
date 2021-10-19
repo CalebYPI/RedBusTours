@@ -27,7 +27,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class PassengerTicketControllerTest {
 
     private static Passenger passenger = PassengerFactory.createPassenger("Shaheed", "0873587441");
-    private static Ticket ticket = TicketFactory.createTicket("06/06/2021","15:00", 250);
+    private static Ticket ticket = TicketFactory.createTicket("06/06/2021", "15:00", 250);
     private static PassengerTicket passengerTicket = PassengerTicketFactory.createPassengerTicket(passenger.getId(), ticket.getId());
 
     public static String SECURITY_USERNAME = "shaheed";

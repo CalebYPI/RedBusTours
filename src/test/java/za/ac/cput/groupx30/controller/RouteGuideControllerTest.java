@@ -14,9 +14,8 @@ import za.ac.cput.groupx30.factory.RouteGuideFactory;
 
 @TestMethodOrder(MethodOrderer.MethodName.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class RouteGuideControllerTest
-{
-    private static RouteGuide routeGuide = RouteGuideFactory.createRouteGuide("146532" , "Knysna");
+public class RouteGuideControllerTest {
+    private static RouteGuide routeGuide = RouteGuideFactory.createRouteGuide("146532", "Knysna");
     public static String SECURITY_USERNAME = "admin";
     public static String SECURITY_PASSWORD = "root";
 
@@ -24,42 +23,37 @@ public class RouteGuideControllerTest
     private final String BASE_URL = "http://localhost:8080/routeGuide";
 
     @Test
-    void create()
-    {
+    void create() {
         String url = BASE_URL + "/create";
-        ResponseEntity<RouteGuide> postResponse = restTemplate.postForEntity(url, routeGuide , RouteGuide.class);
+        ResponseEntity<RouteGuide> postResponse = restTemplate.postForEntity(url, routeGuide, RouteGuide.class);
     }
 
     @Test
-    void read()
-    {
+    void read() {
         String url = BASE_URL + "/read";
         ResponseEntity<RouteGuide> postResponse = restTemplate.getForEntity(url, RouteGuide.class);
     }
 
     @Test
-    void update()
-    {
+    void update() {
         RouteGuide updated = new RouteGuide.Builder().copy(routeGuide).setRouteId("515613").setGuideId("Foreshore").build();
         String url = BASE_URL + "/update";
         restTemplate.put(url, updated, RouteGuide.class);
     }
 
     @Test
-    void delete()
-    {
+    void delete() {
         String url = BASE_URL + "/delete/";
         restTemplate.delete(url);
     }
 
     @Test
-    void d_getAll()
-    {
+    void d_getAll() {
         String url = BASE_URL + "/all";
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> entity = new HttpEntity<>(null, headers);
         ResponseEntity<String> postResponse = restTemplate
-                .withBasicAuth(SECURITY_USERNAME , SECURITY_PASSWORD)
+                .withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD)
                 .exchange(url, HttpMethod.GET, entity, String.class);
     }
 }

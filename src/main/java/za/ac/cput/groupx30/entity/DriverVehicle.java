@@ -28,7 +28,7 @@ public class DriverVehicle implements Serializable {
         return driverId;
     }
 
-    public void setDriverId(String driverId){
+    public void setDriverId(String driverId) {
         this.driverId = driverId;
     }
 
@@ -36,14 +36,14 @@ public class DriverVehicle implements Serializable {
         return vehicleId;
     }
 
-    public void setVehicleId(String vehicleId){
+    public void setVehicleId(String vehicleId) {
         this.vehicleId = vehicleId;
     }
 
-    public static class Builder{
+    public static class Builder {
         public String driverId, vehicleId;
 
-        public Builder setDriverId(String driverId){
+        public Builder setDriverId(String driverId) {
             this.driverId = driverId;
             return this;
         }
@@ -53,16 +53,17 @@ public class DriverVehicle implements Serializable {
             return this;
         }
 
-        public Builder copy(DriverVehicle driverVehicle){
+        public Builder copy(DriverVehicle driverVehicle) {
             this.driverId = driverVehicle.driverId;
             this.vehicleId = driverVehicle.vehicleId;
             return this;
         }
 
-        public DriverVehicle build(){
-                return new DriverVehicle(this);
-            }
+        public DriverVehicle build() {
+            return new DriverVehicle(this);
+        }
     }
+
     public static class DriverVehicleId implements Serializable {
         public DriverVehicleId() {
         }

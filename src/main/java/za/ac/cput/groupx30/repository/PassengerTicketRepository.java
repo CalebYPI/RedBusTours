@@ -12,6 +12,7 @@ import za.ac.cput.groupx30.entity.PassengerTicket;
 import za.ac.cput.groupx30.repository.IRepository;
 
 import java.util.Set;
+
 @Repository
 public interface PassengerTicketRepository extends JpaRepository<PassengerTicket, PassengerTicket.PassengerTicketId> {
 

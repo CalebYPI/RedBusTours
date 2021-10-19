@@ -1,13 +1,14 @@
 package za.ac.cput.groupx30.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import za.ac.cput.groupx30.entity.Driver;
 import za.ac.cput.groupx30.service.DriverService;
 
 import java.util.Set;
 
-@RestController
+@Controller
 @RequestMapping("/driver")
 public class DriverController {
 

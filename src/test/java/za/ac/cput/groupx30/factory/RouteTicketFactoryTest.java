@@ -13,30 +13,30 @@ import za.ac.cput.groupx30.entity.RouteTicket;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
 class RouteTicketFactoryTest {
-    RouteTicket routeTicket = RouteTicketFactory.createTicket("","Robben Island");
+    RouteTicket routeTicket = RouteTicketFactory.createTicket("", "Robben Island");
 
     @Test
-    public void testRouteTicketEqaulity(){
+    public void testRouteTicketEqaulity() {
         Assertions.assertEquals(routeTicket, routeTicket);
         Assertions.assertNotNull(routeTicket);
         Assertions.assertNotNull(routeTicket.getTicketID());
     }
 
     @Test
-    public void testTicketIdentity(){
+    public void testTicketIdentity() {
         Assertions.assertSame("Robben Island", "Robben Island");
     }
 
     @Test
     @org.junit.jupiter.api.Timeout(value = 1, unit = SECONDS)
-    public void setTicket(){
+    public void setTicket() {
 
     }
 
 
     @Test
     @Disabled
-    public void setRouteTicket(){
+    public void setRouteTicket() {
 
     }
 

@@ -22,8 +22,8 @@ import static org.junit.jupiter.api.Assertions.*;
 class LocationRouteControllerTest {
 
     private static Route route = RouteFactory.createRoute("Blue Route", 20, 60);
-    private static Location location = LocationFactory.createLocation("CTICC", "Foreshore" , false);
-    private static LocationRoute locationRoute = LocationRouteFactory.createLocationRoute(location.getId(),route.getId());
+    private static Location location = LocationFactory.createLocation("CTICC", "Foreshore", false);
+    private static LocationRoute locationRoute = LocationRouteFactory.createLocationRoute(location.getId(), route.getId());
     public static String SECURITY_USERNAME = "Caleb";
     public static String SECURITY_PASSWORD = "215169751";
 
@@ -45,7 +45,7 @@ class LocationRouteControllerTest {
 
     @Test
     void b_read() {
-        String url = BASE_URL + "/read/"+ locationRoute.getRouteId() + "/" + locationRoute.getLocationId();
+        String url = BASE_URL + "/read/" + locationRoute.getRouteId() + "/" + locationRoute.getLocationId();
         System.out.println("URL: " + url);
         ResponseEntity<LocationRoute> getResponse = restTemplate.withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD).getForEntity(url, LocationRoute.class);
         assertEquals(locationRoute, getResponse.getBody());

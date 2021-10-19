@@ -9,7 +9,7 @@ package za.ac.cput.groupx30.factory;
 import za.ac.cput.groupx30.entity.DriverRoute;
 
 public class DriverRouteFactory {
-    public static DriverRoute createRoute(String driverID, String routeID){
+    public static DriverRoute createRoute(String driverID, String routeID) {
 
 
         DriverRoute driverRoute = new DriverRoute.Builder().setRouteID(routeID).setDriverID(driverID).build();

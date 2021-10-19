@@ -11,6 +11,7 @@ import za.ac.cput.groupx30.entity.Passenger;
 import za.ac.cput.groupx30.repository.IRepository;
 
 import java.util.Set;
+
 @Repository
-public interface PassengerRepository extends JpaRepository<Passenger, String>{
+public interface PassengerRepository extends JpaRepository<Passenger, String> {
 }

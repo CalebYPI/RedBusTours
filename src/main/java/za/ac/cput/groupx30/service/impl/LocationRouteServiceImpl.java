@@ -40,7 +40,7 @@ public class LocationRouteServiceImpl implements LocationRouteService {
 
     @Override
     public boolean delete(LocationRoute locationRoute) {
-        if (locationRoute!= null) {
+        if (locationRoute != null) {
             this.repository.delete(locationRoute);
             return true;
         }
@@ -51,8 +51,8 @@ public class LocationRouteServiceImpl implements LocationRouteService {
     public Set<LocationRoute> findAllByLocationId(String locationId) {
         Set<LocationRoute> locations = getAll();
         if (locations != null) {
-        locations.removeIf(locationRoute -> !locationRoute.getLocationId().equalsIgnoreCase(locationId));
-        return locations;
+            locations.removeIf(locationRoute -> !locationRoute.getLocationId().equalsIgnoreCase(locationId));
+            return locations;
         }
         return null;
     }

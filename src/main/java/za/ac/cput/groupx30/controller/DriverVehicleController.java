@@ -6,6 +6,7 @@ package za.ac.cput.groupx30.controller;
 // Date: 16 August 2021
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import za.ac.cput.groupx30.entity.Driver;
 import za.ac.cput.groupx30.entity.DriverVehicle;
@@ -18,7 +19,7 @@ import za.ac.cput.groupx30.service.VehicleService;
 
 import java.util.Set;
 
-@RestController
+@Controller
 @RequestMapping("/driverVehicle")
 public class DriverVehicleController {
 
@@ -45,7 +46,7 @@ public class DriverVehicleController {
         if (driverExists && vehicleExists)
             return driverVehicleService.create(driverVehicle);
         else
-            return DriverVehicleFactory.createDriverVehicle("","");
+            return DriverVehicleFactory.createDriverVehicle("", "");
     }
 
     @RequestMapping(value = "/read", method = RequestMethod.GET)

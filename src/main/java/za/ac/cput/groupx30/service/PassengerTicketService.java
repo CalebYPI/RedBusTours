@@ -11,7 +11,7 @@ import za.ac.cput.groupx30.service.IService;
 
 import java.util.Set;
 
-public interface PassengerTicketService{
+public interface PassengerTicketService {
 
     PassengerTicket create(PassengerTicket passengerTicket);
 

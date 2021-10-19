@@ -46,27 +46,27 @@ public class Vehicle implements Serializable {
         this.desc = desc;
     }
 
-    public static class Builder{
+    public static class Builder {
         public String Id;
         public String desc;
 
-        public Builder setId(String id){
+        public Builder setId(String id) {
             this.Id = id;
             return this;
         }
 
-        public Builder setDesc(String desc){
+        public Builder setDesc(String desc) {
             this.desc = desc;
             return this;
         }
 
-        public Builder copy(Vehicle vehicle){
+        public Builder copy(Vehicle vehicle) {
             this.Id = vehicle.Id;
             this.desc = vehicle.desc;
             return this;
         }
 
-        public Vehicle build(){
+        public Vehicle build() {
             return new Vehicle(this);
         }
     }

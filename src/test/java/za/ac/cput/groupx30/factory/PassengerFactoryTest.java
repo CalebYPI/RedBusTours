@@ -4,6 +4,7 @@ package za.ac.cput.groupx30.factory;
  * Desc: TestCase for PassengerFactory
  * Date: 06 June 2021
  */
+
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Timeout;
@@ -15,7 +16,7 @@ class PassengerFactoryTest {
 
     @Test
     @Timeout(5)
-     void createPassenger() {
+    void createPassenger() {
         Passenger passenger1 = PassengerFactory.createPassenger("Shaheed", "0787092205");
         Passenger passenger2 = PassengerFactory.createPassenger("Robert", "0787547693");
         System.out.println(passenger1 + "\n" + passenger2);

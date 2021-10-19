@@ -4,6 +4,7 @@ package za.ac.cput.groupx30.factory;
  * Desc: TestCase for TicketFactory
  * Date: 06 June 2021
  */
+
 import org.junit.jupiter.api.Test;
 import za.ac.cput.groupx30.entity.Ticket;
 
@@ -13,7 +14,7 @@ class TicketFactoryTest {
 
     @Test
     void createTicket() {
-        Ticket ticket = TicketFactory.createTicket("06/06/2021","15:00", 250);
+        Ticket ticket = TicketFactory.createTicket("06/06/2021", "15:00", 250);
         System.out.println(ticket);
     }
 }

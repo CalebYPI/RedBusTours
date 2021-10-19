@@ -13,26 +13,23 @@ import java.util.Objects;
 
 @Entity
 @IdClass(RouteGuide.RouteGuideId.class)
-public class RouteGuide implements Serializable
-{
+public class RouteGuide implements Serializable {
     @Id
     private String routeId, guideId;
 
-    public RouteGuide() {}
+    public RouteGuide() {
+    }
 
-    private RouteGuide(Builder builder)
-    {
+    private RouteGuide(Builder builder) {
         this.routeId = builder.routeId;
         this.guideId = builder.guideId;
     }
 
-    public String getRouteId()
-    {
+    public String getRouteId() {
         return routeId;
     }
 
-    public String getGuideId()
-    {
+    public String getGuideId() {
         return guideId;
     }
 
@@ -44,32 +41,27 @@ public class RouteGuide implements Serializable
                 '}';
     }
 
-    public static class Builder
-    {
+    public static class Builder {
         private String routeId;
         private String guideId;
 
-        public Builder setRouteId(String routeId)
-        {
+        public Builder setRouteId(String routeId) {
             this.routeId = routeId;
             return this;
         }
 
-        public Builder setGuideId(String guideId)
-        {
+        public Builder setGuideId(String guideId) {
             this.guideId = guideId;
             return this;
         }
 
-        public Builder copy(RouteGuide routeGuide)
-        {
+        public Builder copy(RouteGuide routeGuide) {
             this.routeId = routeGuide.routeId;
             this.guideId = routeGuide.guideId;
             return this;
         }
 
-        public RouteGuide build()
-        {
+        public RouteGuide build() {
             return new RouteGuide(this);
         }
     }

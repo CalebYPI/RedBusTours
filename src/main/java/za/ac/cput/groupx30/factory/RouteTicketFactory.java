@@ -8,7 +8,7 @@ package za.ac.cput.groupx30.factory;
 import za.ac.cput.groupx30.entity.RouteTicket;
 
 public class RouteTicketFactory {
-    public static RouteTicket createTicket(String routeID, String ticketID){
+    public static RouteTicket createTicket(String routeID, String ticketID) {
 
         RouteTicket routeTicket = new RouteTicket.Builder().setRoute(routeID).setTicketID(ticketID).build();
         return routeTicket;

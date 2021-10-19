@@ -15,30 +15,30 @@ import java.util.concurrent.TimeUnit;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
 class DriverRouteFactoryTest {
-    DriverRoute driverRoute = DriverRouteFactory.createRoute("","N1");
+    DriverRoute driverRoute = DriverRouteFactory.createRoute("", "N1");
 
     @Test
-    public void testRouteEqualityID(){
+    public void testRouteEqualityID() {
         Assertions.assertEquals(driverRoute, driverRoute);
         Assertions.assertNotNull(driverRoute);
         Assertions.assertNotNull(driverRoute.getRouteID());
     }
 
     @Test
-    public void testRouteIdentity(){
+    public void testRouteIdentity() {
         Assertions.assertSame("N1", "N1");
     }
 
 
     @Test
     @org.junit.jupiter.api.Timeout(value = 1, unit = SECONDS)
-    public void setRoute(){
+    public void setRoute() {
 
     }
 
     @Test
     @Disabled
-    public void setDriverRouteID(){
+    public void setDriverRouteID() {
 
     }
 

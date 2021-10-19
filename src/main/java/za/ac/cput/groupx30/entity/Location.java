@@ -18,7 +18,8 @@ public class Location implements Serializable {
     private String area;
     private boolean pickupPoint;
 
-    public Location() {}
+    public Location() {
+    }
 
     private Location(Builder builder) {
         this.id = builder.id;

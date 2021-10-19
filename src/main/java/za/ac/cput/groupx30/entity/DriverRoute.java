@@ -7,9 +7,9 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /**
-* Baron Mukenyi (217163742)
-* Driver Route Entity
-* 7 May 2021
+ * Baron Mukenyi (217163742)
+ * Driver Route Entity
+ * 7 May 2021
  */
 
 @Entity
@@ -21,7 +21,7 @@ public class DriverRoute implements Serializable {
     public DriverRoute() {
     }
 
-    public DriverRoute(Builder builder){
+    public DriverRoute(Builder builder) {
         this.driverID = builder.driverID;
         this.routeID = builder.routeID;
     }
@@ -36,28 +36,31 @@ public class DriverRoute implements Serializable {
     }
     //setters
 
-    public static class Builder{
+    public static class Builder {
         public String driverID;
         public String routeID;
 
-        public Builder setDriverID(String driverID){
+        public Builder setDriverID(String driverID) {
             this.driverID = driverID;
             return this;
         }
-        public Builder setRouteID(String routeID){
+
+        public Builder setRouteID(String routeID) {
             this.routeID = routeID;
             return this;
         }
-        public DriverRoute.Builder copy(DriverRoute driverRoute){
+
+        public DriverRoute.Builder copy(DriverRoute driverRoute) {
             this.driverID = driverRoute.driverID;
             this.routeID = driverRoute.routeID;
             return this;
         }
 
-        public DriverRoute build(){
+        public DriverRoute build() {
             return new DriverRoute(this);
         }
     }
+
     public static class DriverRouteId implements Serializable {
         public DriverRouteId() {
         }

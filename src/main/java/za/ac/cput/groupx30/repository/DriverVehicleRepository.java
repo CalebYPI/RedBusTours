@@ -13,6 +13,6 @@ import za.ac.cput.groupx30.repository.IRepository;
 import java.util.Set;
 
 @Repository
-public interface DriverVehicleRepository extends JpaRepository< DriverVehicle, DriverVehicle.DriverVehicleId> {
+public interface DriverVehicleRepository extends JpaRepository<DriverVehicle, DriverVehicle.DriverVehicleId> {
     //Set<DriverVehicle> getAll();
 }

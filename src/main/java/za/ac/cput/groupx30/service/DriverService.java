@@ -10,7 +10,7 @@ import za.ac.cput.groupx30.service.IService;
 
 import java.util.Set;
 
-public interface DriverService extends IService < Driver, String >{
+public interface DriverService extends IService<Driver, String> {
     Set<Driver> getAll();
 
     Set<Driver> getAllStartWithB();

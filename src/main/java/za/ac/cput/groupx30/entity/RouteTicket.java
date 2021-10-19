@@ -20,9 +20,10 @@ public class RouteTicket implements Serializable {
     @Id
     private String route, ticketID;
 
-    public RouteTicket(){}
+    public RouteTicket() {
+    }
 
-    public RouteTicket(Builder builder){
+    public RouteTicket(Builder builder) {
         this.route = builder.route;
         this.ticketID = builder.ticketID;
     }
@@ -38,26 +39,27 @@ public class RouteTicket implements Serializable {
     }
 
 
-    public static class Builder{
+    public static class Builder {
         public String route;
         public String ticketID;
 
-        public Builder setRoute(String route){
+        public Builder setRoute(String route) {
             this.route = route;
             return this;
         }
-        public Builder setTicketID(String ticketID){
+
+        public Builder setTicketID(String ticketID) {
             this.ticketID = ticketID;
             return this;
         }
 
-        public RouteTicket.Builder copy(RouteTicket routeTicket){
+        public RouteTicket.Builder copy(RouteTicket routeTicket) {
             this.route = routeTicket.route;
             this.ticketID = routeTicket.ticketID;
             return this;
         }
 
-        public RouteTicket build(){
+        public RouteTicket build() {
             return new RouteTicket(this);
         }
     }
@@ -70,13 +72,13 @@ public class RouteTicket implements Serializable {
                 '}';
     }
 
-    public static class RouteTicketID implements Serializable{
+    public static class RouteTicketID implements Serializable {
         public RouteTicketID() {
         }
 
         private String route, ticketID;
 
-        public RouteTicketID(String route, String ticketID){
+        public RouteTicketID(String route, String ticketID) {
             this.route = route;
             this.ticketID = ticketID;
         }

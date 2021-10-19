@@ -15,41 +15,36 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Service
-public class RouteGuideServiceImpl implements RouteGuideService
-{
+public class RouteGuideServiceImpl implements RouteGuideService {
     private static RouteGuideServiceImpl service = null;
 
     @Autowired
     private RouteGuideRepository repository;
-    public static RouteGuideServiceImpl getService()
-    {
+
+    public static RouteGuideServiceImpl getService() {
         if (service == null)
             service = new RouteGuideServiceImpl();
         return service;
     }
 
     @Override
-    public RouteGuide create(RouteGuide routeGuide)
-    {
+    public RouteGuide create(RouteGuide routeGuide) {
         return this.repository.save(routeGuide);
     }
 
     @Override
-    public RouteGuide read(RouteGuide.RouteGuideId id)
-    {
+    public RouteGuide read(RouteGuide.RouteGuideId id) {
         return this.repository.getById(id);
     }
 
     @Override
-    public boolean delete(RouteGuide routeGuide)
-    {
+    public boolean delete(RouteGuide routeGuide) {
         this.repository.delete(routeGuide);
         return true;
     }
 
     @Override
-    public Set<RouteGuide> getAll()
-    {
+    public Set<RouteGuide> getAll() {
         return new HashSet<>(this.repository.findAll());
     }
 

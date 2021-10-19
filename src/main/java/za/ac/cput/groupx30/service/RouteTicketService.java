@@ -15,7 +15,10 @@ import java.util.Set;
 
 public interface RouteTicketService {
     RouteTicket save(RouteTicket routeTicket);
+
     RouteTicket read(RouteTicket.RouteTicketID id);
+
     boolean delete(RouteTicket routeTicket);
+
     Set<RouteTicket> getAll();
 }

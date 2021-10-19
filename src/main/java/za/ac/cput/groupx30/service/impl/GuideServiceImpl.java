@@ -15,46 +15,40 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
-public class GuideServiceImpl implements GuideService
-{
+public class GuideServiceImpl implements GuideService {
     private static GuideServiceImpl service = null;
 
     @Autowired
     private GuideRepository repository;
 
     @Override
-    public Guide create(Guide guide)
-    {
+    public Guide create(Guide guide) {
         return this.repository.save(guide);
     }
 
     @Override
-    public Guide read(String id)
-    {
+    public Guide read(String id) {
         return this.repository.findById(id).orElse(null);
     }
 
     @Override
-    public Guide update(Guide guide)
-    {
-        if(this.repository.existsById(guide.getId()))
+    public Guide update(Guide guide) {
+        if (this.repository.existsById(guide.getId()))
             return this.repository.save(guide);
         return null;
     }
 
     @Override
-    public boolean delete(String guideId)
-    {
+    public boolean delete(String guideId) {
         this.repository.deleteById(guideId);
-        if(this.repository.existsById(guideId))
+        if (this.repository.existsById(guideId))
             return false;
         else
             return true;
     }
 
     @Override
-    public Set<Guide> getAll()
-    {
+    public Set<Guide> getAll() {
         return this.repository.findAll().stream().collect(Collectors.toSet());
     }
 }

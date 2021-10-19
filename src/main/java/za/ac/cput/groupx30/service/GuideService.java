@@ -11,7 +11,6 @@ import za.ac.cput.groupx30.service.IService;
 
 import java.util.Set;
 
-public interface GuideService extends IService<Guide, String>
-{
+public interface GuideService extends IService<Guide, String> {
     public Set<Guide> getAll();
 }

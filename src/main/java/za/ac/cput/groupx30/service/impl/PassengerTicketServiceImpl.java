@@ -41,8 +41,7 @@ public class PassengerTicketServiceImpl implements PassengerTicketService {
         if (passengerTicket != null) {
             this.repository.delete(passengerTicket);
             return true;
-        }
-        else
+        } else
             return true;
     }
 
@@ -52,9 +51,9 @@ public class PassengerTicketServiceImpl implements PassengerTicketService {
     }
 
     @Override
-    public Set<PassengerTicket> findAllByTicketId(String ticketId){
+    public Set<PassengerTicket> findAllByTicketId(String ticketId) {
         Set<PassengerTicket> passengerTickets = getAll();
-        if(passengerTickets != null){
+        if (passengerTickets != null) {
             passengerTickets.removeIf(passengerTicket -> !passengerTicket.getTicketId().equalsIgnoreCase(ticketId));
             return passengerTickets;
         }

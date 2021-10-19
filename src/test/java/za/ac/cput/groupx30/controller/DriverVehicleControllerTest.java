@@ -33,13 +33,13 @@ public class DriverVehicleControllerTest {
     @Test
     void create() {
         String url = BASE_URL + "/create";
-        ResponseEntity< DriverVehicle > postResponse = restTemplate.postForEntity(url, driverVehicle, DriverVehicle.class);
+        ResponseEntity<DriverVehicle> postResponse = restTemplate.postForEntity(url, driverVehicle, DriverVehicle.class);
     }
 
     @Test
     void read() {
         String url = BASE_URL + "/read/";
-        ResponseEntity< DriverVehicle > postResponse = restTemplate.getForEntity(url, DriverVehicle.class);
+        ResponseEntity<DriverVehicle> postResponse = restTemplate.getForEntity(url, DriverVehicle.class);
     }
 
     @Test
@@ -59,8 +59,8 @@ public class DriverVehicleControllerTest {
     void getAll() {
         String url = BASE_URL + "/all";
         HttpHeaders headers = new HttpHeaders();
-        HttpEntity< String > entity = new HttpEntity<>(null, headers);
-        ResponseEntity< String > postResponse = restTemplate
+        HttpEntity<String> entity = new HttpEntity<>(null, headers);
+        ResponseEntity<String> postResponse = restTemplate
                 .withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD)
                 .exchange(url, HttpMethod.GET, entity, String.class);
     }

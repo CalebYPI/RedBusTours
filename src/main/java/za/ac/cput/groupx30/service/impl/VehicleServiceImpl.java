@@ -19,6 +19,7 @@ public class VehicleServiceImpl implements VehicleService {
     @Autowired
     private VehicleRepository repository;
     private static VehicleServiceImpl service;
+
     public static VehicleServiceImpl getService() {
         if (service == null)
             service = new VehicleServiceImpl();
