@@ -50,7 +50,7 @@ public class RouteController {
         return "routeUpdate";
     }
 
-    @PutMapping(value = "/update")
+    @PostMapping("/update")
     public String update(Route route, BindingResult result, Model model) {
         if (result.hasErrors())
             return "routeUpdate";

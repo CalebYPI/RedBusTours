@@ -9,26 +9,32 @@ import org.springframework.web.bind.annotation.RestController;
 public class HomeController {
 
     @RequestMapping({"/", "/home", "/index"})
-    public String home(Model model) {
-        System.out.println("Home Controller");
+    public String home() {
+        System.out.println("Home Page");
         return "home";
     }
 
     @RequestMapping("/about")
-    public String about(Model model) {
-        System.out.println("About Controller");
+    public String about() {
+        System.out.println("About Page");
         return "about";
     }
 
     @RequestMapping("/contact")
-    public String contact(Model model) {
-        System.out.println("Contact Controller");
+    public String contact() {
+        System.out.println("Contact Page");
         return "contact";
     }
 
     @RequestMapping("/login")
-    public String login(Model model) {
-        System.out.println("Login Controller");
+    public String login() {
+        System.out.println("Login Page");
         return "login";
+    }
+
+    @RequestMapping("/register")
+    public String register() {
+        System.out.println("Register Page");
+        return "register";
     }
 }

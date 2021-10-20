@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Route</title>
@@ -26,7 +26,7 @@
 </head>
 <body>
 <!--Navbar-->
-<nav class="navbar navbar-dark light-blue lighten-4">
+<nav class="navbar navbar-dark red">
 
     <!-- Navbar brand -->
     <a class="navbar-brand" href="/home">City Sight Seeing Tours</a>
@@ -61,7 +61,39 @@
     <!-- Collapsible content -->
 
 </nav>
-<!--/.Navbar-->
+<!--/.Navbar--><div class="main">
+
+    <h3> Add Route</h3>
+    <div>
+        <!--/*@thymesVar id="route" type="java"*/-->
+        <form action="#" th:action="@{/route/create}" th:object="${route}" method="post">
+
+            <div class="form-outline mb-4">
+                <input type="text" th:field="*{id}" class="form-control" readonly>
+                <label>Route Id</label>
+            </div>
+
+            <div class="form-outline mb-4">
+                <input type="text" th:field="*{description}" class="form-control" required>
+                <label>Route Description</label>
+            </div>
+
+            <div class="form-outline mb-4">
+                <input type="text" th:field="*{distance}" class="form-control">
+                <label>Route Distance</label>
+            </div>
+
+            <div class="form-outline mb-4">
+                <input type="text" th:field="*{time}" class="form-control">
+                <label>Route Time</label>
+            </div>
+
+            <div >
+                <button type="submit" class="btn btn-light btn-block mb-4">Add</button>
+            </div>
+        </form>
+    </div>
+</div>
 <!-- Footer -->
 <footer class="page-footer font-small red fixed-bottom">
 

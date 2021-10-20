@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Route</title>
@@ -26,7 +26,7 @@
 </head>
 <body>
 <!--Navbar-->
-<nav class="navbar navbar-dark light-blue lighten-4">
+<nav class="navbar navbar-dark red">
 
     <!-- Navbar brand -->
     <a class="navbar-brand" href="/home">City Sight Seeing Tours</a>
@@ -62,6 +62,45 @@
 
 </nav>
 <!--/.Navbar-->
+<div class="main">
+
+    <h3 class="mb-3"> Update Route</h3>
+    <div>
+        <form action="#" th:action="@{/route/update}"
+              th:object="${route}" method="post">
+            <div class="form-outline mb-12">
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="id">Classroom Id </label>
+                    <input type="text" th:field="*{id}" id="id" class="form-control" readonly>
+                </div>
+
+
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="description" >Description</label>
+                    <input type="text" th:field="*{description}" class="form-control" id="description" required>
+                </div>
+
+
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="distance" >Distance</label>
+                    <input type="text" th:field="*{distance}" class="form-control" id="distance">
+                </div>
+
+
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="time">Time</label>
+                    <input type="text" th:field="*{time}" class="form-control" id="time">
+                </div>
+
+
+
+                <div >
+                    <input type="submit" class="btn" value="Update">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
 <!-- Footer -->
 <footer class="page-footer font-small red fixed-bottom">
 

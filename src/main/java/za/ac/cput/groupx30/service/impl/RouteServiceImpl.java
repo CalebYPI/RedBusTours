@@ -3,6 +3,7 @@ package za.ac.cput.groupx30.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.groupx30.entity.Route;
+import za.ac.cput.groupx30.factory.RouteFactory;
 import za.ac.cput.groupx30.repository.RouteRepository;
 import za.ac.cput.groupx30.service.RouteService;
 
@@ -24,7 +25,11 @@ public class RouteServiceImpl implements RouteService {
 
     @Override
     public Route create(Route route) {
-        return this.repository.save(route);
+        Route newRoute = RouteFactory.createRoute(
+                route.getDescription(),
+                route.getDistance(),
+                route.getTime());
+        return this.repository.save(newRoute);
     }
 
     @Override
