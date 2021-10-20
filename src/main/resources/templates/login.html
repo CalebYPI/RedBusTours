@@ -26,44 +26,54 @@
     <script type="text/javascript"
             src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
 </head>
-<body>
-<!--Navbar-->
-<nav class="navbar navbar-dark light-blue lighten-4">
-
-    <!-- Navbar brand -->
-    <a class="navbar-brand" href="/home">City Sight Seeing Tours</a>
-
-    <!-- Collapse button -->
-    <button class="navbar-toggler toggler-example" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1" aria-expanded="false"
-            aria-label="Toggle navigation"><span class="dark-blue-text"><i
-            class="fas fa-bars fa-1x"></i></span></button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent1">
-
-        <!-- Links -->
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="/home">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/about">About Us</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/contact">Contact Us</a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="/login">Login <span class="sr-only">(current)</span></a>
-            </li>
-        </ul>
-        <!-- Links -->
-
+<body><!-- Pills navs -->
+<section class="container-fluid col-6 pt-xl-4">
+    <div class="nav nav-pills nav-justified mb-4" id="ex1" role="tablist">
+            <div class="nav-link active red"
+                    id="tab-login"
+                    data-mdb-toggle="pill"
+                    href="#pills-login"
+                    role="tab"
+                    aria-controls="pills-login"
+                    aria-selected="true">Login</div>
     </div>
-    <!-- Collapsible content -->
+<!-- Pills navs -->
 
-</nav>
-<!--/.Navbar-->
+<!-- Pills content -->
+<div class="tab-content">
+    <div class="tab-pane fade show active"
+            id="pills-login"
+            role="tabpanel"
+            aria-labelledby="tab-login">
+        <form>
+            <div class="text-center mb-3">
+                <p>Sign in with:</p>
+            </div>
+
+            <!-- Email input -->
+            <div class="form-outline mb-4">
+                <input type="email" id="loginName" class="form-control" />
+                <label class="form-label" for="loginName">Username</label>
+            </div>
+
+            <!-- Password input -->
+            <div class="form-outline mb-4">
+                <input type="password" id="loginPassword" class="form-control" />
+                <label class="form-label" for="loginPassword">Password</label>
+            </div>
+
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-light btn-block mb-4">Sign in</button>
+
+            <div class="text-center">
+                <p><a href="/home">Back to Home</a></p>
+            </div>
+
+        </form>
+    </div>
+</div>
+<!-- Pills content -->
+</section>
 <!-- Footer -->
 <footer class="page-footer font-small red fixed-bottom">
 

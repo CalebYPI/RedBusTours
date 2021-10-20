@@ -45,6 +45,11 @@ public class DriverVehicleServiceImpl implements DriverVehicleService {
     }
 
     @Override
+    public DriverVehicle save(DriverVehicle driverVehicle) {
+        return null;
+    }
+
+    @Override
     public DriverVehicle create(DriverVehicle driverVehicle) {
         return this.repository.save(driverVehicle);
     }
