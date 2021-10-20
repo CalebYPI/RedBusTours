@@ -33,8 +33,8 @@ public class RouteController {
     public String create(@ModelAttribute Route route, BindingResult result, Model model) {
         if (result.hasErrors())
             return "routeAdd";
-        Route newRoute = RouteFactory.createRoute(route.getDescription(), route.getDistance(), route.getTime());
-        service.create(newRoute);
+        //Route newRoute = RouteFactory.createRoute(route.getDescription(), route.getDistance(), route.getTime());
+        service.create(route);
         return "redirect:/route/home";
     }
 

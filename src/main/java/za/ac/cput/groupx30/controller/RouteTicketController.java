@@ -2,6 +2,8 @@ package za.ac.cput.groupx30.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import za.ac.cput.groupx30.entity.Route;
 import za.ac.cput.groupx30.entity.RouteTicket;
@@ -29,8 +31,16 @@ public class RouteTicketController {
     @Autowired
     private RouteService routeService;
 
+    @GetMapping("/home")
+    public String home(Model model) {
+        model.addAttribute("route tickets", service.getAll());
+        return "routeTicketHome";
+    }
+
     @PostMapping(value = "/create")
-    public RouteTicket create(@RequestBody RouteTicket routeTicket) {
+    public String create(@ModelAttribute RouteTicket routeTicket, BindingResult result, Model model) {
+        if (result.hasErrors())
+            return "routeTicketAdd";
         boolean ticketExist = false;
         boolean routeExist = false;
         Route route = routeService.read(routeTicket.getRoute());
@@ -42,9 +52,10 @@ public class RouteTicketController {
             ticketExist = true;
 
         if (routeExist && ticketExist)
-            return service.save(routeTicket);
+            service.save(routeTicket);
         else
-            return RouteTicketFactory.createTicket("", "");
+            RouteTicketFactory.createTicket("", "");
+        return "redirect:/routeTicket/home";
     }
 
     @GetMapping(value = "/read/{routeID}/{ticketID}")
@@ -57,6 +68,14 @@ public class RouteTicketController {
     public boolean delete(@PathVariable String routeID, @PathVariable("ticketID") String ticketID) {
         RouteTicket routeTicket = RouteTicketFactory.createTicket(routeID, ticketID);
         return service.delete(routeTicket);
+    }
+
+    @GetMapping(value = "/delete/{routeID}/{ticketID}")
+    public String delete(@PathVariable("routeId") String routeID, @PathVariable("ticketID") String ticketID, Model model) {
+        RouteTicket routeTicket = RouteTicketFactory.createTicket(routeID, ticketID);
+        service.delete(routeTicket);
+        model.addAttribute("route tickets", service.getAll());
+        return "redirect:/routeTicket/home";
     }
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)

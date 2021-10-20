@@ -31,4 +31,10 @@ public class HomeController {
         System.out.println("Login Page");
         return "login";
     }
+
+    @RequestMapping("/services")
+    public String services() {
+        System.out.println("Services Page");
+        return "services";
+    }
 }

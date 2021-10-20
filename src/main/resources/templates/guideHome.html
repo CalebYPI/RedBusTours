@@ -26,10 +26,10 @@
 </head>
 <body>
 <!--Navbar-->
-<nav class="navbar navbar-dark light-blue lighten-4">
+<nav class="navbar navbar-dark red">
 
     <!-- Navbar brand -->
-    <a class="navbar-brand" href="/home">City Sight Seeing Tours</a>
+    <a class="navbar-brand" href="/services">City Sight Seeing Tours</a>
 
     <!-- Collapse button -->
     <button class="navbar-toggler toggler-example" type="button" data-toggle="collapse"
@@ -43,25 +43,25 @@
         <!-- Links -->
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" sec:authorize="hasRole('ADMIN_ROLE')" href="/driver">Driver</a>
+                <a class="nav-link" href="/driver/home">Driver</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" sec:authorize="hasRole('ADMIN_ROLE')" href="/guide">Guide</a>
+                <a class="nav-link" href="/guide/home">Guide</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" sec:authorize="hasAnyRole('ADMIN', 'USER_ROLE')" href="/location">Location</a>
+                <a class="nav-link" href="/location/home">Location</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" sec:authorize="hasAnyRole('ADMIN', 'USER_ROLE')" href="/passenger">Passenger</a>
+                <a class="nav-link" href="/passenger/home">Passenger</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" sec:authorize="hasAnyRole('ADMIN', 'USER_ROLE')" href="/route">Route</a>
+                <a class="nav-link" href="/route/home">Route</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" sec:authorize="hasAnyRole('ADMIN', 'USER_ROLE')" href="/ticket">Ticket</a>
+                <a class="nav-link" href="/ticket/home">Ticket</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" sec:authorize="hasRole('ADMIN_ROLE')" href="/vehicle">Vehicle</a>
+                <a class="nav-link" href="/vehicle/home">Vehicle</a>
             </li>
         </ul>
         <!-- Links -->
@@ -71,6 +71,49 @@
 
 </nav>
 <!--/.Navbar-->
+
+<section class="main">
+    <div>
+        <div th:switch="${guides}" >
+            <p>
+                <a href="/guide/create" class="btn btn-light"><i class="fas fa-plus"> Add Guide</i></a>
+            </p>
+            <div>
+                <h2 th:case="null">No Guides</h2>
+
+                <div th:case="*" style="text-align: center;">
+
+                    <table id="table" class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">Guide Id</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Edit</th>
+                            <th scope="col">Delete</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="class : ${guides}">
+                            <td th:text="${class.getId()}"></td>
+                            <td th:text="${class.getName()}"></td>
+                            <td><a th:href="@{/guide/update/{id}(id=${class.getId()})}"
+                                   class="btn">
+                                <i class="far fa-edit"></i>
+                            </a>
+                            </td>
+                            <td><a th:href="@{/guide/delete/{id}(id=${class.getId()})}"
+                                   class="btn">
+                                <i class="fas fa-trash-alt"></i>
+                            </a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 <!-- Footer -->
 <footer class="page-footer font-small red fixed-bottom">
 
