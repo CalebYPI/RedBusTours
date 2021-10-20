@@ -56,7 +56,7 @@ public class VehicleController {
         return "vehicleUpdate";
     }
 
-    @PutMapping(value = "/update")
+    @PostMapping(value = "/update")
     public String update(Vehicle vehicle, BindingResult result, Model model) {
         if (result.hasErrors())
             return "vehicleUpdate";
@@ -65,7 +65,7 @@ public class VehicleController {
     }
 
     @DeleteMapping(value = "/delete/{id}")
-    public boolean delete(@PathVariable String id) {
+    public boolean delete(@PathVariable("id")String id) {
         return service.delete(id);
     }
 

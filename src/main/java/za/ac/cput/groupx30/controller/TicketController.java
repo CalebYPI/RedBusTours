@@ -63,7 +63,7 @@ public class TicketController {
     }
 
     @DeleteMapping(value = "/delete/{id}")
-    public boolean delete(@PathVariable String id) {
+    public boolean delete(@PathVariable("id") String id) {
         return service.delete(id);
     }
 

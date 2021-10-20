@@ -58,7 +58,7 @@ public class PassengerController {
     }
 
     @DeleteMapping(value = "/delete/{passengerId}")
-    public boolean delete(@PathVariable String passengerId) {
+    public boolean delete(@PathVariable("passengerId") String passengerId) {
         return passengerService.delete(passengerId);
     }
 

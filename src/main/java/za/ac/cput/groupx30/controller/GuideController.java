@@ -38,7 +38,7 @@ public class GuideController {
     }
 
     @PostMapping(value = "/create")
-    public Object create(@ModelAttribute Guide guide, BindingResult result, Model model) {
+    public String create(@ModelAttribute Guide guide, BindingResult result, Model model) {
         if (result.hasErrors())
             return "guideAdd";
         Guide newGuide = GuideFactory.createId(guide.getName(), guide.getId());
@@ -58,7 +58,7 @@ public class GuideController {
         return "guideUpdate";
     }
 
-    @PutMapping(value = "/update")
+    @PostMapping(value = "/update")
     public String update(Guide guide, BindingResult result, Model model) {
         if (result.hasErrors())
             return "guideUpdate";
@@ -67,12 +67,12 @@ public class GuideController {
     }
 
     @DeleteMapping(value = "/delete/{id}")
-    public boolean delete(@PathVariable String id) {
+    public boolean delete(@PathVariable("id") String id) {
         return service.delete(id);
     }
 
     @GetMapping("/delete/{id}")
-    public String delete(@PathVariable String id, Model model)
+    public String delete(@PathVariable("id") String id, Model model)
     {
         service.delete(id);
         model.addAttribute("guides", service.getAll());

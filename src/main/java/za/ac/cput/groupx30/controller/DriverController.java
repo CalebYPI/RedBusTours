@@ -34,7 +34,7 @@ public class DriverController {
         if (result.hasErrors())
             return "driverAdd";
         Driver newDriver = DriverFactory.createId(driver.getName());
-        service.create(driver);
+        service.create(newDriver);
         return "redirect:/driver/home";
     }
 
@@ -47,10 +47,10 @@ public class DriverController {
     public String getUpdateForm(@PathVariable("id") String id, Model model) {
         Driver driver = service.read(id);
         model.addAttribute("driver", driver);
-        return "";
+        return "driverUpdate";
     }
 
-    @PutMapping("/update")
+    @PostMapping("/update")
     public String update(Driver driver, BindingResult result, Model model) {
         if (result.hasErrors())
             return "driverUpdate";
@@ -59,12 +59,12 @@ public class DriverController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public boolean delete(@PathVariable String id) {
+    public boolean delete(@PathVariable("id") String id) {
         return service.delete(id);
     }
 
     @GetMapping("/delete/{id}")
-    public String delete(@PathVariable String id, Model model){
+    public String delete(@PathVariable("id") String id, Model model){
         service.delete(id);
         model.addAttribute("drivers", service.getAll());
         return "redirect:/driver/home";
