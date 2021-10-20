@@ -7,7 +7,10 @@ package za.ac.cput.groupx30.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import za.ac.cput.groupx30.entity.Location;
 import za.ac.cput.groupx30.entity.Vehicle;
 import za.ac.cput.groupx30.factory.VehicleFactory;
 import za.ac.cput.groupx30.service.VehicleService;
@@ -19,32 +22,63 @@ import java.util.Set;
 public class VehicleController {
 
     @Autowired
-    private VehicleService vehicleService;
+    private VehicleService service;
 
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public Vehicle create(@RequestBody Vehicle vehicle) {
-        Vehicle vehicleNew = VehicleFactory.createVehicle(vehicle.getDesc(), vehicle.getId());
-        return vehicleService.create(vehicleNew);
+    @GetMapping("/home")
+    public String home(Model model) {
+        model.addAttribute("vehicles", service.getAll());
+        return "vehicleHome";
     }
 
-    @RequestMapping(value = "/read", method = RequestMethod.GET)
-    public Vehicle read(@RequestBody Vehicle vehicleID) {
-        return vehicleService.read(vehicleID.Id);
+    @GetMapping("/create")
+    public String getCreateForm(Vehicle vehicle) {
+        return "vehicleAdd";
     }
 
-    @RequestMapping(value = "/update", method = RequestMethod.PUT)
-    public Vehicle update(@RequestBody Vehicle vehicleID) {
-        return vehicleService.update(vehicleID);
+    @PostMapping("/create")
+    public String create(@ModelAttribute Vehicle vehicle, BindingResult result, Model model) {
+        if (result.hasErrors())
+            return "vehicleAdd";
+        Vehicle newVehicle = VehicleFactory.createVehicle(vehicle.getDesc(), vehicle.getId());
+        service.create(newVehicle);
+        return "redirect:/vehicle/home";
     }
 
-    @RequestMapping(value = "/delete", method = RequestMethod.DELETE)
-    public boolean delete(@RequestBody Vehicle vehicleID) {
-        return vehicleService.delete(vehicleID.Id);
+    @GetMapping(value = "/read/{id}")
+    public Vehicle read(@PathVariable String id) {
+        return service.read(id);
     }
 
-    @RequestMapping(value = "/all", method = RequestMethod.GET)
-    public Set<Vehicle> getAll() {
-        return vehicleService.getAll();
+    @GetMapping("/update/{id}")
+    public String getUpdateForm(@PathVariable("id") String id, Model model) {
+        Vehicle vehicle = service.read(id);
+        model.addAttribute("vehicle", vehicle);
+        return "vehicleUpdate";
+    }
+
+    @PutMapping(value = "/update")
+    public String update(Vehicle vehicle, BindingResult result, Model model) {
+        if (result.hasErrors())
+            return "vehicleUpdate";
+        service.update(vehicle);
+        return "redirect:/vehicle/home";
+    }
+
+    @DeleteMapping(value = "/delete/{id}")
+    public boolean delete(@PathVariable String id) {
+        return service.delete(id);
+    }
+
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable("id") String id, Model model) {
+        service.delete(id);
+        model.addAttribute("vehicle", service.getAll());
+        return "redirect:/vehicle/home";
+    }
+
+    @GetMapping(value = "/all")
+    public Set< Vehicle > getAll() {
+        return service.getAll();
     }
 }
 
