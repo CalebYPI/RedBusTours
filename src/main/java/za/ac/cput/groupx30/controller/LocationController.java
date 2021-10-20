@@ -20,7 +20,7 @@ public class LocationController {
 
     @GetMapping("/home")
     public String home(Model model) {
-        model.addAttribute("locaitons", service.getAll());
+        model.addAttribute("locations", service.getAll());
         return "locationHome";
     }
 

@@ -10,8 +10,9 @@ import za.ac.cput.groupx30.util.Helper;
 
 public class GuideFactory {
 
-    public static Guide createId(String name, String id) {
+    public static Guide createId(String name) {
 
+        String id = Helper.generateId();
         Guide guide = new Guide.Builder()
                 .setId(id)
                 .setName(name)

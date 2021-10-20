@@ -25,7 +25,7 @@ public class PassengerController {
 
     @GetMapping("/home")
     public String home(Model model){
-        model.addAttribute("passenger", passengerService.getAll());
+        model.addAttribute("passengers", passengerService.getAll());
         return "passengerHome";
     }
 

@@ -41,7 +41,7 @@ public class GuideController {
     public String create(@ModelAttribute Guide guide, BindingResult result, Model model) {
         if (result.hasErrors())
             return "guideAdd";
-        Guide newGuide = GuideFactory.createId(guide.getName(), guide.getId());
+        Guide newGuide = GuideFactory.createId(guide.getName());
         service.create(newGuide);
         return "redirect:/guide/home";
     }

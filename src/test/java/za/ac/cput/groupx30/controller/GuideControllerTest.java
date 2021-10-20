@@ -11,7 +11,7 @@ import za.ac.cput.groupx30.entity.Guide;
 import za.ac.cput.groupx30.factory.GuideFactory;
 
 public class GuideControllerTest {
-    private static Guide guide = GuideFactory.createId("Seapoint", "162365");
+    private static Guide guide = GuideFactory.createId("Seapoint");
     public static String SECURITY_USERNAME = "admin";
     public static String SECURITY_PASSWORD = "root";
 
