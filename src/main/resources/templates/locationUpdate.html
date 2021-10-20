@@ -73,10 +73,10 @@
 <!--/.Navbar-->
 <section class="container-fluid col-6 pt-xl-4">
 
-    <h3 class="mb-3"> Update Route</h3>
+    <h3 class="mb-3"> Update Location</h3>
     <div>
-        <form action="#" th:action="@{/route/update}"
-              th:object="${route}" method="post">
+        <form action="#" th:action="@{/location/update}"
+              th:object="${location}" method="post">
             <div class="form-outline mb-12">
                 <div class="form-outline mb-4">
                     <label class="form-label" for="id">Route Id </label>
@@ -91,14 +91,14 @@
 
 
                 <div class="form-outline mb-4">
-                    <label class="form-label" for="distance" >Distance</label>
-                    <input type="text" th:field="*{distance}" class="form-control" id="distance">
+                    <label class="form-label" for="area" >Distance</label>
+                    <input type="text" th:field="*{area}" class="form-control" id="area">
                 </div>
 
 
                 <div class="form-outline mb-4">
-                    <label class="form-label" for="time">Time</label>
-                    <input type="text" th:field="*{time}" class="form-control" id="time">
+                    <label class="form-label" for="pickupPoint">Time</label>
+                    <input type="checkbox" th:field="*{pickupPoint}" class="form-control" id="pickupPoint">
                 </div>
 
 

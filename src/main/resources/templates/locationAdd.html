@@ -80,22 +80,22 @@
 
             <div class="form-outline mb-4">
                 <input type="text" th:field="*{id}" class="form-control" readonly>
-                <label>Route Id</label>
+                <label>Location Id</label>
             </div>
 
             <div class="form-outline mb-4">
                 <input type="text" th:field="*{description}" class="form-control" required>
-                <label>Route Description</label>
+                <label>Location Description</label>
             </div>
 
             <div class="form-outline mb-4">
-                <input type="text" th:field="*{distance}" class="form-control">
-                <label>Route Distance</label>
+                <input type="text" th:field="*{area}" class="form-control">
+                <label>Area</label>
             </div>
 
             <div class="form-outline mb-4">
-                <input type="text" th:field="*{time}" class="form-control">
-                <label>Route Time</label>
+                <input type="checkbox" th:field="*{pickupPoint}" class="form-control">
+                <label>Is pickup point?</label>
             </div>
 
             <div >

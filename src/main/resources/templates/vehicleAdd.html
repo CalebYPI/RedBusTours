@@ -73,10 +73,10 @@
 <!--/.Navbar-->
 <section class="container-fluid col-6 pt-xl-4">
 
-    <h3> Add Route</h3>
+    <h3> Add Vehicle</h3>
     <div>
-        <!--/*@thymesVar id="route" type="java"*/-->
-        <form action="#" th:action="@{/route/create}" th:object="${route}" method="post">
+        <!--/*@thymesVar id="vehicle" type="java"*/-->
+        <form action="#" th:action="@{/route/create}" th:object="${vehicle}" method="post">
 
             <div class="form-outline mb-4">
                 <input type="text" th:field="*{id}" class="form-control" readonly>
@@ -86,16 +86,6 @@
             <div class="form-outline mb-4">
                 <input type="text" th:field="*{description}" class="form-control" required>
                 <label>Route Description</label>
-            </div>
-
-            <div class="form-outline mb-4">
-                <input type="text" th:field="*{distance}" class="form-control">
-                <label>Route Distance</label>
-            </div>
-
-            <div class="form-outline mb-4">
-                <input type="text" th:field="*{time}" class="form-control">
-                <label>Route Time</label>
             </div>
 
             <div >

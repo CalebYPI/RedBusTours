@@ -74,9 +74,9 @@
 
 <section class="main">
     <div>
-        <div th:switch="${routes}" >
+        <div th:switch="${tickets}" >
             <p>
-                <a href="/route/create" class="btn btn-light"><i class="fas fa-plus"> Add Route</i></a>
+                <a href="/ticket/create" class="btn btn-light"><i class="fas fa-plus"> Add Ticket</i></a>
             </p>
             <div>
                 <h2 th:case="null">No Routes</h2>
@@ -86,26 +86,26 @@
                     <table id="table" class="table">
                         <thead>
                         <tr>
-                            <th scope="col">Route Id</th>
-                            <th scope="col">Description</th>
-                            <th scope="col">Distance</th>
+                            <th scope="col">Ticket Id</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Price</th>
                             <th scope="col">Time</th>
                             <th scope="col">Edit</th>
                             <th scope="col">Delete</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="class : ${routes}">
+                        <tr th:each="class : ${tickets}">
                             <td th:text="${class.getId()}"></td>
-                            <td th:text="${class.getDescription()}"></td>
-                            <td th:text="${class.getDistance()}"></td>
+                            <td th:text="${class.getDate()}"></td>
+                            <td th:text="${class.getPrice()}"></td>
                             <td th:text="${class.getTime()}"></td>
-                            <td><a th:href="@{/route/update/{id}(id=${class.getId()})}"
+                            <td><a th:href="@{/ticket/update/{id}(id=${class.getId()})}"
                                    class="btn">
                                 <i class="far fa-edit"></i>
                             </a>
                             </td>
-                            <td><a th:href="@{/route/delete/{id}(id=${class.getId()})}"
+                            <td><a th:href="@{/ticket/delete/{id}(id=${class.getId()})}"
                                    class="btn">
                                 <i class="fas fa-trash-alt"></i>
                             </a>
