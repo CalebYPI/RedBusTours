@@ -8,6 +8,8 @@ package za.ac.cput.groupx30.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import za.ac.cput.groupx30.entity.Passenger;
 import za.ac.cput.groupx30.entity.PassengerTicket;
@@ -29,8 +31,21 @@ public class PassengerTicketController {
     @Autowired
     private PassengerTicketService passengerTicketService;
 
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public PassengerTicket create(@RequestBody PassengerTicket passengerTicket) {
+    @GetMapping("/home")
+    public String home(Model model){
+        model.addAttribute("passenger tickets", passengerTicketService.getAll());
+        return "passengerTicketHome";
+    }
+
+    @GetMapping("/create")
+    public String getCreateForm(PassengerTicket passengerTicket){
+        return "passengerTicketHome";
+    }
+
+    @PostMapping(value = "/create")
+    public String create(@ModelAttribute PassengerTicket passengerTicket, BindingResult result, Model model) {
+        if (result.hasErrors())
+            return "passengerTicketAdd";
         boolean passengerExist = false;
         boolean ticketExist = false;
 
@@ -43,19 +58,32 @@ public class PassengerTicketController {
             ticketExist = true;
         }
         if (passengerExist && ticketExist) {
-            return passengerTicketService.create(passengerTicket);
-        } else return PassengerTicketFactory.createPassengerTicket("", "");
+            passengerTicketService.create(passengerTicket);
+        } else
+            PassengerTicketFactory.createPassengerTicket("","");
+        return "redirect:/passengerTicket/home";
     }
 
-    @RequestMapping(value = "/read", method = RequestMethod.GET)
+    @GetMapping(value = "/read/{passengerId}/{ticketId}")
     public PassengerTicket read(@PathVariable String passengerId, @PathVariable("ticketId") String ticketId) {
         PassengerTicket.PassengerTicketId id = new PassengerTicket.PassengerTicketId(passengerId, ticketId);
         return passengerTicketService.read(id);
     }
 
-    @RequestMapping(value = "/delete", method = RequestMethod.DELETE)
-    public boolean delete(@PathVariable String ticketId) {
-        return passengerService.delete(ticketId);
+    @GetMapping("/delete/{passengerId}/{ticketId}")
+    public String delete(@PathVariable String passengerId, @PathVariable("ticketId") String ticketId, Model model){
+        PassengerTicket passengerTicket = PassengerTicketFactory.createPassengerTicket(passengerId, ticketId);
+        passengerTicketService.delete(passengerTicket);
+        model.addAttribute("passenger tickets", passengerTicketService.getAll());
+        return "redirect:/passengerTicket/home";
+    }
+
+
+
+    @DeleteMapping(value = "/delete/{passengerId}/{ticketId}")
+    public boolean delete(@PathVariable String passengerId, @PathVariable("ticketId") String ticketId) {
+        PassengerTicket passengerTicket = PassengerTicketFactory.createPassengerTicket(passengerId, ticketId);
+        return passengerTicketService.delete(passengerTicket);
     }
 
     @RequestMapping(value = "/getall", method = RequestMethod.GET)

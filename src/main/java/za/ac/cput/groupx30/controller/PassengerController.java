@@ -8,6 +8,8 @@ package za.ac.cput.groupx30.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import za.ac.cput.groupx30.entity.Passenger;
 import za.ac.cput.groupx30.factory.PassengerFactory;
@@ -21,29 +23,53 @@ public class PassengerController {
     @Autowired
     private PassengerService passengerService;
 
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public Passenger create(@RequestBody Passenger passenger) {
-        Passenger newPassenger = PassengerFactory.createPassenger(passenger.getName(), passenger.getContact());
-        return passengerService.create(newPassenger);
+    @GetMapping("/home")
+    public String home(Model model){
+        model.addAttribute("passenger", passengerService.getAll());
+        return "passengerHome";
     }
 
-    @RequestMapping(value = "/read", method = RequestMethod.GET)
+    @GetMapping("/create")
+    public String getCreateForm(Passenger passenger){
+        return "passengerAdd";
+    }
+
+    @PostMapping(value = "/create")
+    public String create(@ModelAttribute Passenger passenger, BindingResult result, Model model) {
+        if (result.hasErrors())
+            return "passengerAdd";
+        Passenger newPassenger = PassengerFactory.createPassenger(passenger.getName(), passenger.getContact());
+        passengerService.create(newPassenger);
+        return "redirect:/passenger/home";
+    }
+
+    @GetMapping(value = "/read{passengerId}")
     public Passenger read(@PathVariable String passengerId) {
         return passengerService.read(passengerId);
 
     }
 
-    @RequestMapping(value = "/update", method = RequestMethod.PUT)
-    public Passenger update(@RequestBody Passenger passenger) {
-        return passengerService.update(passenger);
+    @PostMapping(value = "/update")
+    public String update(Passenger passenger, BindingResult result, Model model) {
+        if (result.hasErrors())
+            return "passengerUpate";
+        passengerService.update(passenger);
+        return "redirect:/passenger/home";
     }
 
-    @RequestMapping(value = "/delete", method = RequestMethod.DELETE)
+    @DeleteMapping(value = "/delete/{passengerId}")
     public boolean delete(@PathVariable String passengerId) {
         return passengerService.delete(passengerId);
     }
 
-    @RequestMapping(value = "/getall", method = RequestMethod.GET)
+    @GetMapping("/delete/passengerId}")
+    public String delete(@PathVariable("passengerId") String passengerId, Model model){
+        passengerService.delete(passengerId);
+        model.addAttribute("passenger", passengerService.getAll());
+        return "redirect:/passenger/home";
+    }
+
+    @GetMapping(value = "/getall")
     public Set<Passenger> getall() {
         return passengerService.getAll();
     }
