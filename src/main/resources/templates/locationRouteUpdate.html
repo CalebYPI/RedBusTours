@@ -43,23 +43,29 @@
         <!-- Links -->
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="/home">Home</a>
+                <a class="nav-link" sec:authorize="hasRole('ADMIN_ROLE')" href="/driver">Driver</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/about">About Us</a>
+                <a class="nav-link" sec:authorize="hasRole('ADMIN_ROLE')" href="/guide">Guide</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/contact">Contact Us</a>
+                <a class="nav-link" sec:authorize="hasAnyRole('ADMIN', 'USER_ROLE')" href="/location">Location</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/login">Login</a>
+                <a class="nav-link" sec:authorize="hasAnyRole('ADMIN', 'USER_ROLE')" href="/passenger">Passenger</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" sec:authorize="hasAnyRole('ADMIN', 'USER_ROLE')" href="/route">Route</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" sec:authorize="hasAnyRole('ADMIN', 'USER_ROLE')" href="/ticket">Ticket</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" sec:authorize="hasRole('ADMIN_ROLE')" href="/vehicle">Vehicle</a>
             </li>
         </ul>
-        <!-- Links -->
-
-    </div>
     <!-- Collapsible content -->
-
+    </div>
 </nav>
 <!--/.Navbar-->
 <!-- Footer -->
