@@ -39,7 +39,7 @@ public class VehicleController {
     public String create(@ModelAttribute Vehicle vehicle, BindingResult result, Model model) {
         if (result.hasErrors())
             return "vehicleAdd";
-        Vehicle newVehicle = VehicleFactory.createVehicle(vehicle.getDesc(), vehicle.getId());
+        Vehicle newVehicle = VehicleFactory.createVehicle(vehicle.getDesc());
         service.create(newVehicle);
         return "redirect:/vehicle/home";
     }
@@ -56,7 +56,7 @@ public class VehicleController {
         return "vehicleUpdate";
     }
 
-    @PostMapping(value = "/update")
+    @PostMapping("/update")
     public String update(Vehicle vehicle, BindingResult result, Model model) {
         if (result.hasErrors())
             return "vehicleUpdate";

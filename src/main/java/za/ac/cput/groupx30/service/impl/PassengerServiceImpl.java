@@ -9,6 +9,7 @@ package za.ac.cput.groupx30.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.groupx30.entity.Passenger;
+import za.ac.cput.groupx30.factory.PassengerFactory;
 import za.ac.cput.groupx30.repository.PassengerRepository;
 //import za.ac.cput.groupx30.repository.impl.PassengerRepositoryImpl;
 import za.ac.cput.groupx30.service.PassengerService;

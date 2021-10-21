@@ -95,7 +95,7 @@
                         <tbody>
                         <tr th:each="class : ${vehicles}">
                             <td th:text="${class.getId()}"></td>
-                            <td th:text="${class.getDescription()}"></td>
+                            <td th:text="${class.getDesc()}"></td>
                             <td><a th:href="@{/vehicle/update/{id}(id=${class.getId()})}"
                                    class="btn">
                                 <i class="far fa-edit"></i>

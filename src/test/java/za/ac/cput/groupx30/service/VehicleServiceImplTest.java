@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class VehicleServiceImplTest {
 
     private VehicleService service = VehicleServiceImpl.getService();
-    private static Vehicle bus = VehicleFactory.createVehicle(Vehicle.getDesc(), "Double Decker Bus");
+    private static Vehicle bus = VehicleFactory.createVehicle("Double Decker Bus");
 
     @Test
     void a_create() {

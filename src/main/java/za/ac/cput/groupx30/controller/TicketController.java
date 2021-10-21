@@ -54,7 +54,7 @@ public class TicketController {
         return "ticketUpdate";
     }
 
-    @PostMapping(value = "/update")
+    @PostMapping("/update")
     public String update(Ticket ticket, BindingResult result, Model model) {
         if (result.hasErrors())
             return "ticketUpdate";

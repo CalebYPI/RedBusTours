@@ -23,7 +23,7 @@ class DriverVehicleServiceImplTest {
 
     private static DriverVehicleService service = DriverVehicleServiceImpl.getService();
     private static Driver driver = DriverFactory.createId("Sam");
-    private static Vehicle vehicle = VehicleFactory.createVehicle("Mercedes Benz", "Bus15");
+    private static Vehicle vehicle = VehicleFactory.createVehicle("Bus15");
     private static DriverVehicle driverVehicle = DriverVehicleFactory.createDriverVehicle(driver.getId(), vehicle.getId());
 
 

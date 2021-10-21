@@ -79,22 +79,22 @@
         <form action="#" th:action="@{/ticket/create}" th:object="${ticket}" method="post">
 
             <div class="form-outline mb-4">
-                <input type="text" th:field="*{id}" class="form-control" readonly>
+                <input type="text" th:field="*{Id}" class="form-control" readonly>
                 <label>Ticket Id</label>
             </div>
 
             <div class="form-outline mb-4">
-                <input type="text" th:field="*{date}" class="form-control" required>
+                <input type="text" th:field="*{Date}" class="form-control" required>
                 <label>Date</label>
             </div>
 
             <div class="form-outline mb-4">
-                <input type="text" th:field="*{price}" class="form-control">
+                <input type="text" th:field="*{Price}" class="form-control">
                 <label>Price</label>
             </div>
 
             <div class="form-outline mb-4">
-                <input type="text" th:field="*{time}" class="form-control">
+                <input type="text" th:field="*{Time}" class="form-control">
                 <label>Time</label>
             </div>
 

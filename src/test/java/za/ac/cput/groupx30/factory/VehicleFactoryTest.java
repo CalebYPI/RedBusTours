@@ -14,7 +14,7 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 class VehicleFactoryTest {
 
     String vehicle = "Mercedes Benz";
-    Vehicle vehicle1 = VehicleFactory.createVehicle(Vehicle.getDesc(), vehicle);
+    Vehicle vehicle1 = VehicleFactory.createVehicle(vehicle);
 
     @Test
     void testEquality() {

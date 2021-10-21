@@ -46,10 +46,16 @@ public class PassengerController {
     @GetMapping(value = "/read{passengerId}")
     public Passenger read(@PathVariable String passengerId) {
         return passengerService.read(passengerId);
-
     }
 
-    @PostMapping(value = "/update")
+    @GetMapping("/update/{id}")
+    public String update(@PathVariable("id") String id, Model model) {
+        Passenger passenger = passengerService.read(id);
+        model.addAttribute("passenger", passenger);
+        return "passengerUpdate";
+    }
+
+    @PostMapping("/update")
     public String update(Passenger passenger, BindingResult result, Model model) {
         if (result.hasErrors())
             return "passengerUpate";
@@ -62,7 +68,7 @@ public class PassengerController {
         return passengerService.delete(passengerId);
     }
 
-    @GetMapping("/delete/passengerId}")
+    @GetMapping("/delete/{passengerId}")
     public String delete(@PathVariable("passengerId") String passengerId, Model model){
         passengerService.delete(passengerId);
         model.addAttribute("passenger", passengerService.getAll());

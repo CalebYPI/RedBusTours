@@ -8,6 +8,7 @@ package za.ac.cput.groupx30.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.groupx30.entity.Driver;
+import za.ac.cput.groupx30.factory.DriverFactory;
 import za.ac.cput.groupx30.repository.DriverRepository;
 import za.ac.cput.groupx30.service.DriverService;
 
@@ -46,7 +47,8 @@ public class DriverServiceImpl implements DriverService {
 
     @Override
     public Driver create(Driver driver) {
-        return this.repository.save(driver);
+        Driver newDriver = DriverFactory.createId(driver.getName());
+        return this.repository.save(newDriver);
     }
 
     @Override

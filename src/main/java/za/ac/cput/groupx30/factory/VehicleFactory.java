@@ -8,7 +8,7 @@ import za.ac.cput.groupx30.util.Helper;
 // Date: 7 June 2021
 
 public class VehicleFactory {
-    public static Vehicle createVehicle(String vehicleDesc, String desc) {
+    public static Vehicle createVehicle(String desc) {
         String id = Helper.generateId();
 
         Vehicle vehicle = new Vehicle.Builder()

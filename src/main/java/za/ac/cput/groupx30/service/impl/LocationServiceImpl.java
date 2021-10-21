@@ -3,6 +3,7 @@ package za.ac.cput.groupx30.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.groupx30.entity.Location;
+import za.ac.cput.groupx30.factory.LocationFactory;
 import za.ac.cput.groupx30.repository.LocationRepository;
 import za.ac.cput.groupx30.service.LocationService;
 

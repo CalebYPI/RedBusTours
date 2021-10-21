@@ -37,7 +37,7 @@ public class GuideController {
         return "guideAdd";
     }
 
-    @PostMapping(value = "/create")
+    @PostMapping("/create")
     public String create(@ModelAttribute Guide guide, BindingResult result, Model model) {
         if (result.hasErrors())
             return "guideAdd";
@@ -58,7 +58,7 @@ public class GuideController {
         return "guideUpdate";
     }
 
-    @PostMapping(value = "/update")
+    @PostMapping("/update")
     public String update(Guide guide, BindingResult result, Model model) {
         if (result.hasErrors())
             return "guideUpdate";

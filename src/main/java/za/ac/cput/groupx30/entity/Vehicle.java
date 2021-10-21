@@ -38,7 +38,7 @@ public class Vehicle implements Serializable {
         Id = id;
     }
 
-    public static String getDesc() {
+    public String getDesc() {
         return desc;
     }
 

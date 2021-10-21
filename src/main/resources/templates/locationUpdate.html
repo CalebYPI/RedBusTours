@@ -79,7 +79,7 @@
               th:object="${location}" method="post">
             <div class="form-outline mb-12">
                 <div class="form-outline mb-4">
-                    <label class="form-label" for="id">Route Id </label>
+                    <label class="form-label" for="id">Location Id </label>
                     <input type="text" th:field="*{id}" id="id" class="form-control" readonly>
                 </div>
 
@@ -91,17 +91,15 @@
 
 
                 <div class="form-outline mb-4">
-                    <label class="form-label" for="area" >Distance</label>
+                    <label class="form-label" for="area" >Area</label>
                     <input type="text" th:field="*{area}" class="form-control" id="area">
                 </div>
 
 
                 <div class="form-outline mb-4">
-                    <label class="form-label" for="pickupPoint">Time</label>
+                    <label class="form-label" for="pickupPoint">Is Pickup Point?</label>
                     <input type="checkbox" th:field="*{pickupPoint}" class="form-control" id="pickupPoint">
                 </div>
-
-
 
                 <div >
                     <input type="submit" class="btn" value="Update">

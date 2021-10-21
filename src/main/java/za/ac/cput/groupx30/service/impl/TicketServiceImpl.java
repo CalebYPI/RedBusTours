@@ -9,6 +9,7 @@ package za.ac.cput.groupx30.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.groupx30.entity.Ticket;
+import za.ac.cput.groupx30.factory.TicketFactory;
 import za.ac.cput.groupx30.repository.TicketRepository;
 import za.ac.cput.groupx30.service.TicketService;
 

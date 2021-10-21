@@ -76,7 +76,7 @@
     <h3> Add Vehicle</h3>
     <div>
         <!--/*@thymesVar id="vehicle" type="java"*/-->
-        <form action="#" th:action="@{/route/create}" th:object="${vehicle}" method="post">
+        <form action="#" th:action="@{/vehicle/create}" th:object="${vehicle}" method="post">
 
             <div class="form-outline mb-4">
                 <input type="text" th:field="*{id}" class="form-control" readonly>
@@ -84,7 +84,7 @@
             </div>
 
             <div class="form-outline mb-4">
-                <input type="text" th:field="*{description}" class="form-control" required>
+                <input type="text" th:field="*{desc}" class="form-control" required>
                 <label>Route Description</label>
             </div>
 

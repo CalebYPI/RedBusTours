@@ -16,7 +16,7 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 class DriverVehicleFactoryTest {
 
     Driver driver = DriverFactory.createId("Sam");
-    Vehicle vehicle = VehicleFactory.createVehicle("Mercedes", "Bus 15");
+    Vehicle vehicle = VehicleFactory.createVehicle("Bus 15");
     DriverVehicle driverVehicle1 = DriverVehicleFactory.createDriverVehicle(driver.getId(), vehicle.getId());
 
     @Test

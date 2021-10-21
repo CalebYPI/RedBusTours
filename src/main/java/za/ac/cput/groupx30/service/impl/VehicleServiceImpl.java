@@ -8,6 +8,7 @@ package za.ac.cput.groupx30.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.groupx30.entity.Vehicle;
+import za.ac.cput.groupx30.factory.VehicleFactory;
 import za.ac.cput.groupx30.repository.VehicleRepository;
 import za.ac.cput.groupx30.service.VehicleService;
 

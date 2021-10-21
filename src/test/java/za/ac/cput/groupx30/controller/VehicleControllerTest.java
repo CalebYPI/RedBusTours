@@ -22,7 +22,7 @@ import za.ac.cput.groupx30.factory.VehicleFactory;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class VehicleControllerTest {
 
-    private static Vehicle vehicle = VehicleFactory.createVehicle("4453453", "Mercedes Benz");
+    private static Vehicle vehicle = VehicleFactory.createVehicle("4453453");
     public static String SECURITY_USERNAME = "abcd";
     public static String SECURITY_PASSWORD = "password";
 

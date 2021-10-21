@@ -50,7 +50,7 @@ public class LocationController {
         return "locationUpdate";
     }
 
-    @PostMapping(value = "/update")
+    @PostMapping("/update")
     public String update(Location location, BindingResult result, Model model) {
         if (result.hasErrors())
             return "locationUpdate";

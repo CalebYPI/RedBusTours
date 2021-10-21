@@ -23,9 +23,9 @@ public class Passenger implements Serializable {
     }
 
     private Passenger(Builder builder) {
-        this.id = builder.Id;
-        this.name = builder.Name;
-        this.contact = builder.Contact;
+        this.id = builder.id;
+        this.name = builder.name;
+        this.contact = builder.contact;
     }
 
     public String getId() {
@@ -50,29 +50,29 @@ public class Passenger implements Serializable {
     }
 
     public static class Builder {
-        public String Id;
-        public String Name;
-        public String Contact;
+        public String id;
+        public String name;
+        public String contact;
 
         public Builder setId(String id) {
-            Id = id;
+            this.id = id;
             return this;
         }
 
         public Builder setName(String name) {
-            Name = name;
+            this.name = name;
             return this;
         }
 
         public Builder setContact(String contact) {
-            Contact = contact;
+            this.contact = contact;
             return this;
         }
 
         public Passenger.Builder copy(Passenger passenger) {
-            this.Id = passenger.id;
-            this.Name = passenger.name;
-            this.Contact = passenger.contact;
+            this.id = passenger.id;
+            this.name = passenger.name;
+            this.contact = passenger.contact;
 
             return this;
         }

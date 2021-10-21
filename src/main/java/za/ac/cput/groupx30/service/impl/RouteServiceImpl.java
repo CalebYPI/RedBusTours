@@ -25,11 +25,7 @@ public class RouteServiceImpl implements RouteService {
 
     @Override
     public Route create(Route route) {
-        Route newRoute = RouteFactory.createRoute(
-                route.getDescription(),
-                route.getDistance(),
-                route.getTime());
-        return this.repository.save(newRoute);
+        return this.repository.save(route);
     }
 
     @Override
